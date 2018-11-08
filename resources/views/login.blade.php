@@ -26,7 +26,7 @@
 @endsection
 
 @section('content')
-    <body class=" login">
+    <body class="login">
 		<!-- BEGIN LOGO -->
         <div class="logo">
             <a href="index.html">
