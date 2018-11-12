@@ -22,3 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/group/store', 'GroupController@store');
+Route::post('/amoeba/store', 'AmoebaController@store');
+Route::post('/amoeba/addFriend', 'AmoebaController@inviteFriend');

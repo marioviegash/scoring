@@ -27,4 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function group(){
+        return $this->hasOne('App\Model\Group');
+    }
+
+    public function amoeba(){
+        return $this->hasOne('App\Model\Amoeba');
+    }
 }
