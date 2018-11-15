@@ -1,10 +1,10 @@
 @extends('register.layout.master')
 
 @section('content')
-    @include('register.shared.header')
     @include('register.shared.progress')
     <fieldset>
-        <form action="/verification-profile" method="get">
+        <form action="/verify/group" method="post" enctype="multipart/form-data">
+            {{csrf_field()}}
             <h2 class="fs-title">CREATE YOUR GROUP</h2>
             <h3 class="fs-subtitle">Step 1</h3>
             <input type="text" name="name" placeholder="Name" />
