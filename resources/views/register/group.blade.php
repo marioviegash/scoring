@@ -11,6 +11,13 @@
             <textarea name="description" placeholder="Description" style="resize:none"></textarea>
             <input type="file" name="logo" placeholder="Input Your Logo" />
             <input type="submit" name="next" class="action-button" value="Next" />
+            @if(!empty($errors->first())) 
+                    <div class="row col-lg-12">
+                        <div class="alert alert-danger">
+                            <span>{{ $errors->first() }}</span>
+                        </div>
+                    </div>
+                @endif
         </form>
     </fieldset>
 @endsection

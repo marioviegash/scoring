@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Group;
 use Mail;
 use Auth;
-use Carbon;
+use Carbon\Carbon;
 use Hash;
 
 class GroupController extends Controller
@@ -38,26 +38,34 @@ class GroupController extends Controller
 
         $group = Group::find($group_id);
         $group->approve_by = Auth::id();
-        $group->approve_at = Carbon::now()->timestamp;
+        $group->approve_at = Carbon::now();
         $group->save();
 
         $group->amoebas()->update([
             'verified'=>true
         ]);
+        $amoebas = $group->amoebas()->get();
 
-        $amoebas = $group->amoebas();
-
+        
         foreach($amoebas as $amoeba){
-            $user = $amoeba->user();
-            Mail::send(['password'=>$user->password], $data, function($message) {
-                $message->to($user->email, $user->name)->subject('Verify Amoeba');
-                $message->from('amoeba@gmail.com','Amoeba Admin');
+            $user = $amoeba->user()->first();
+              
+            if($group->creator_id === $user->id){
+                continue;
+            }
+            Mail::send('emails.register', [
+                'user' => $user,
+                'password' => $user->password
+            ], function($message)use($user){
+                $message->subject('Sukses register di toko.besiawi.com');
+                $message->from('no-reply@tokobesiawi.com');
+                $message->to($user->email);
             });
             $user->password = Hash::make($user->password);
             $user->save();
         }
 
-        return true;
+        return redirect('/home');
     }
 
 

@@ -11,6 +11,13 @@
             <input type="text" name="work_place" placeholder="Work Place" />
             <input type="text" name="c_level" placeholder="C Level" />
             <input type="submit" name="next" class="next action-button" value="Next" />
+            @if(!empty($errors->first())) 
+                    <div class="row col-lg-12">
+                        <div class="alert alert-danger">
+                            <span>{{ $errors->first() }}</span>
+                        </div>
+                    </div>
+                @endif
         </form>
     </fieldset>
 @endsection

@@ -25,7 +25,7 @@ class CreateGroupsTable extends Migration
             $table->timestamp('approve_at')->nullable();
             $table->timestamps();
             
-            $table->foreign('creator_id')->references('id')->on('groups')
+            $table->foreign('creator_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');
         });
     }

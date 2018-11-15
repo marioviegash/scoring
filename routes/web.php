@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/group/store', 'GroupController@store');
 
+Route::get('/group/{group_id}/approve', 'GroupController@approveGroup');
+
 Route::post('/verify/group', 'VerificationController@verifyGroup');
 Route::post('/verify/profile', 'VerificationController@verifyProfile');
 Route::post('/verify/friend_one', 'VerificationController@inviteFriendOne');

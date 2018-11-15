@@ -13,6 +13,11 @@ class VerificationController extends Controller
     //
 
     public function verifyGroup(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'logo' => 'required|mimes:jpeg,bmp,png',
+        ]); 
         
         $file = $request->file('logo');
         
@@ -64,15 +69,23 @@ class VerificationController extends Controller
 
     public function inviteFriendOne(Request $request){
        
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:email'
+        ]);
         $this->saveFriend($request);
 
         return redirect('verification-two');
     }
 
     public function inviteFriendTwo(Request $request){
-       
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:email'
+        ]);
+
         $this->saveFriend($request);
 
-        return redirect('verification-success');
+        return redirect('verififcation-success');
     }
 }
