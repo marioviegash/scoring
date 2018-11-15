@@ -1,7 +1,6 @@
 @extends('register.layout.master')
 
 @section('content')
-    @include('register.shared.header')
     @include('register.shared.progress')
     <fieldset>
         <form action="/verification-profile" method="get">
