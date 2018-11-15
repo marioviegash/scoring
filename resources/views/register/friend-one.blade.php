@@ -1,6 +1,7 @@
 @extends('register.layout.master')
 
 @section('content')
+    @include('shared.header')
     @include('register.shared.header')
     <fieldset>
         <h2 class="fs-title">INVITE YOUR FRIEND 1</h2>

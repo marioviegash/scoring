@@ -18,13 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-<<<<<<< HEAD
 
 Route::post('/group/store', 'GroupController@store');
 Route::post('/amoeba/store', 'AmoebaController@store');
 Route::post('/amoeba/addFriend', 'AmoebaController@inviteFriend');
-=======
+
 Route::get('/verification-group', function () {
     return view('register.group');
 });
->>>>>>> ef53c6c2a6fed8cccc5d157e5849cf57c1650b71
+
+Route::get('/verification-profile', function () {
+    return view('register.profile');
+});
