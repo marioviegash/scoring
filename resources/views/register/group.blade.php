@@ -10,7 +10,7 @@
             <input type="text" name="name" placeholder="Name" />
             <textarea name="description" placeholder="Description" style="resize:none"></textarea>
             <input type="file" name="logo" placeholder="Input Your Logo" />
-            <input type="submit" name="next" class="next action-button" value="Next" />
+            <input type="submit" name="next" class="action-button" value="Next" />
         </form>
     </fieldset>
 @endsection
