@@ -44,7 +44,7 @@ class GroupController extends Controller
         $group->amoebas()->update([
             'verified'=>true
         ]);
-`
+
         $amoebas = $group->amoebas();
 
         foreach($amoebas as $amoeba){
@@ -56,7 +56,7 @@ class GroupController extends Controller
             $user->password = Hash::make($user->password);
             $user->save();
         }
-`
+
         return true;
     }
 

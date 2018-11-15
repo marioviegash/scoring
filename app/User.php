@@ -29,7 +29,8 @@ class User extends Authenticatable
     ];
 
     public function group(){
-        return $this->hasOne('App\Model\Group');
+        // dd($this->hasOne('App\Model\Group', 'creator_id', 'id')->get());
+        return $this->hasOne('App\Model\Group', 'creator_id', 'id');
     }
 
     public function amoeba(){

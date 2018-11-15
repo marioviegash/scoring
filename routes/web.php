@@ -20,6 +20,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/group/store', 'GroupController@store');
+
+Route::post('/verify/group', 'VerificationController@verifyGroup');
+Route::post('/verify/profile', 'VerificationController@verifyProfile');
+Route::post('/verify/friend_one', 'VerificationController@inviteFriendOne');
+Route::post('/verify/friend_two', 'VerificationController@inviteFriendTwo');
+
 Route::post('/amoeba/store', 'AmoebaController@store');
 Route::post('/amoeba/addFriend', 'AmoebaController@inviteFriend');
 
@@ -29,4 +35,15 @@ Route::get('/verification-group', function () {
 
 Route::get('/verification-profile', function () {
     return view('register.profile');
+});
+Route::get('/verification-one', function () {
+    return view('register.friend-one');
+});
+
+Route::get('/verification-two', function () {
+    return view('register.friend-two');
+});
+
+Route::get('/verification-success', function () {
+    return view('register.sucess');
 });
