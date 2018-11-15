@@ -1,7 +1,7 @@
 @extends('register.layout.master')
 
 @section('content')
-    @include('register.shared.progress')
+    @include('register.shared.progress', ['number'=>2])
     <fieldset>
         <form action="/verify/profile" method="post" enctype="multipart/form-data">
             <h2 class="fs-title">COMPLETE YOUR PROFILE</h2>

@@ -1,7 +1,7 @@
 @extends('register.layout.master')
 
 @section('content')
-    @include('register.shared.progress')
+    @include('register.shared.progress', ['number'=>5])
     <fieldset>
         <h2 class="fs-title">Success Register</h2>
         <h3 class="fs-subtitle">Complete Step</h3>

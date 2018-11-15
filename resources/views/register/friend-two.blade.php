@@ -1,7 +1,7 @@
 @extends('register.layout.master')
 
 @section('content')
-    @include('register.shared.progress')
+    @include('register.shared.progress', ['number'=>4])
     <fieldset>
         
             <form action="/verify/friend_two" method="post" enctype="multipart/form-data">
