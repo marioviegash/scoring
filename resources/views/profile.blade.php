@@ -39,6 +39,13 @@
                                         <i class="icon-user font-red-sunglo"></i>
                                         <span class="caption-subject bold uppercase"> Field Your Profile</span>
                                     </div>
+                                    <div class="actions">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm green" href="javascript:"> Change Password
+                                                <i class="fa fa-lock"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="portlet-body form">
                                     <form role="form">
@@ -49,7 +56,9 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Group</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Group" />
+                                                <div class="form-control spinner">
+                                                    My Group
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Email</label>
