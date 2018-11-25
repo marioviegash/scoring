@@ -18,6 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/event', function(){
+    return view('event');
+});
+
+Route::get('/profile', function(){
+    return view('profile');
+});
 
 Route::post('/group/store', 'GroupController@store');
 
