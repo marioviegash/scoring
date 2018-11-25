@@ -55,6 +55,20 @@ class VerificationController extends Controller
         return view('register.friend-two');
     }
 
+    public function viewSuccess(){
+        if(Auth::user()->group()->first() == null){
+            return redirect('verification-group');
+        }else if(Auth::user()->amoeba()->first() == null){
+            return redirect('verification-profile');
+        }else if(Auth::user()->group()->first()->amoebas()->count() ==1){
+           return redirect('verification-one');
+        }
+        if(Auth::user()->group()->first()->group_status_id === 2){
+            return redirect('/');
+        }
+        return view('register.success');
+    }
+
     public function verifyGroup(Request $request){
         $request->validate([
             'name' => 'required',

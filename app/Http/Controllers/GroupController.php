@@ -29,9 +29,7 @@ class GroupController extends Controller
         $newGroup->description = $request->description;
         $newGroup->logo = $fullpath;
         $newGroup->creator_id = Auth::id();
-
         $newGroup->save();
-
     }
 
     public function approveGroup($group_id){

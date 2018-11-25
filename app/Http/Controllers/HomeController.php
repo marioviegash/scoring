@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $group = Auth::user()->group()->first();
-        // dd($group->group_status_id);
+        
         if($group == null){
             return redirect('verification-group');
         }else if($group->group_status_id == 1){
