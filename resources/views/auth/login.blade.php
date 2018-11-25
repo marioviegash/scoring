@@ -3,6 +3,7 @@
 @section('title', 'Login - Scoring')
 
 @section('style')
+<meta name="csrf" value="{{ csrf_token() }}">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
     <link href="{{ asset('template_admin/assets/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
@@ -37,17 +38,20 @@
     <!-- BEGIN LOGIN -->
     <div class="content">
         <!-- BEGIN LOGIN FORM -->
-        <form class="login-form" action="{{ route('login') }}" method="post">
+        <form class="login-form" action="{{ url('login') }}" method="post">
             {{csrf_field()}}
             <h3 class="form-title font-green">Sign In</h3>
             <div class="alert alert-danger display-hide">
+                    @if ($errors->any())
+                    {{ implode('', $errors->all('<div>:message</div>')) }}
+            @endif
                 <button class="close" data-close="alert"></button>
                 <span> Enter any username and password. </span>
             </div>
             <div class="form-group">
                 <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                 <label class="control-label visible-ie8 visible-ie9">Username</label>
-                <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" /> </div>
+                <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="email" /> </div>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Password</label>
                 <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> </div>

@@ -12,6 +12,49 @@ class VerificationController extends Controller
 {
     //
 
+    public function viewGroup(){
+        if(Auth::user()->group()->first() != null){
+            return redirect('verification-profile');
+        }
+        return view('register.group');
+    }
+
+    public function viewProfile(){
+        if(Auth::user()->group()->first() == null){
+            return redirect('verification-group');
+        }
+        if(Auth::user()->amoeba()->first() != null){
+            return redirect('verification-one');
+        }
+        return view('register.profile');
+    }
+
+    public function viewFriendOne(){
+        if(Auth::user()->group()->first() == null){
+            return redirect('verification-group');
+        }else if(Auth::user()->amoeba()->first() == null){
+            return redirect('verification-profile');
+        }
+        if(Auth::user()->group()->first()->amoebas()->count() >1){
+            return redirect('verification-two');
+        }
+        return view('register.friend-one');
+    }
+    
+    public function viewFriendTwo(){
+        if(Auth::user()->group()->first() == null){
+            return redirect('verification-group');
+        }else if(Auth::user()->amoeba()->first() == null){
+            return redirect('verification-profile');
+        }else if(Auth::user()->group()->first()->amoebas()->count() ==1){
+           return redirect('verification-one');
+        }
+        if(Auth::user()->group()->first()->amoebas()->count() > 2){
+            return redirect('verification-success');
+        }
+        return view('register.friend-two');
+    }
+
     public function verifyGroup(Request $request){
         $request->validate([
             'name' => 'required',
@@ -71,7 +114,7 @@ class VerificationController extends Controller
        
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:email'
+            'email' => 'required|email|unique:users'
         ]);
         $this->saveFriend($request);
 
@@ -81,11 +124,14 @@ class VerificationController extends Controller
     public function inviteFriendTwo(Request $request){
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:email'
+            'email' => 'required|email|unique:users'
         ]);
 
         $this->saveFriend($request);
 
-        return redirect('verififcation-success');
+        $group = Auth::user()->group()->first();
+        $group->group_status_id = 2;
+        $group->save();
+        return redirect('verification-success');
     }
 }

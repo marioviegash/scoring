@@ -56,19 +56,28 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td> 1 </td>
-                                                        <td> Group Alay </td>
-                                                        <td> tedjun@gmail.com </td>
-                                                        <td> tedjun@gmail.com </td>
-                                                        <td> tedjun@gmail.com </td>
-                                                        <td>
-                                                            <span class="label label-sm label-info"> Pending </span>
-                                                        </td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-default">Approve</button>
-                                                        </td>
-                                                    </tr>
+                                                    @foreach ($groups as $group )
+                                                        
+                                                        <tr>
+                                                            <td> {{$group->id}} </td>
+                                                            <td> {{$group->name}} </td>
+                                                            <td> {{$group->amoebas[0]->user->name}} </td>
+                                                            <td> {{$group->amoebas[1]->user->name}} </td>
+                                                            <td> {{$group->amoebas[2]->user->name}} </td>
+                                                            <td>
+                                                                <span class="label label-sm {{$group->approve_at !== null ? 'label-success' : 'label-info'}}"> 
+                                                                    {{$group->approve_at !== null ? 'Approved' : 'Pending' }} </span>
+                                                            </td>
+                                                            <td>
+                                                                <form action={{url('/group/'.$group->id.'/approve')}} method="post">
+                                                                    {{csrf_field()}}
+                                                                    <input type="submit" class="btn btn-default" value="Approve" 
+                                                                    {{ $group->approve_at !== null ? 'disabled' : ''}}/>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

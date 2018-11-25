@@ -45,11 +45,12 @@ class GroupController extends Controller
             'verified'=>true
         ]);
         $amoebas = $group->amoebas()->get();
-
         
-        foreach($amoebas as $amoeba){
+        foreach($amoebas as $key => $amoeba){
+            if($key === 1){
+                continue;
+            }
             $user = $amoeba->user()->first();
-              
             if($group->creator_id === $user->id){
                 continue;
             }
@@ -57,11 +58,11 @@ class GroupController extends Controller
                 'user' => $user,
                 'password' => $user->password
             ], function($message)use($user){
-                $message->subject('Sukses register di toko.besiawi.com');
-                $message->from('no-reply@tokobesiawi.com');
+                $message->subject('Success terdaftar di amoeba');
+                $message->from('tedyjohn.tj@gmail.com');
                 $message->to($user->email);
             });
-            $user->password = Hash::make($user->password);
+            $user->password = bcrypt($user->password);
             $user->save();
         }
 
