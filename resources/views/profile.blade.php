@@ -69,7 +69,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Picture</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Picture" />
+                                                <input class="form-control spinner" type="file" placeholder="Input Your Picture" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Work Place</label>
