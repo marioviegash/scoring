@@ -47,6 +47,13 @@
 					<span class="selected"></span>
 				</a>
 			</li>
+			<li class="nav-item start">
+				<a href="javascript:;" class="nav-link">
+					<i class="icon-home"></i>
+					<span class="title">Event</span>
+					<span class="selected"></span>
+				</a>
+			</li>
 		</ul>
 		<!-- END SIDEBAR MENU -->
 		<!-- END SIDEBAR MENU -->

@@ -47,4 +47,12 @@ Route::group(['middleware' => 'auth'], function(){
 // Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm');
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/event', function(){
+    return view('event');
+});
+
+Route::get('/profile', function(){
+    return view('profile');
+});
 
