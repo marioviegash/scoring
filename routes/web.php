@@ -34,10 +34,15 @@ Route::group(['middleware' => 'auth'], function(){
         
         Route::get('/verification-success', 'VerificationController@viewSuccess');
         
+        
+        Route::get('/profile', 'AmoebaController@showProfile');
+        Route::post('/profile', 'AmoebaController@saveProfile');
+
         Route::group(['middleware' => 'amoebaverified'], function(){
             // Route::get('/home', 'HomeController@index')->name('home');
             Route::get('/', 'HomeController@index');
         });
+        
         
     });
 
@@ -58,7 +63,4 @@ Route::get('/event', function(){
     return view('event');
 });
 
-Route::get('/profile', function(){
-    return view('profile');
-});
 
