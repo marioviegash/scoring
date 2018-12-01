@@ -40,20 +40,7 @@
 				</form>
 				<!-- END RESPONSIVE QUICK SEARCH FORM -->
 			</li>
-			<li class="nav-item start active open">
-				<a href="javascript:;" class="nav-link">
-					<i class="icon-home"></i>
-					<span class="title">Dashboard</span>
-					<span class="selected"></span>
-				</a>
-			</li>
-			<li class="nav-item start">
-				<a href="javascript:;" class="nav-link">
-					<i class="icon-home"></i>
-					<span class="title">Event</span>
-					<span class="selected"></span>
-				</a>
-			</li>
+			@include('shared.sidebar.'.str_replace(' ', '-', strtolower(Auth::user()->roles->name)))
 		</ul>
 		<!-- END SIDEBAR MENU -->
 		<!-- END SIDEBAR MENU -->
