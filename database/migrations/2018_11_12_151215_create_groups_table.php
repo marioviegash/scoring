@@ -16,6 +16,7 @@ class CreateGroupsTable extends Migration
         Schema::create('groups', function (Blueprint $table) {
             //
             $table->increments('id');
+            $table->integer('group_status_id');
             $table->integer('creator_id')->unsigned();
             $table->integer('approve_by')->nullable();
             $table->string('name');
