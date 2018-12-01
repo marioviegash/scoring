@@ -50,7 +50,7 @@
                                                         <th> Group Name </th>
                                                         <th> Participant 1 </th>
                                                         <th> Participant 2 </th>
-                                                        <th> Participant 3 </th>
+                                                        {{-- <th> Participant 3 </th> --}}
                                                         <th> Status </th>
                                                         <th> Action</th>
                                                     </tr>
@@ -63,7 +63,7 @@
                                                             <td> {{$group->name}} </td>
                                                             <td> {{$group->amoebas[0]->user->name}} </td>
                                                             <td> {{$group->amoebas[1]->user->name}} </td>
-                                                            <td> {{$group->amoebas[2]->user->name}} </td>
+                                                            {{-- <td> {{$group->amoebas[2]->user->name}} </td> --}}
                                                             <td>
                                                                 <span class="label label-sm {{$group->approve_at !== null ? 'label-success' : 'label-info'}}"> 
                                                                     {{$group->approve_at !== null ? 'Approved' : 'Pending' }} </span>
