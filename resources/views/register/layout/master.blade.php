@@ -15,5 +15,6 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
     <script src="{{ asset('template_register/js/index.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

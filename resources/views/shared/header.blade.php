@@ -32,12 +32,12 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="page_user_profile_1.html">
+                            <a href="{{ url('profile') }}">
                                 <i class="icon-user"></i> My Profile
                             </a>
                         </li>
                         <li>
-                            <a href="page_user_login_1.html">
+                            <a href="{{ url('logout') }}">
                                 <i class="icon-key"></i> Log Out
                             </a>
                         </li>
@@ -47,7 +47,7 @@
                 <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-quick-sidebar-toggler">
-                    <a href="javascript:;" class="dropdown-toggle">
+                    <a href="{{ url('logout') }}" class="dropdown-toggle">
                         <i class="icon-logout"></i>
                     </a>
                 </li>

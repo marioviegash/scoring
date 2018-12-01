@@ -48,6 +48,9 @@
 <script src="{{ asset('template_admin/assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('template_admin/assets/layouts/global/scripts/quick-nav.min.js') }}" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
+<!-- MANUAL JS -->
+<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+<!-- END MANUAL JS -->
 <script>
     $(document).ready(function()
     {

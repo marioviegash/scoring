@@ -19,8 +19,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware'=> 'role:Amoeba'], function(){
         Route::post('/verify/group', 'VerificationController@verifyGroup');
         Route::post('/verify/profile', 'VerificationController@verifyProfile');
-        Route::post('/verify/friend_one', 'VerificationController@inviteFriendOne');
-        Route::post('/verify/friend_two', 'VerificationController@inviteFriendTwo');
+        Route::post('/verify/friend', 'VerificationController@inviteFriend');
         
         Route::post('/amoeba/store', 'AmoebaController@store');
         Route::post('/amoeba/addFriend', 'AmoebaController@inviteFriend');
@@ -28,9 +27,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/verification-group', 'VerificationController@viewGroup');
         
         Route::get('/verification-profile', 'VerificationController@viewProfile');
-        Route::get('/verification-one', 'VerificationController@viewFriendOne');
-        
-        Route::get('/verification-two', 'VerificationController@viewFriendTwo');
+        Route::get('/verification-friend', 'VerificationController@viewFriend');
         
         Route::get('/verification-success', 'VerificationController@viewSuccess');
         
@@ -60,7 +57,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/event', function(){
-    return view('event');
+    return view('event.index');
 });
+
+Route::get('/add-event', function(){
+    return view('event.add');
+});
+
+Route::get('/friend', function(){
+    return view('register.friend');
+});
+
+
 
 

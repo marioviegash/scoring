@@ -41,15 +41,15 @@
 				<!-- END RESPONSIVE QUICK SEARCH FORM -->
 			</li>
 			<li class="nav-item start active open">
-				<a href="javascript:;" class="nav-link">
+				<a href="" class="nav-link">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					<span class="selected"></span>
 				</a>
 			</li>
 			<li class="nav-item start">
-				<a href="javascript:;" class="nav-link">
-					<i class="icon-home"></i>
+				<a href="{{ url('event') }}" class="nav-link ">
+					<i class="icon-calendar"></i>
 					<span class="title">Event</span>
 					<span class="selected"></span>
 				</a>

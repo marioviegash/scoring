@@ -48,37 +48,39 @@
                                                     <tr>
                                                         <th> # </th>
                                                         <th> Group Name </th>
-                                                        <th> Participant 1 </th>
-                                                        <th> Participant 2 </th>
-                                                        <th> Participant 3 </th>
                                                         <th> Status </th>
                                                         <th> Action</th>
                                                     </tr>
                                                 </thead>
+                                                @foreach ($groups as $group )
                                                 <tbody>
-                                                    @foreach ($groups as $group )
-                                                        
-                                                        <tr>
-                                                            <td> {{$group->id}} </td>
-                                                            <td> {{$group->name}} </td>
-                                                            <td> {{$group->amoebas[0]->user->name}} </td>
-                                                            <td> {{$group->amoebas[1]->user->name}} </td>
-                                                            <td> {{$group->amoebas[2]->user->name}} </td>
-                                                            <td>
-                                                                <span class="label label-sm {{$group->approve_at !== null ? 'label-success' : 'label-info'}}"> 
-                                                                    {{$group->approve_at !== null ? 'Approved' : 'Pending' }} </span>
-                                                            </td>
-                                                            <td>
-                                                                <form action={{url('/group/'.$group->id.'/approve')}} method="post">
-                                                                    {{csrf_field()}}
-                                                                    <input type="submit" class="btn btn-default" value="Approve" 
-                                                                    {{ $group->approve_at !== null ? 'disabled' : ''}}/>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    
+                                                    <tr class="amoeba">
+                                                        <td> {{$group->id}} </td>
+                                                        <td> {{$group->name}} </td>
+                                                        <td>
+                                                            <span class="label label-sm {{$group->approve_at !== null ? 'label-success' : 'label-info'}}">
+                                                                {{$group->approve_at !== null ? 'Approved' : 'Pending' }} </span>
+                                                        </td>
+                                                        <td>
+                                                            <form action={{url('/group/'.$group->id.'/approve')}} method="post">
+                                                                {{csrf_field()}}
+                                                                <input type="submit" class="btn btn-default" value="Approve"
+                                                                {{ $group->approve_at !== null ? 'disabled' : ''}}/>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="amoeba-detail hidden">
+                                                        <th colspan="2"> Name </th>
+                                                        <th colspan="2"> Email </th>
+                                                    </tr>
+                                                    @foreach($group->amoebas as $amoeba)
+                                                    <tr class="amoeba-detail hidden">
+                                                        <td colspan="2"> {{ $amoeba->user->name }} </td>
+                                                        <td colspan="2"> {{ $amoeba->user->email }} </td>
+                                                    </tr>
                                                     @endforeach
                                                 </tbody>
+                                                @endforeach
                                             </table>
                                         </div>
                                     </div>

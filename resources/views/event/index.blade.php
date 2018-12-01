@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
-                                            <a class="btn dark btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Add Event</a>
+                                            <a class="btn dark btn-outline btn-circle btn-sm" href="{{ url('add-event') }}" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Add Event</a>
                                         </div>
                                     </div>
                                 </div>
@@ -49,25 +49,27 @@
                                     <div class="table-scrollable">
                                         <table class="table table-hover">
                                             <thead>
-                                            <tr>
-                                                <th> # </th>
-                                                <th> Event Name </th>
-                                                <th> Start Date </th>
-                                                <th> End Date </th>
-                                                <th> Action</th>
-                                            </tr>
+                                                <tr>
+                                                    <th> # </th>
+                                                    <th> Event Name </th>
+                                                    <th> Event Description </th>
+                                                    <th> Start Date </th>
+                                                    <th> End Date </th>
+                                                    <th> Action</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td> 1 </td>
-                                                <td> Event Alay </td>
-                                                <td> 10 November 2018 </td>
-                                                <td> 11 November 2018 </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-default">Edit</button>
-                                                    <button type="button" class="btn btn-default">Delete</button>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td> 1 </td>
+                                                    <td> Event Alay </td>
+                                                    <td> Description Super Alay </td>
+                                                    <td> 10 November 2018 </td>
+                                                    <td> 11 November 2018 </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-default">Edit</button>
+                                                        <button type="button" class="btn btn-default">Delete</button>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

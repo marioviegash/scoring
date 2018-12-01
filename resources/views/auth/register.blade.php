@@ -67,7 +67,7 @@
         <!-- END REGISTRATION FORM -->
         <div class="create-account">
             <p>
-                <a href="register">Had an Account</a>
+                <a href="{{ url('login') }}">Had an Account</a>
             </p>
         </div>
     </div>
