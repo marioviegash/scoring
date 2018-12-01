@@ -16,11 +16,12 @@ class AmoebaDataDoneMiddleware
     public function handle($request, Closure $next)
     {
         $user = Auth::user()->amoeba()->first();
-        $column_must_be_filled = ['nik', 'position', 'c_level', 'picture', 'work_place'];
+        $column_must_be_filled = ['NIK', 'position', 'c_level', 'picture', 'work_place'];
         
         foreach($column_must_be_filled as $column){
             // dd($user['id']);
             if(!isset($user[$column])){
+                // dd($user);
                 return redirect('/profile');
             }
         }

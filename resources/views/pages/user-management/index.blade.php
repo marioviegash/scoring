@@ -28,7 +28,7 @@
                             </ul>
                         </div>
 
-                        <h1 class="page-title"> Admin Dashboard
+                        <h1 class="page-title"> User Management 
                             <small>Reports</small>
                         </h1>
 
@@ -38,7 +38,12 @@
                                     <div class="portlet-title">
                                         <div class="caption">
                                             <i class="icon-user font-green"></i>
-                                            <span class="caption-subject font-green bold uppercase">Group Table</span>
+                                            <span class="caption-subject font-green bold uppercase">User Table</span>
+                                        </div>
+                                        <div class="actions">
+                                            <div class="btn-group">
+                                                <a class="btn dark btn-outline btn-circle btn-sm" href={{url('admin\user\add')}} > Add User</a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="portlet-body">
@@ -47,40 +52,32 @@
                                                 <thead>
                                                     <tr>
                                                         <th> # </th>
-                                                        <th> Group Name </th>
+                                                        <th> Name </th>
+                                                        <th> Email </th>
+                                                        <th> Role </th>
                                                         <th> Status </th>
                                                         <th> Action</th>
                                                     </tr>
                                                 </thead>
-                                                @foreach ($groups as $group )
                                                 <tbody>
-                                                    <tr class="amoeba">
-                                                        <td> {{$group->id}} </td>
-                                                        <td> {{$group->name}} </td>
-                                                        <td>
-                                                            <span class="label label-sm {{$group->approve_at !== null ? 'label-success' : 'label-info'}}">
-                                                                {{$group->approve_at !== null ? 'Approved' : 'Pending' }} </span>
-                                                        </td>
-                                                        <td>
-                                                            <form action={{url('/group/'.$group->id.'/approve')}} method="post">
-                                                                {{csrf_field()}}
-                                                                <input type="submit" class="btn btn-default" value="Approve"
-                                                                {{ $group->approve_at !== null ? 'disabled' : ''}}/>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="amoeba-detail hidden">
-                                                        <th colspan="2"> Name </th>
-                                                        <th colspan="2"> Email </th>
-                                                    </tr>
-                                                    @foreach($group->amoebas as $amoeba)
-                                                    <tr class="amoeba-detail hidden">
-                                                        <td colspan="2"> {{ $amoeba->user->name }} </td>
-                                                        <td colspan="2"> {{ $amoeba->user->email }} </td>
-                                                    </tr>
+                                                    @foreach ($users as $user )
+                                                        
+                                                        <tr>
+                                                            <td> {{$user->id}} </td>
+                                                            <td> {{$user->name}} </td>
+                                                            <td> {{$user->email}} </td>
+                                                            <td> {{$user->roles->name}} </td>
+                                                            <td> Active </td>
+                                                            <td>
+                                                                <a href={{"/admin/user/".$user->id."/update"}}
+                                                                    class="btn btn-default" >
+                                                                    Update
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    
                                                     @endforeach
                                                 </tbody>
-                                                @endforeach
                                             </table>
                                         </div>
                                     </div>
@@ -90,6 +87,7 @@
                     </div>
                 </div>
             </div>
+
             @include('shared.footer')
         </div>
     </body>

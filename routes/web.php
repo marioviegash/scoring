@@ -12,11 +12,23 @@
 */
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::group(['middleware'=> 'roles:Admin Amoeba'], function(){
+    Route::group(['middleware'=> 'role:Admin Amoeba'], function(){
+
         Route::post('/group/{group_id}/approve', 'GroupController@approveGroup');
     });
 
+    Route::group(['prefix' => '/admin'], function(){
+        Route::group(['prefix'=> '/user'], function(){
+            Route::get('/', 'UserController@showAll');
+            Route::get('/add', 'UserController@showInsert');
+            Route::post('/add', 'UserController@insert');
+            
+            Route::get('/{id}/update', 'UserController@showUpdate');
+        });
+    });
+    
     Route::group(['middleware'=> 'role:Amoeba'], function(){
+        
         Route::post('/verify/group', 'VerificationController@verifyGroup');
         Route::post('/verify/profile', 'VerificationController@verifyProfile');
         Route::post('/verify/friend', 'VerificationController@inviteFriend');
@@ -46,9 +58,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
     
     Route::post('/group/store', 'GroupController@store');
- 
-    
-
 });
 
 // Route::post('/login', '\App\Http\Controllers\Auth\LoginController@login');
