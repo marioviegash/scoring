@@ -48,41 +48,42 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                    <form role="form">
+                                <form role="form" action="{{url('profile')}}" method="post" enctype="multipart/form-data">
+                                        {{csrf_field()}}
                                         <div class="form-body">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Name" />
+                                            <input class="form-control spinner" type="text" placeholder="Input Your Name" value='{{$amoeba->user->name}}' name="name" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Group</label>
-                                                <div class="form-control spinner">
+                                                <div class="form-control spinner" value="{{$amoeba->group->name}}">
                                                     My Group
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Email" />
+                                                <input class="form-control spinner" type="text" placeholder="Input Your Email" value="{{$amoeba->user->email}}" />
                                             </div>
                                             <div class="form-group">
                                                 <label>NIK</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your NIK" />
+                                                <input class="form-control spinner" type="text" placeholder="Input Your NIK" value="{{$amoeba->NIK}}" name="nik"/>
                                             </div>
                                             <div class="form-group">
                                                 <label>Position</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Position" />
+                                                <input class="form-control spinner" type="text" placeholder="Input Your Position" value="{{$amoeba->position}}" name="position"/>
                                             </div>
                                             <div class="form-group">
                                                 <label>C Level</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your C Level" />
+                                                <input class="form-control spinner" type="text" placeholder="Input Your C Level" value="{{$amoeba->c_level}}" name="c_level"/>
                                             </div>
                                             <div class="form-group">
                                                 <label>Picture</label>
-                                                <input class="form-control spinner" type="file" placeholder="Input Your Picture" />
+                                                <input class="form-control spinner" type="file" placeholder="Input Your Picture" name="picture"/>
                                             </div>
                                             <div class="form-group">
                                                 <label>Work Place</label>
-                                                <textarea class="form-control" rows="3" placeholder="Input Your Work Place"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Input Your Work Place" value="" name="work_place">{{$amoeba->work_place}}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-actions">

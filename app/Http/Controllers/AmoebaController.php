@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
-
+use App\Model\Amoeba;
 class AmoebaController extends Controller
 {
     //
@@ -39,6 +39,36 @@ class AmoebaController extends Controller
         $newUser->amoeba()->save($newAmoeba);
 
         return view();
+    }
+
+    public function showProfile(){
+        
+        $amoeba = Amoeba::where('user_id', Auth::id())->with('group')->with('user')->first();
+        // dd($amoeba);
+        return view('profile', ['amoeba'=> $amoeba]);
+    }
+    public function saveProfile(Request $request){
+        $amoeba = Amoeba::where('user_id', Auth::id())->first();
+        
+        $file = $request->file('picture');
+        if(isset($file)){
+            $destinationPath = "img/upload/profile";
+            $filename = uniqid().$file->getClientOriginalName();
+            $filename = str_replace(" ", "", $filename);
+            $fullpath = $destinationPath.'/'.$filename;
+            $file->move( $destinationPath,$filename);
+            $amoeba->picture = $fullpath;
+        
+        }
+        
+        // $amoeba->name = $request->name;
+        $amoeba->nik = $request->nik;
+        $amoeba->position = $request->position;
+        $amoeba->c_level = $request->c_level;
+        $amoeba->work_place = $request->work_place;
+        $amoeba->save();
+
+        return redirect('/profile');
     }
 
 }
