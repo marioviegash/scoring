@@ -67,19 +67,19 @@ Route::group(['middleware' => 'auth'], function(){
 Auth::routes();
 
 Route::get('/event', function(){
-    return view('event.index');
+    return view('pages.event.index');
 });
 
-Route::get('/add-event', function(){
-    return view('event.add');
+Route::get('/create-event', function(){
+    return view('pages.event.insert');
 });
 
 Route::get('/update-event', function(){
-    return view('event.update');
+    return view('pages.event.update');
 });
 
-Route::get('/friend', function(){
-    return view('register.friend');
+Route::get('/dashboard', function(){
+    return view('dashboard');
 });
 
 

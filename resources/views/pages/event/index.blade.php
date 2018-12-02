@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
-                                            <a class="btn dark btn-outline btn-circle btn-sm" href="{{ url('add-event') }}"> Add Event</a>
+                                            <a class="btn dark btn-outline btn-circle btn-sm" href="{{ url('create-event') }}"> Add Event</a>
                                         </div>
                                     </div>
                                 </div>
