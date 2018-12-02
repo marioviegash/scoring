@@ -58,4 +58,31 @@ class UserController extends Controller
 
         return redirect('/admin/user');
     }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'required',
+            'role'=> 'required'
+        ]);
+        if($request->role === '3'){
+            $request->validate([
+                'nik' => 'required|digits:6',
+                'loker' => 'required'
+            ]);
+        }
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->role_id = $request->role;
+        $user->save();
+
+        if($request->role === '3'){
+            $jury = Jury::find($user->jury->id);
+            $jury->nik = $request->nik;
+            $jury->loker = $request->loker;
+            $user->jury()->save($jury);
+        }
+
+        return redirect('/admin/user');
+    }
 }

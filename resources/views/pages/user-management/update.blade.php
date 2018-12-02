@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                <form role="form" action="{{url('admin/user/add')}}" method="post" enctype="multipart/form-data">
+                                <form role="form" action="{{url('\admin\user\\'.$user->id.'\update')}}" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-body">
                                             <div class="form-group">
