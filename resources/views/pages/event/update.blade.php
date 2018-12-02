@@ -76,6 +76,14 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            <div class="form-group">
+                                                <label>Criteria Group</label>
+                                                <input class="form-control spinner" type="text" name="criteria_group" placeholder="Input Question for Criteria Grup" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Criteria Individu</label>
+                                                <input class="form-control spinner" type="text" name="criteria_individu" placeholder="Input Question for Criteria Individu" />
+                                            </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6">
                                                     <label>Criteria Employee</label>

@@ -61,6 +61,14 @@
                                                 <textarea class="form-control" rows="3" placeholder="Input The Event Description" value="" name="description"></textarea>
                                             </div>
                                             <div class="form-group">
+                                                <label>Criteria Group</label>
+                                                <input class="form-control spinner" type="text" name="criteria_group" placeholder="Input Question for Criteria Grup" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Criteria Individu</label>
+                                                <input class="form-control spinner" type="text" name="criteria_individu" placeholder="Input Question for Criteria Individu" />
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Jury</label>
                                                 <select class="form-control" name="jury">
                                                     <option>Choose The Jury</option>
