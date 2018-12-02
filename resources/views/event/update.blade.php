@@ -69,21 +69,29 @@
                                                     <option value="jury_id_3">Jury 3</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Criteria Employee</label>
-                                                <textarea class="form-control" rows="3" placeholder="Input Criteria Employee" value="" name="criteria_employee"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Criteria Innovator</label>
-                                                <textarea class="form-control" rows="3" placeholder="Input Criteria Innovator" value="" name="criteria_innovator"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Criteria Score</label>
-                                                <select class="form-control" name="criteria_score">
-                                                    <option value="none">Choose Criteria Score</option>
-                                                    <option value="5">1 - 5 Score</option>
-                                                    <option value="10">1 - 10 Score</option>
-                                                </select>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Criteria Employee</label>
+                                                    <input class="form-control" placeholder="Input Criteria Employee" value="" name="criteria_employee[]" />
+                                                    <br>
+                                                    <div class="dataCriteriaEmployee"></div>
+                                                    <input type="button" class="col-md-12 btn red btnAddEmployee" value="Add Criteria Employee">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Criteria Innovator</label>
+                                                    <input class="form-control" placeholder="Input Criteria Innovator" value="" name="criteria_innovator[]" />
+                                                    <br>
+                                                    <div class="dataCriteriaInnovator"></div>
+                                                    <input type="button" class="col-md-12 btn red btnAddInnovator" value="Add Criteria Inovator">
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label>Criteria Score</label>
+                                                    <select class="form-control" name="criteria_score">
+                                                        <option value="none">Choose Criteria Score</option>
+                                                        <option value="5">1 - 5 Score</option>
+                                                        <option value="10">1 - 10 Score</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-actions">
