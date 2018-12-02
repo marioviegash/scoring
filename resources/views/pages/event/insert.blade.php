@@ -70,7 +70,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Jury</label>
-                                                <select class="form-control" name="jury">
+                                                <select class="form-control js-select2" name="jury" multiple>
                                                     <option>Choose The Jury</option>
                                                     @foreach ($juries as $jury)
                                                         <option value="{{$jury->id}}">{{$jury->user->name}}</option>
@@ -128,5 +128,5 @@
 @endsection
 
 @section('script')
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
 @endsection

@@ -18,6 +18,9 @@
     <link href="{{ asset('template_admin/assets/layouts/layout/css/themes/darkblue.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
     <link href="{{ asset('template_admin/assets/layouts/layout/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
+    <!-- BEGIN MANUAL CSS -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
+    <!-- END MANUAL CSS -->
     @yield('style')
 </head>
 <body>
