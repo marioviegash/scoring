@@ -17,6 +17,7 @@ class CreateGroupsTable extends Migration
             //
             $table->increments('id');
             $table->integer('group_status_id')->default(0);
+            $table->integer('event_id')->unsigned();
             $table->integer('creator_id')->unsigned();
             $table->integer('approve_by')->nullable();
             $table->string('name');
@@ -27,6 +28,9 @@ class CreateGroupsTable extends Migration
             $table->timestamps();
             
             $table->foreign('creator_id')->references('id')->on('users')
+            ->onUpdate('cascade')->onDelete('cascade');
+            
+            $table->foreign('event_id')->references('id')->on('events')
             ->onUpdate('cascade')->onDelete('cascade');
         });
     }
