@@ -12,8 +12,21 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        
+
         DB::table('users')->insert([
             'id'       => 1,
+            'name'          => 'Super Admin', 
+            'email'       => 'admin@gmail.com', 
+            'email_verified_at'      => null,
+            'role_id'       => 1, 
+            'password'      => bcrypt('asdasd'), 
+            'remember_token'=> null, 
+            'created_at'    => '2018-11-08 14:17:59', 
+            'updated_at'    => NULL
+        ]);
+        DB::table('users')->insert([
+            'id'       => 2,
             'name'          => 'asdasd', 
             'email'       => 'asd@gmail.com', 
             'email_verified_at'      => null,
@@ -25,7 +38,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'id'       => 2,
+            'id'       => 3,
             'name'          => 'mario', 
             'email'       => 'mario@gmail.com', 
             'email_verified_at'      => null,

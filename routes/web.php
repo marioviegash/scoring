@@ -16,18 +16,19 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::post('/group/{group_id}/approve', 'GroupController@approveGroup');
         Route::get('/home', 'HomeController@index')->name('home');
-    });
+        
 
-    Route::group(['prefix' => '/admin'], function(){
-        Route::group(['prefix'=> '/user'], function(){
-            Route::get('/', 'UserController@showAll');
-            Route::get('/add', 'UserController@showInsert');
-            Route::post('/add', 'UserController@insert');
-            
-            Route::get('/{id}/update', 'UserController@showUpdate');
+        Route::group(['prefix' => '/admin'], function(){
+            Route::group(['prefix'=> '/user'], function(){
+                Route::get('/', 'UserController@showAll');
+                Route::get('/add', 'UserController@showInsert');
+                Route::post('/add', 'UserController@insert');
+                
+                Route::get('/{id}/update', 'UserController@showUpdate');
+            });
         });
-    });
     
+    });
     Route::group(['middleware'=> 'role:Amoeba'], function(){
         
         Route::post('/verify/group', 'VerificationController@verifyGroup');

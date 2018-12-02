@@ -20,6 +20,7 @@ class CreateAmoebasTable extends Migration
             $table->integer('group_id')->unsigned();
             $table->string('NIK')->unique()->nullable();
             $table->string('picture')->nullable();
+            $table->string('loker')->nullable();
             $table->string('work_place')->nullable();
             $table->string('c_level')->nullable();
             $table->boolean('verified')->default(false);
