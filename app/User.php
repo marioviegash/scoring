@@ -40,8 +40,8 @@ class User extends Authenticatable
         return $this->hasOne('App\Model\Group', 'creator_id', 'id');
     }
 
-    public function juries(){
-        return $this->belongsToMany('App\Model\Jury');
+    public function jury(){
+        return $this->hasOne('App\Model\Jury');
     }
 
     public function headGroup(){

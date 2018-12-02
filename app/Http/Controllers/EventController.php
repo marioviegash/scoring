@@ -30,7 +30,7 @@ class EventController extends Controller
     public function showUpdate($id){
         $event = Event::with('employees')->with('innovators')->where('id', $id)->first();
         $juries = Jury::with('user')->get();
-
+        // dd($juries);
         return view('pages.event.update', ['event' => $event, 'juries'=> $juries]);
     }
 
@@ -40,7 +40,7 @@ class EventController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'description' => 'required',
-            'jury'=> 'required',
+            // 'jury'=> 'required',
             'juries' => 'required|array',
             'juries.*'=> 'required',
             'criteria_group' => 'required',
@@ -58,7 +58,7 @@ class EventController extends Controller
         $newEvent->criteria_group = $request->criteria_group;
         $newEvent->criteria_individu = $request->criteria_individu;
         $newEvent->description = $request->description;
-        $newEvent->jury_id = $request->jury;
+        // $newEvent->jury_id = $request->jury;
         $newEvent->maximum_score = $request->criteria_score;
         $newEvent->save();
         
@@ -66,9 +66,10 @@ class EventController extends Controller
         $newEvent->innovators()->delete();
 
         $newEvent->juries()->delete();
+        
         foreach($request->juries as $jury_id){
             $jury = Jury::find($jury_id);
-            $newEvent->juries()->add($jury);
+            $newEvent->juries()->save($jury);
         }
 
         foreach($request->criteria_employee as $employee){
@@ -116,14 +117,14 @@ class EventController extends Controller
         $newEvent->criteria_group = $request->criteria_group;
         $newEvent->criteria_individu = $request->criteria_individu;
         $newEvent->description = $request->description;
-        $newEvent->jury_id = $request->jury;
+        // $newEvent->jury_id = $request->jury;
         $newEvent->maximum_score = $request->criteria_score;
         $newEvent->save();
 
         
         foreach($request->juries as $jury_id){
             $jury = Jury::find($jury_id);
-            $newEvent->juries()->add($jury);
+            $newEvent->juries()->save($jury);
         }
         
         foreach($request->criteria_employee as $employee){

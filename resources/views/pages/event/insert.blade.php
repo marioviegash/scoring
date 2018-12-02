@@ -70,8 +70,7 @@
                                             </div>
                                             <div class="form-group select2-parent">
                                                 <label>Jury</label>
-                                                <select class="js-select2" name="jury[]" multiple>
-                                                    <option>Choose The Jury</option>
+                                                <select class="js-select2" name="juries[]" multiple>
                                                     @foreach ($juries as $jury)
                                                         <option value="{{$jury->id}}">{{$jury->user->name}}</option>
                                                     @endforeach

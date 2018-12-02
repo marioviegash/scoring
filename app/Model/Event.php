@@ -12,6 +12,10 @@ class Event extends Model
         return $this->hasMany('App\Model\Employee');
     }
 
+    public function juries(){
+        return $this->belongsToMany('App\Model\Jury');
+    }
+
     public function innovators(){
         return $this->hasMany('App\Model\Innovator');
     }
