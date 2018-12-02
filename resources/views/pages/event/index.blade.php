@@ -52,9 +52,6 @@
                                                 <tr>
                                                     <th> # </th>
                                                     <th> Event Name </th>
-                                                    <th> Event Description </th>
-                                                    <th> Criteria Employee </th>
-                                                    <th> Criteria Innovator </th>
                                                     <th> Criteria Score </th>
                                                     <th> Start Date </th>
                                                     <th> End Date </th>
@@ -62,19 +59,27 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <tr class="event">
                                                     <td> 1 </td>
                                                     <td> Event Alay </td>
-                                                    <td> Description Super Alay </td>
-                                                    <td> Tamvan, Keren </td>
-                                                    <td> Mantul, Kreatif </td>
                                                     <td> 1 - 10 Score </td>
                                                     <td> 10 November 2018 </td>
                                                     <td> 11 November 2018 </td>
                                                     <td>
-                                                        <a href="/update-event"><button type="button" class="btn btn-default">Edit</button></a>
-                                                        <button type="button" class="btn btn-default">Delete</button>
+                                                        <button type="button" class="btn btn-default" data-toggle="modal" href="#viewGroup" style="z-index: 5">View</button>
+                                                        <a href="/update-event"><button type="button" class="btn btn-default" style="z-index: 5">Edit</button></a>
+                                                        <button type="button" class="btn btn-default" style="z-index: 5">Delete</button>
                                                     </td>
+                                                </tr>
+                                                <tr class="event-detail hidden">
+                                                    <th colspan="4"> Event Description </th>
+                                                    <th> Criteria Employee </th>
+                                                    <th> Criteria Innovator </th>
+                                                </tr>
+                                                <tr class="event-detail hidden">
+                                                    <td colspan="4"> Deskripsi Event Alay </td>
+                                                    <td> Tamvan, Keren</td>
+                                                    <td> Kreatif, Inisiatif </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -82,6 +87,21 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="basic" tabindex="-1" role="viewGroup" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Modal Title</h4>
+                    </div>
+                    <div class="modal-body"> Modal body goes here </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
