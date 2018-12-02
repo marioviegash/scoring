@@ -41,6 +41,8 @@ class EventController extends Controller
             'end_date' => 'required|date|after_or_equal:start_date',
             'description' => 'required',
             'jury'=> 'required',
+            'juries' => 'required|array',
+            'juries.*'=> 'required',
             'criteria_group' => 'required',
             'criteria_individu' => 'required',
             'criteria_employee' => 'required|array',
@@ -62,6 +64,12 @@ class EventController extends Controller
         
         $newEvent->employees()->delete();
         $newEvent->innovators()->delete();
+
+        $newEvent->juries()->delete();
+        foreach($request->juries as $jury_id){
+            $jury = Jury::find($jury_id);
+            $newEvent->juries()->add($jury);
+        }
 
         foreach($request->criteria_employee as $employee){
             $newEmployee = new Employee();
@@ -90,7 +98,8 @@ class EventController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'description' => 'required',
-            'jury'=> 'required',
+            'juries' => 'required|array',
+            'juries.*'=> 'required',
             'criteria_group' => 'required',
             'criteria_individu' => 'required',
             'criteria_employee' => 'required|array',
@@ -110,6 +119,12 @@ class EventController extends Controller
         $newEvent->jury_id = $request->jury;
         $newEvent->maximum_score = $request->criteria_score;
         $newEvent->save();
+
+        
+        foreach($request->juries as $jury_id){
+            $jury = Jury::find($jury_id);
+            $newEvent->juries()->add($jury);
+        }
         
         foreach($request->criteria_employee as $employee){
             $newEmployee = new Employee();
