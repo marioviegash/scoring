@@ -66,7 +66,9 @@
                                                 <label>Role</label>
                                                 <select class="form-control" name="role" id="dataRole">
                                                     @foreach ($roles as $role)
+                                                        @if($role->id !== 4)
                                                         <option id={{$role->id}} value={{$role->id}}>{{$role->name}}</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>

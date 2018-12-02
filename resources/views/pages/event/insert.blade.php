@@ -63,10 +63,10 @@
                                             <div class="form-group">
                                                 <label>Jury</label>
                                                 <select class="form-control" name="jury">
-                                                    <option value="none">Choose The Jury</option>
-                                                    <option value="jury_id_1">Jury 1</option>
-                                                    <option value="jury_id_2">Jury 2</option>
-                                                    <option value="jury_id_3">Jury 3</option>
+                                                    <option>Choose The Jury</option>
+                                                    @foreach ($juries as $jury)
+                                                        <option value="{{$jury->id}}">{{$jury->user->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="row">
@@ -94,6 +94,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @if(!empty($errors->first()))
+                                            <div class="row col-lg-12">
+                                                <div class="alert alert-danger">
+                                                    <span>{{ $errors->first() }}</span>
+                                                </div>
+                                            </div>
+                                        @endif
                                         <div class="form-actions">
                                             <button type="submit" class="btn blue">Submit</button>
                                             <a href="/event"><button type="button" class="btn default">Cancel</button></a>

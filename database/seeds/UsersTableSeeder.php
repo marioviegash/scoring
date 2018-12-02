@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
             'created_at'    => '2018-11-08 14:17:59', 
             'updated_at'    => NULL
         ]);
+        
         DB::table('users')->insert([
             'id'       => 2,
             'name'          => 'asdasd', 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Model\Role;
+use App\Model\Jury;
 
 class UserController extends Controller
 {
@@ -35,13 +36,25 @@ class UserController extends Controller
             'password' => 'required',
             'role'=> 'required'
         ]); 
-        
+        if($request->role === '3'){
+            $request->validate([
+                'nik' => 'required|digits:6',
+                'loker' => 'required'
+            ]); 
+        }
+
         $newUser = new User();
         $newUser->name = $request->name;
         $newUser->email = $request->email;
         $newUser->password = bcrypt($request->password);
         $newUser->role_id = $request->role;
         $newUser->save();
+        if($request->role === '3'){
+            $jury = new Jury();
+            $jury->nik = $request->nik;
+            $jury->loker = $request->loker;
+            $newUser->jury()->save($jury);
+        }
 
         return redirect('/admin/user');
     }

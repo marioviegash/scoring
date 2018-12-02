@@ -54,7 +54,7 @@ class AmoebaController extends Controller
     }
     public function saveProfile(Request $request){
         $request->validate([
-            'nik' => 'required|unique:amoebas|digits:16',
+            'nik' => 'required|unique:amoebas|digits:6',
             'c_level' => 'required',
             'loker' => 'required',
             'work_place' => 'required',

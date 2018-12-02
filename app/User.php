@@ -40,6 +40,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Model\Group', 'creator_id', 'id');
     }
 
+    public function jury(){
+        return $this->hasOne('App\Model\Jury');
+    }
+
     public function headGroup(){
         // dd($this->hasOne('App\Model\Group', 'creator_id', 'id')->get());
         return $this->hasOne('App\Model\Group', 'creator_id', 'id');

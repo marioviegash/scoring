@@ -46,8 +46,8 @@ $(document).ready(function(){
                'name="nik"/>\n' +
                '</div><div class="form-group newData">\n' +
                '<label>C Level</label>\n' +
-               '<input class="form-control spinner" type="text" placeholder="Input Your C Level" \n' +
-               'name="c_level"/>\n' +
+               '<input class="form-control spinner" type="text" placeholder="Input Your Loker" \n' +
+               'name="loker"/>\n' +
                '</div>');
        } else {
            $(this).parent().parent().find('.newData').remove();

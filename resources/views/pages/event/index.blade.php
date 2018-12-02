@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
-                                            <a class="btn dark btn-outline btn-circle btn-sm" href="{{ url('create-event') }}"> Add Event</a>
+                                            <a class="btn dark btn-outline btn-circle btn-sm" href="{{ url('/admin/event/add') }}"> Add Event</a>
                                         </div>
                                     </div>
                                 </div>
@@ -53,8 +53,6 @@
                                                     <th> # </th>
                                                     <th> Event Name </th>
                                                     <th> Event Description </th>
-                                                    <th> Criteria Employee </th>
-                                                    <th> Criteria Innovator </th>
                                                     <th> Criteria Score </th>
                                                     <th> Start Date </th>
                                                     <th> End Date </th>
@@ -62,20 +60,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td> 1 </td>
-                                                    <td> Event Alay </td>
-                                                    <td> Description Super Alay </td>
-                                                    <td> Tamvan, Keren </td>
-                                                    <td> Mantul, Kreatif </td>
-                                                    <td> 1 - 10 Score </td>
-                                                    <td> 10 November 2018 </td>
-                                                    <td> 11 November 2018 </td>
-                                                    <td>
-                                                        <a href="/update-event"><button type="button" class="btn btn-default">Edit</button></a>
-                                                        <button type="button" class="btn btn-default">Delete</button>
-                                                    </td>
-                                                </tr>
+                                                @foreach ($events as $event)    
+                                                    <tr>
+                                                        <td> 1 </td>
+                                                        <td> {{$event->name}} </td>
+                                                        <td> {{$event->description}} </td>
+                                                        {{-- <td> Tamvan, Keren </td> --}}
+                                                        {{-- <td> Mantul, Kreatif </td> --}}
+                                                        <td> 1 - {{$event->maximum_score}} Score </td>
+                                                        <td> {{\Carbon\Carbon::parse($event->start_date)->format('d M y')}} </td>
+                                                        <td> {{\Carbon\Carbon::parse($event->end_date)->format('d M y')}} </td>
+                                                        <td>
+                                                            <a href="/admin/event/{{$event->id}}/update"><button type="button" class="btn btn-default">Edit</button></a>
+                                                            <form action="/admin/event/delete" method="post"> 
+                                                                <button type="button" class="btn btn-default">Delete</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

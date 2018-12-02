@@ -28,6 +28,16 @@ Route::group(['middleware' => 'auth'], function(){
             });
         });
     
+        Route::group(['prefix' => '/admin'], function(){
+            Route::group(['prefix'=> '/event'], function(){
+                Route::get('/', 'EventController@showAll');
+                Route::get('/add', 'EventController@showInsert');
+                Route::post('/add', 'EventController@insert');
+                
+                Route::get('/{id}/update', 'UserController@showUpdate');
+            });
+        });
+
     });
     Route::group(['middleware'=> 'role:Amoeba'], function(){
         
