@@ -74,14 +74,36 @@
                                                     <label>Criteria Employee</label>
                                                     <input class="form-control" placeholder="Input Criteria Employee" value="" name="criteria_employee[]" />
                                                     <br>
-                                                    <div class="dataCriteriaEmployee"></div>
+                                                    <div class="dataCriteriaEmployee">
+                                                        <div>
+                                                            <input class="form-control" placeholder="Input Criteria Employee" value="" name="criteria_employee[]" style="width: 94%; float: left;" />
+                                                            <button class="btnDeleteEmployee" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
+                                                            <br><br><br>
+                                                        </div>
+                                                        <div>
+                                                            <input class="form-control" placeholder="Input Criteria Employee" value="" name="criteria_employee[]" style="width: 94%; float: left;" />
+                                                            <button class="btnDeleteEmployee" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
+                                                            <br><br><br>
+                                                        </div>
+                                                    </div>
                                                     <input type="button" class="col-md-12 btn red btnAddEmployee" value="Add Criteria Employee">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Criteria Innovator</label>
                                                     <input class="form-control" placeholder="Input Criteria Innovator" value="" name="criteria_innovator[]" />
                                                     <br>
-                                                    <div class="dataCriteriaInnovator"></div>
+                                                    <div class="dataCriteriaInnovator">
+                                                        <div>
+                                                            <input class="form-control" placeholder="Input Criteria Innovator" value="" name="criteria_innovator[]" style="width: 94%; float: left;" />
+                                                            <button class="btnDeleteInnovator" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
+                                                            <br><br><br>
+                                                        </div>
+                                                        <div>
+                                                            <input class="form-control" placeholder="Input Criteria Innovator" value="" name="criteria_innovator[]" style="width: 94%; float: left;" />
+                                                            <button class="btnDeleteInnovator" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
+                                                            <br><br><br>
+                                                        </div>
+                                                    </div>
                                                     <input type="button" class="col-md-12 btn red btnAddInnovator" value="Add Criteria Inovator">
                                                 </div>
                                                 <div class="form-group col-md-12">
@@ -96,7 +118,7 @@
                                         </div>
                                         <div class="form-actions">
                                             <button type="submit" class="btn blue">Submit</button>
-                                            <button type="button" class="btn default">Cancel</button>
+                                            <a href="/event"><button type="button" class="btn default">Cancel</button></a>
                                         </div>
                                     </form>
                                 </div>

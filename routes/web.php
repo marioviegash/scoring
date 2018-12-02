@@ -73,6 +73,10 @@ Route::get('/add-event', function(){
     return view('event.add');
 });
 
+Route::get('/update-event', function(){
+    return view('event.update');
+});
+
 Route::get('/friend', function(){
     return view('register.friend');
 });
