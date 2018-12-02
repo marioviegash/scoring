@@ -64,7 +64,7 @@
                                                         <td>
                                                             <form action={{url('/group/'.$group->id.'/approve')}} method="post">
                                                                 {{csrf_field()}}
-                                                                <input type="submit" class="btn btn-default" value="Approve"
+                                                                <input type="submit" class="btn btn-default" value="Approve" style="z-index:2"
                                                                 {{ $group->approve_at !== null ? 'disabled' : ''}}/>
                                                             </form>
                                                         </td>

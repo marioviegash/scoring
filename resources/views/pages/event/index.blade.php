@@ -59,9 +59,10 @@
                                                     <th> Action</th>
                                                 </tr>
                                             </thead>
+                                            
+                                            @foreach ($events as $event)    
                                             <tbody>
-                                                @foreach ($events as $event)    
-                                                    <tr>
+                                                    <tr class="event">
                                                         <td> 1 </td>
                                                         <td> {{$event->name}} </td>
                                                         <td> {{$event->description}} </td>
@@ -77,13 +78,40 @@
                                                             </form>
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                    
+                                                    <tr class="event-detail hidden">
+                                                        <th colspan="4"> Event Description </th>
+                                                        <th> Criteria Employee </th>
+                                                        <th> Criteria Innovator </th>
+                                                    </tr>
+                                                    <tr class="event-detail hidden">
+                                                        <td colspan="4"> Deskripsi Event Alay </td>
+                                                        <td> Tamvan, Keren</td>
+                                                        <td> Kreatif, Inisiatif </td>
+                                                    </tr>
                                             </tbody>
+                                            
+                                            @endforeach
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="basic" tabindex="-1" role="viewGroup" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Modal Title</h4>
+                    </div>
+                    <div class="modal-body"> Modal body goes here </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

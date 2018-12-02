@@ -1,9 +1,22 @@
 $(document).ready(function(){
     $('.amoeba').click(function(e){
+        if (e.target.tagName === "BUTTON")
+            return;
+
        if($(this).parent().find('.hidden').length != 0)
            $(this).parent().find('.amoeba-detail').removeClass('hidden');
        else
            $(this).parent().find('.amoeba-detail').addClass('hidden');
+    });
+
+    $('.event').click(function(e){
+        if (e.target.tagName === "BUTTON")
+            return;
+
+        if($(this).parent().find('.hidden').length != 0)
+            $(this).parent().find('.event-detail').removeClass('hidden');
+        else
+            $(this).parent().find('.event-detail').addClass('hidden');
     });
 
     $('#btnAddFriend').click(function(e){
