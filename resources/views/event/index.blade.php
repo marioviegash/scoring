@@ -72,7 +72,7 @@
                                                     <td> 10 November 2018 </td>
                                                     <td> 11 November 2018 </td>
                                                     <td>
-                                                        <button type="button" class="btn btn-default">Edit</button>
+                                                        <a href="/update-event"><button type="button" class="btn btn-default">Edit</button></a>
                                                         <button type="button" class="btn btn-default">Delete</button>
                                                     </td>
                                                 </tr>

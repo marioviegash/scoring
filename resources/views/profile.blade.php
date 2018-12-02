@@ -95,7 +95,6 @@
                                         @endif
                                         <div class="form-actions">
                                             <button type="submit" class="btn blue">Submit</button>
-                                            <button type="button" class="btn default">Cancel</button>
                                         </div>
                                     </form>
                                 </div>
