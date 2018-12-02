@@ -6,7 +6,7 @@
     </a>
 </li>
 <li class="nav-item start">
-    <a href="javascript:;" class="nav-link">
+    <a href="/event" class="nav-link">
         <i class="icon-home"></i>
         <span class="title">Event</span>
         <span class="selected"></span>
