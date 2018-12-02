@@ -23,12 +23,12 @@
                                 <i class="fa fa-circle"></i>
                             </li>
                             <li>
-                                <span>Profile</span>
+                                <span>User Management</span>
                             </li>
                         </ul>
                     </div>
 
-                    <h1 class="page-title"> Your profile
+                    <h1 class="page-title"> Create User
                     </h1>
 
                     <div class="row">
@@ -37,7 +37,7 @@
                                 <div class="portlet-title">
                                     <div class="caption font-red-sunglo">
                                         <i class="icon-user font-red-sunglo"></i>
-                                        <span class="caption-subject bold uppercase"> Field Your Profile</span>
+                                        <span class="caption-subject bold uppercase"> Field User Data</span>
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
