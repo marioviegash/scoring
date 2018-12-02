@@ -70,13 +70,15 @@
                                                         </td>
                                                     </tr>
                                                     <tr class="amoeba-detail hidden">
-                                                        <th colspan="2"> Name </th>
+                                                        <th> Name </th>
                                                         <th colspan="2"> Email </th>
+                                                        <th> C Level </th>
                                                     </tr>
                                                     @foreach($group->amoebas as $amoeba)
                                                     <tr class="amoeba-detail hidden">
-                                                        <td colspan="2"> {{ $amoeba->user->name }} </td>
+                                                        <td> {{ $amoeba->user->name }} </td>
                                                         <td colspan="2"> {{ $amoeba->user->email }} </td>
+                                                        <td> {{ $amoeba->c_level == null ? "-" : $amoeba->c_level }} </td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
