@@ -63,10 +63,26 @@
                                             <div class="form-group">
                                                 <label>Jury</label>
                                                 <select class="form-control" name="jury">
-                                                    <option>Choose The Jury</option>
-                                                    <option>Jury 1</option>
-                                                    <option>Jury 2</option>
-                                                    <option>Jury 3</option>
+                                                    <option value="none">Choose The Jury</option>
+                                                    <option value="jury_id_1">Jury 1</option>
+                                                    <option value="jury_id_2">Jury 2</option>
+                                                    <option value="jury_id_3">Jury 3</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Criteria Employee</label>
+                                                <textarea class="form-control" rows="3" placeholder="Input Criteria Employee" value="" name="criteria_employee"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Criteria Innovator</label>
+                                                <textarea class="form-control" rows="3" placeholder="Input Criteria Innovator" value="" name="criteria_innovator"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Criteria Score</label>
+                                                <select class="form-control" name="criteria_score">
+                                                    <option value="none">Choose Criteria Score</option>
+                                                    <option value="5">1 - 5 Score</option>
+                                                    <option value="10">1 - 10 Score</option>
                                                 </select>
                                             </div>
                                         </div>

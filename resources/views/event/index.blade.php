@@ -53,6 +53,9 @@
                                                     <th> # </th>
                                                     <th> Event Name </th>
                                                     <th> Event Description </th>
+                                                    <th> Criteria Employee </th>
+                                                    <th> Criteria Innovator </th>
+                                                    <th> Criteria Score </th>
                                                     <th> Start Date </th>
                                                     <th> End Date </th>
                                                     <th> Action</th>
@@ -63,6 +66,9 @@
                                                     <td> 1 </td>
                                                     <td> Event Alay </td>
                                                     <td> Description Super Alay </td>
+                                                    <td> Tamvan, Keren </td>
+                                                    <td> Mantul, Kreatif </td>
+                                                    <td> 1 - 10 Score </td>
                                                     <td> 10 November 2018 </td>
                                                     <td> 11 November 2018 </td>
                                                     <td>
