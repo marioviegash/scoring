@@ -68,9 +68,9 @@
                                                 <label>Criteria Individu</label>
                                                 <input class="form-control spinner" type="text" name="criteria_individu" placeholder="Input Question for Criteria Individu" />
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group select2-parent">
                                                 <label>Jury</label>
-                                                <select class="form-control js-select2" name="jury" multiple>
+                                                <select class="js-select2" name="jury[]" multiple>
                                                     <option>Choose The Jury</option>
                                                     @foreach ($juries as $jury)
                                                         <option value="{{$jury->id}}">{{$jury->user->name}}</option>
