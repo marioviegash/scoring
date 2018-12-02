@@ -13,4 +13,28 @@ $(document).ready(function(){
             $(this).parent().remove();
         });
     });
+
+    $('.btnAddEmployee').click(function(e){
+        $('.dataCriteriaEmployee').append('<div><input class="form-control" placeholder="Input Criteria Employee" value="" name="criteria_employee[]" style="width: 94%; float: left;" /><button class="btnDeleteEmployee" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button><br><br><br></div>');
+
+        $('.btnDeleteEmployee').click(function(e){
+            $(this).parent().remove();
+        });
+    });
+
+    $('.btnDeleteEmployee').click(function(e){
+        $(this).parent().remove();
+    });
+
+    $('.btnAddInnovator').click(function(e){
+        $('.dataCriteriaInnovator').append('<div><input class="form-control" placeholder="Input Criteria Innovator" value="" name="criteria_innovator[]" style="width: 94%; float: left;" /><button class="btnDeleteInnovator" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button><br><br><br></div>');
+
+        $('.btnDeleteInnovator').click(function(e){
+            $(this).parent().remove();
+        });
+    });
+
+    $('.btnDeleteInnovator').click(function(e){
+        $(this).parent().remove();
+    });
 });
