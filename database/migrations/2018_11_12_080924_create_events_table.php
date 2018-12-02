@@ -20,6 +20,8 @@ class CreateEventsTable extends Migration
             $table->datetime('start_date');
             $table->datetime('end_date');
             $table->text('description');
+            $table->string('criteria_group');
+            $table->string('criteria_individu');
             $table->integer('maximum_score');
             $table->timestamps();
 

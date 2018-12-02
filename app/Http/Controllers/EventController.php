@@ -38,9 +38,11 @@ class EventController extends Controller
         $request->validate([
             'name' => 'required',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
+            'end_date' => 'required|date|after_or_equal:start_date',
             'description' => 'required',
             'jury'=> 'required',
+            'criteria_group' => 'required',
+            'criteria_individu' => 'required',
             'criteria_employee' => 'required|array',
             'criteria_employee.*' => 'required',
             'criteria_innovator' => 'required|array',
@@ -51,6 +53,8 @@ class EventController extends Controller
         $newEvent->name = $request->name;
         $newEvent->start_date = $request->start_date;
         $newEvent->end_date = $request->end_date;
+        $newEvent->criteria_group = $request->criteria_group;
+        $newEvent->criteria_individu = $request->criteria_individu;
         $newEvent->description = $request->description;
         $newEvent->jury_id = $request->jury;
         $newEvent->maximum_score = $request->criteria_score;
@@ -75,13 +79,20 @@ class EventController extends Controller
 
     }
 
+    public function delete(Request $request, $id){
+        Event::find($id)->delete();
+        return redirect('/admin/event');
+    }
+
     public function insert(Request $request){
         $request->validate([
             'name' => 'required',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
+            'end_date' => 'required|date|after_or_equal:start_date',
             'description' => 'required',
             'jury'=> 'required',
+            'criteria_group' => 'required',
+            'criteria_individu' => 'required',
             'criteria_employee' => 'required|array',
             'criteria_employee.*' => 'required',
             'criteria_innovator' => 'required|array',
@@ -93,6 +104,8 @@ class EventController extends Controller
         $newEvent->name = $request->name;
         $newEvent->start_date = $request->start_date;
         $newEvent->end_date = $request->end_date;
+        $newEvent->criteria_group = $request->criteria_group;
+        $newEvent->criteria_individu = $request->criteria_individu;
         $newEvent->description = $request->description;
         $newEvent->jury_id = $request->jury;
         $newEvent->maximum_score = $request->criteria_score;

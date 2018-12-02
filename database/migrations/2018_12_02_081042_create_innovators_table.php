@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInnovatorTable extends Migration
+class CreateInnovatorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInnovatorTable extends Migration
      */
     public function up()
     {
-        Schema::create('innovator', function (Blueprint $table) {
+        Schema::create('innovators', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('event_id')->unsigned();
             $table->string('description');

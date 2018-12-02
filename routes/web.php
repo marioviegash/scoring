@@ -16,7 +16,6 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::post('/group/{group_id}/approve', 'GroupController@approveGroup');
         Route::get('/home', 'HomeController@index')->name('home');
-        
 
         Route::group(['prefix' => '/admin'], function(){
             Route::group(['prefix'=> '/user'], function(){
@@ -36,6 +35,7 @@ Route::group(['middleware' => 'auth'], function(){
                 
                 Route::get('/{id}/update', 'EventController@showUpdate');
                 Route::post('/{id}/update', 'EventController@update');
+                Route::post('/{id}/delete', 'EventController@delete');
             });
         });
 
@@ -77,17 +77,17 @@ Route::group(['middleware' => 'auth'], function(){
 // Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm');
 Auth::routes();
 
-Route::get('/event', function(){
-    return view('pages.event.index');
-});
+// Route::get('/event', function(){
+//     return view('pages.event.index');
+// });
 
-Route::get('/create-event', function(){
-    return view('pages.event.insert');
-});
+// Route::get('/create-event', function(){
+//     return view('pages.event.insert');
+// });
 
-Route::get('/update-event', function(){
-    return view('pages.event.update');
-});
+// Route::get('/update-event', function(){
+//     return view('pages.event.update');
+// });
 
 Route::get('/dashboard', function(){
     return view('dashboard');

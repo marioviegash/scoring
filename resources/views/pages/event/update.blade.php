@@ -78,11 +78,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Criteria Group</label>
-                                                <input class="form-control spinner" type="text" name="criteria_group" placeholder="Input Question for Criteria Grup" />
+                                            <input class="form-control spinner" type="text" name="criteria_group" value="{{$event->criteria_group}}" placeholder="Input Question for Criteria Grup" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Criteria Individu</label>
-                                                <input class="form-control spinner" type="text" name="criteria_individu" placeholder="Input Question for Criteria Individu" />
+                                                <input class="form-control spinner" type="text" name="criteria_individu" 
+                                                value="{{$event->criteria_individu}}"
+                                                    placeholder="Input Question for Criteria Individu" />
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6">
@@ -113,14 +115,14 @@
                                                 <div class="form-group col-md-6">
                                                     <label>Criteria Innovator</label>
                                                     <input class="form-control" placeholder="Input Criteria Employee" 
-                                                    value="{{$event->innovators[0]->description}}" name="criteria_employee[]" />
+                                                    value="{{$event->innovators[0]->description}}" name="criteria_innovator[]" />
                                                     <br>
                                                     <div class="dataCriteriaEmployee">
                                                         @foreach ($event->innovators as $key => $innovator)
                                                             @if($key !==0)
                                                                 <div>
                                                                     <input class="form-control" placeholder="Input Criteria Employee" 
-                                                                        value="{{$employee->description}}" name="criteria_employee[]"
+                                                                        value="{{$employee->description}}" name="criteria_innovator[]"
                                                                         style="width: 94%; float: left;"/>
                                                                     
                                                                     <button class="btnDeleteInnovator" type="button"

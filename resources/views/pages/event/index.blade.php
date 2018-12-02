@@ -72,8 +72,9 @@
                                                         <td> {{\Carbon\Carbon::parse($event->end_date)->format('d M y')}} </td>
                                                         <td>
                                                             <a href="/admin/event/{{$event->id}}/update"><button type="button" class="btn btn-default">Edit</button></a>
-                                                            <form action="/admin/event/delete" method="post"> 
-                                                                <button type="button" class="btn btn-default">Delete</button>
+                                                        <form action="/admin/event/{{$event->id}}/delete" method="post">
+                                                                {{csrf_field()}}
+                                                                <button type="submit" class="btn btn-default">Delete</button>
                                                             </form>
                                                         </td>
                                                     </tr>
