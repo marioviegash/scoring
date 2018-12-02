@@ -65,7 +65,7 @@ class EventController extends Controller
         $newEvent->employees()->delete();
         $newEvent->innovators()->delete();
 
-        $newEvent->juries()->delete();
+        $newEvent->juries()->sync([]);
         
         foreach($request->juries as $jury_id){
             $jury = Jury::find($jury_id);
