@@ -28,7 +28,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="page-title"> Update Event
+                    <h1 class="page-title"> Create Event
                     </h1>
 
                     <div class="row">
@@ -41,68 +41,88 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                    <form role="form" action="" method="post" enctype="multipart/form-data">
+                                <form role="form" action="{{url('\admin\event\\'.$event->id.'\update')}}" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-body">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input The Event Name" name="name" />
+                                                <input class="form-control spinner" type="text" value="{{$event->name}}"
+                                                     placeholder="Input The Event Name" name="name" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Start Date</label>
-                                                <input class="form-control spinner" type="date" name="start_date" />
+                                                <input class="form-control spinner" type="date" 
+                                                    value="{{\Carbon\Carbon::parse($event->start_date)->format('Y-m-d')}}" 
+                                                name="start_date" />
                                             </div>
                                             <div class="form-group">
                                                 <label>End Date</label>
-                                                <input class="form-control spinner" type="date" name="end_date" />
+                                                <input class="form-control spinner" type="date" 
+                                                value="{{\Carbon\Carbon::parse($event->end_date)->format('Y-m-d')}}" 
+                                                name="end_date" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <textarea class="form-control" rows="3" placeholder="Input The Event Description" value="" name="description"></textarea>
+                                                <textarea class="form-control" rows="3" placeholder="Input The Event Description" value="" name="description">{{$event->description}}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Jury</label>
                                                 <select class="form-control" name="jury">
-                                                    <option value="none">Choose The Jury</option>
-                                                    <option value="jury_id_1">Jury 1</option>
-                                                    <option value="jury_id_2">Jury 2</option>
-                                                    <option value="jury_id_3">Jury 3</option>
+                                                    <option>Choose The Jury</option>
+                                                    @foreach ($juries as $jury)
+                                                        <option value="{{$jury->id}}" {{$jury->id === $event->jury_id ? "selected" : ""}}>
+                                                            {{$jury->user->name}}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6">
                                                     <label>Criteria Employee</label>
-                                                    <input class="form-control" placeholder="Input Criteria Employee" value="" name="criteria_employee[]" />
+                                                    <input class="form-control" placeholder="Input Criteria Employee" 
+                                                    value="{{$event->employees[0]->description}}" name="criteria_employee[]" />
                                                     <br>
                                                     <div class="dataCriteriaEmployee">
-                                                        <div>
-                                                            <input class="form-control" placeholder="Input Criteria Employee" value="" name="criteria_employee[]" style="width: 94%; float: left;" />
-                                                            <button class="btnDeleteEmployee" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
-                                                            <br><br><br>
-                                                        </div>
-                                                        <div>
-                                                            <input class="form-control" placeholder="Input Criteria Employee" value="" name="criteria_employee[]" style="width: 94%; float: left;" />
-                                                            <button class="btnDeleteEmployee" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
-                                                            <br><br><br>
-                                                        </div>
+                                                        @foreach ($event->employees as $key => $employee)
+                                                            @if($key !==0)
+                                                                <div>
+                                                                    <input class="form-control" placeholder="Input Criteria Employee" 
+                                                                        value="{{$employee->description}}" name="criteria_employee[]"
+                                                                        style="width: 94%; float: left;"/>
+                                                                    
+                                                                    <button class="btnDeleteInnovator" type="button"
+                                                                    style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
+                                                                    <br>
+                                                                    <br>
+                                                                    <br>
+                                                                </div>
+                                                            @endif
+                                                        @endforeach
                                                     </div>
+                                                    {{-- <div class="dataCriteriaEmployee"></div> --}}
                                                     <input type="button" class="col-md-12 btn red btnAddEmployee" value="Add Criteria Employee">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Criteria Innovator</label>
-                                                    <input class="form-control" placeholder="Input Criteria Innovator" value="" name="criteria_innovator[]" />
+                                                    <input class="form-control" placeholder="Input Criteria Employee" 
+                                                    value="{{$event->innovators[0]->description}}" name="criteria_employee[]" />
                                                     <br>
-                                                    <div class="dataCriteriaInnovator">
-                                                        <div>
-                                                            <input class="form-control" placeholder="Input Criteria Innovator" value="" name="criteria_innovator[]" style="width: 94%; float: left;" />
-                                                            <button class="btnDeleteInnovator" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
-                                                            <br><br><br>
-                                                        </div>
-                                                        <div>
-                                                            <input class="form-control" placeholder="Input Criteria Innovator" value="" name="criteria_innovator[]" style="width: 94%; float: left;" />
-                                                            <button class="btnDeleteInnovator" type="button" style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
-                                                            <br><br><br>
-                                                        </div>
+                                                    <div class="dataCriteriaEmployee">
+                                                        @foreach ($event->innovators as $key => $innovator)
+                                                            @if($key !==0)
+                                                                <div>
+                                                                    <input class="form-control" placeholder="Input Criteria Employee" 
+                                                                        value="{{$employee->description}}" name="criteria_employee[]"
+                                                                        style="width: 94%; float: left;"/>
+                                                                    
+                                                                    <button class="btnDeleteInnovator" type="button"
+                                                                    style="float: left; width: 6%; height: 34px; border:none; cursor: pointer;">-</button>
+                                                                    <br>
+                                                                    <br>
+                                                                    <br>
+                                                                </div>
+                                                            @endif
+                                                        @endforeach
                                                     </div>
                                                     <input type="button" class="col-md-12 btn red btnAddInnovator" value="Add Criteria Inovator">
                                                 </div>
@@ -110,12 +130,23 @@
                                                     <label>Criteria Score</label>
                                                     <select class="form-control" name="criteria_score">
                                                         <option value="none">Choose Criteria Score</option>
-                                                        <option value="5">1 - 5 Score</option>
-                                                        <option value="10">1 - 10 Score</option>
+                                                        <option value="5" {{$event->maximum_score === 5 ?"selected" : ""}}>
+                                                            1 - 5 Score
+                                                        </option>
+                                                        <option value="10" {{$event->maximum_score === 10 ?"selected" : ""}}>
+                                                            1 - 10 Score
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
+                                        @if(!empty($errors->first()))
+                                            <div class="row col-lg-12">
+                                                <div class="alert alert-danger">
+                                                    <span>{{ $errors->first() }}</span>
+                                                </div>
+                                            </div>
+                                        @endif
                                         <div class="form-actions">
                                             <button type="submit" class="btn blue">Submit</button>
                                             <a href="/event"><button type="button" class="btn default">Cancel</button></a>

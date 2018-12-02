@@ -34,7 +34,8 @@ Route::group(['middleware' => 'auth'], function(){
                 Route::get('/add', 'EventController@showInsert');
                 Route::post('/add', 'EventController@insert');
                 
-                Route::get('/{id}/update', 'UserController@showUpdate');
+                Route::get('/{id}/update', 'EventController@showUpdate');
+                Route::post('/{id}/update', 'EventController@update');
             });
         });
 

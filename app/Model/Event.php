@@ -8,8 +8,8 @@ class Event extends Model
 {
     //
 
-    public function criterias(){
-        return $this->hasMany('App\Model\Criteria');
+    public function employees(){
+        return $this->hasMany('App\Model\Employee');
     }
 
     public function innovators(){

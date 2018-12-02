@@ -52,7 +52,6 @@
                                                 <tr>
                                                     <th> # </th>
                                                     <th> Event Name </th>
-                                                    <th> Event Description </th>
                                                     <th> Criteria Score </th>
                                                     <th> Start Date </th>
                                                     <th> End Date </th>
@@ -65,7 +64,7 @@
                                                     <tr class="event">
                                                         <td> 1 </td>
                                                         <td> {{$event->name}} </td>
-                                                        <td> {{$event->description}} </td>
+                                                        {{-- <td> {{$event->description}} </td> --}}
                                                         {{-- <td> Tamvan, Keren </td> --}}
                                                         {{-- <td> Mantul, Kreatif </td> --}}
                                                         <td> 1 - {{$event->maximum_score}} Score </td>
@@ -85,10 +84,26 @@
                                                         <th> Criteria Innovator </th>
                                                     </tr>
                                                     <tr class="event-detail hidden">
-                                                        <td colspan="4"> Deskripsi Event Alay </td>
-                                                        <td> Tamvan, Keren</td>
-                                                        <td> Kreatif, Inisiatif </td>
-                                                    </tr>
+                                                        <td colspan="4"> {{$event->description}} </td>
+                                                        <td> 
+                                                            <ul>
+                                                                @foreach ($event->employees as $employee)
+                                                                    <li>
+                                                                        {{$employee->description}}
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+
+                                                        </td>
+                                                        <td> 
+                                                            <ul>
+                                                                @foreach ($event->innovators as $innovator)
+                                                                    <li>
+                                                                        {{$innovator->description}}
+                                                                    </li>
+                                                                @endforeach</td>
+                                                            </ul>
+                                                        </tr>
                                             </tbody>
                                             
                                             @endforeach
