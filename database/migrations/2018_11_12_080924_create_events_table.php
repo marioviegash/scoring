@@ -15,7 +15,6 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('jury_id')->unsigned();
             $table->string('name');
             $table->datetime('start_date');
             $table->datetime('end_date');
@@ -24,10 +23,6 @@ class CreateEventsTable extends Migration
             $table->string('criteria_individu');
             $table->integer('maximum_score');
             $table->timestamps();
-
-            
-            $table->foreign('jury_id')->references('id')->on('juries')
-            ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
