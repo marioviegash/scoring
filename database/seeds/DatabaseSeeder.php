@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolesTableSeeder::class,
             UsersTableSeeder::class,
-            // GroupStatusesTableSeeder::class,
-            // GroupsTableSeeder::class,
-            // AmoebasTableSeeder::class
+            GroupStatusesTableSeeder::class,
+            GroupsTableSeeder::class,
+            AmoebasTableSeeder::class
         ]);
     }
 }

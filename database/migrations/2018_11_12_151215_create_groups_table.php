@@ -17,7 +17,7 @@ class CreateGroupsTable extends Migration
             //
             $table->increments('id');
             $table->integer('group_status_id')->default(0);
-            $table->integer('event_id')->unsigned();
+            $table->integer('event_id')->unsigned()->nullable();
             $table->integer('creator_id')->unsigned();
             $table->integer('approve_by')->nullable();
             $table->string('name');
