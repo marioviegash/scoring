@@ -56,7 +56,15 @@
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Password</label>
                 <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> </div>
+                @if(!empty($errors->first())) 
+                    <div class="row col-lg-12">
+                        <div class="alert alert-danger">
+                            <span>{{ $errors->first() }}</span>
+                        </div>
+                    </div>
+                @endif
             <div class="form-actions">
+                
                 <button type="submit" class="btn green uppercase">Login</button>
                 <label class="rememberme check mt-checkbox mt-checkbox-outline">
                     <input type="checkbox" name="remember" value="1" />Remember

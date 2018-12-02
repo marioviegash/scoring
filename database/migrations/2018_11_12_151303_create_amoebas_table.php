@@ -19,7 +19,6 @@ class CreateAmoebasTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('group_id')->unsigned();
             $table->string('NIK')->unique()->nullable();
-            $table->string('position')->nullable();
             $table->string('picture')->nullable();
             $table->string('work_place')->nullable();
             $table->string('c_level')->nullable();

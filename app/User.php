@@ -31,7 +31,13 @@ class User extends Authenticatable
     public function group(){
         // dd($this->hasOne('App\Model\Group', 'creator_id', 'id')->get());
         // return $this->hasOne('App\Model\Group', 'creator_id', 'id');
+        if($this->amoeba === null) return null;
         return $this->amoeba()->first()->group();
+    }
+
+    public function groupLeader(){
+        
+        return $this->hasOne('App\Model\Group', 'creator_id', 'id');
     }
 
     public function headGroup(){

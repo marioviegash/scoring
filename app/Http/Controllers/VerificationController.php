@@ -13,14 +13,14 @@ class VerificationController extends Controller
     //
 
     public function viewGroup(){
-        if(Auth::user()->group()->first() != null){
+        if(Auth::user()->groupLeader()->first() != null){
             return redirect('verification-profile');
         }
         return view('register.group');
     }
 
     public function viewProfile(){
-        if(Auth::user()->group()->first() == null){
+        if(Auth::user()->groupLeader()->first() == null){
             return redirect('verification-group');
         }
         if(Auth::user()->amoeba()->first() != null){
@@ -39,20 +39,6 @@ class VerificationController extends Controller
             return redirect('verification-success');
         }
         return view('register.friend');
-    }
-
-    public function viewSuccess(){
-        if(Auth::user()->group()->first() == null){
-            return redirect('verification-group');
-        }else if(Auth::user()->amoeba()->first() == null){
-            return redirect('verification-profile');
-        }else if(Auth::user()->group()->first()->amoebas()->count() == 1){
-           return redirect('verification-friend');
-        }
-        if(Auth::user()->group()->first()->group_status_id === 2){
-            return redirect('/');
-        }
-        return view('register.success');
     }
 
     public function verifyGroup(Request $request){
@@ -83,18 +69,21 @@ class VerificationController extends Controller
     }
 
     public function verifyProfile(Request $request){
+        $request->validate([
+            'c_level' => 'required',
+            'work_place' => 'required',
+        ]); 
         $newAmoeba = new Amoeba();
-        
-        $newAmoeba->position = $request->division;
+
         $newAmoeba->work_place = $request->work_place;
         $newAmoeba->c_level = $request->c_level;
         
         $newAmoeba->user_id = Auth::id();
-        $newAmoeba->group_id = Auth::user()->group()->first()->id;
+        $newAmoeba->group_id = Auth::user()->groupLeader()->first()->id;
 
         $newAmoeba->save();
 
-        return redirect("/verification-one");
+        return redirect("/verification-friend");
     }
 
     private function saveFriend($request){
@@ -106,21 +95,37 @@ class VerificationController extends Controller
         $newUser->save();
 
         $newAmoeba = new Amoeba();
-        $newAmoeba->group_id = Auth::user()->group()->first()->id;
+        $newAmoeba->group_id = Auth::user()->groupLeader()->first()->id;
         $newUser->amoeba()->save($newAmoeba);
     }
 
     public function inviteFriend(Request $request){
-       
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users'
+            'name' => 'required|array',
+            'email' => 'required|array',
+            'email.*' => 'required|email|unique:users,email'
         ]);
-        $this->saveFriend($request);
-
-        $group = Auth::user()->group()->first();
+        foreach($request->name as $key => $name){
+            
+            $this->saveFriend((Object)['name'=> $name, 'email' => $request->email[$key] ]);
+        }
+        $group = Auth::user()->groupLeader()->first();
         $group->group_status_id = 2;
         $group->save();
         return redirect('verification-success');
+    }
+    
+    public function viewSuccess(){
+        if(Auth::user()->group()->first() == null){
+            return redirect('verification-group');
+        }else if(Auth::user()->amoeba()->first() == null){
+            return redirect('verification-profile');
+        }else if(Auth::user()->group()->first()->amoebas()->count() == 1){
+           return redirect('verification-friend');
+        }
+        if(Auth::user()->group()->first()->aprrove_at !== null){
+            return redirect('/');
+        }
+        return view('register.success');
     }
 }

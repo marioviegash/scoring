@@ -7,7 +7,7 @@ $(document).ready(function(){
     });
 
     $('#btnAddFriend').click(function(e){
-        $('#anotherFriend').append('<div><input type="text" name="name" placeholder="Name" style="float: left; width: 48%;" /><input type="email" name="email" placeholder="Email" style="float: left; width: 48.5%;"/><button class="btnDelete" type="button" style="float: left; width: 25px; height: 48px; border:none; cursor: pointer;">-</button></div>');
+        $('#anotherFriend').append('<div><input type="text" name="name[]" placeholder="Name" style="float: left; width: 48%;" /><input type="email" name="email[]" placeholder="Email" style="float: left; width: 48.5%;"/><button class="btnDelete" type="button" style="float: left; width: 25px; height: 48px; border:none; cursor: pointer;">-</button></div>');
 
         $('.btnDelete').click(function(e){
             $(this).parent().remove();

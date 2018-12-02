@@ -10,8 +10,11 @@ class AmoebaController extends Controller
 {
     //
 
-    public function store(Request $request){    
 
+
+    public function store(Request $request)
+    {    
+        
         $newAmoeba = new Amoeba();
         
         $newAmoeba->position = $request->division;
@@ -42,12 +45,20 @@ class AmoebaController extends Controller
     }
 
     public function showProfile(){
-        
+        if(Auth::user()->amoeba === null || Auth::user()->group()->first()->approve_at === null){
+            return redirect('verification-group');
+        }
         $amoeba = Amoeba::where('user_id', Auth::id())->with('group')->with('user')->first();
         // dd($amoeba);
         return view('profile', ['amoeba'=> $amoeba]);
     }
     public function saveProfile(Request $request){
+        $request->validate([
+            'nik' => 'required',
+            'c_level' => 'required',
+            'work_place' => 'required',
+            'picture' => 'required|mimes:jpeg,bmp,png'
+        ]); 
         $amoeba = Amoeba::where('user_id', Auth::id())->first();
         
         $file = $request->file('picture');
@@ -58,12 +69,11 @@ class AmoebaController extends Controller
             $fullpath = $destinationPath.'/'.$filename;
             $file->move( $destinationPath,$filename);
             $amoeba->picture = $fullpath;
-        
+    
         }
         
         // $amoeba->name = $request->name;
         $amoeba->nik = $request->nik;
-        $amoeba->position = $request->position;
         $amoeba->c_level = $request->c_level;
         $amoeba->work_place = $request->work_place;
         $amoeba->save();

@@ -25,13 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $group = Auth::user()->group()->first();
-        
-        if($group == null){
-            return redirect('verification-group');
-        }else if($group->group_status_id == 1){
-            return redirect('verification-profile');
-        }
         $group = Group::with('amoebas.user')->where('group_status_id', 2)->get();
         return view('home', ['groups' => $group]);
     }
