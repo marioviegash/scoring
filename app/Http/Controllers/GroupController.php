@@ -11,8 +11,6 @@ use Hash;
 
 class GroupController extends Controller
 {
-    //
-
     public function store(Request $request){
         
         $file = $request->file('image');
@@ -64,7 +62,7 @@ class GroupController extends Controller
             $user->save();
         }
 
-        return redirect('/home');
+        return redirect('/group');
     }
 
 

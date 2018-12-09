@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Event;
 use Illuminate\Http\Request;
-use Auth;
 use App\Model\Group;
+use Mail;
+use Auth;
+use Carbon\Carbon;
+use Hash;
 
 class HomeController extends Controller
 {
@@ -26,6 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $group = Group::with('amoebas.user')->where('group_status_id', 2)->get();
-        return view('home', ['groups' => $group]);
+        $event = Event::all();
+        return view('home', ['groups' => $group, 'events' => $event]);
     }
 }

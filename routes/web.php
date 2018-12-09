@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
                 Route::get('/', 'EventController@showAll');
                 Route::get('/add', 'EventController@showInsert');
                 Route::post('/add', 'EventController@insert');
-                
+
                 Route::get('/{id}/update', 'EventController@showUpdate');
                 Route::post('/{id}/update', 'EventController@update');
                 Route::post('/{id}/delete', 'EventController@delete');
@@ -64,35 +64,18 @@ Route::group(['middleware' => 'auth'], function(){
 
     
     Route::group(['middleware' => 'amoebaverified'], function(){
-        // Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/', 'HomeController@index');
         Route::get('/home', 'HomeController@index')->name('home');
     });
 
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-    
+
     Route::post('/group/store', 'GroupController@store');
 });
 
-// Route::post('/login', '\App\Http\Controllers\Auth\LoginController@login');
-// Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm');
 Auth::routes();
 
-// Route::get('/event', function(){
-//     return view('pages.event.index');
-// });
-
-// Route::get('/create-event', function(){
-//     return view('pages.event.insert');
-// });
-
-// Route::get('/update-event', function(){
-//     return view('pages.event.update');
-// });
-
-Route::get('/dashboard', function(){
-    return view('dashboard');
-});
+Route::get('/dashboard', 'DashboardController@index');
 
 
 
