@@ -11,6 +11,12 @@ use Hash;
 
 class GroupController extends Controller
 {
+    public function index()
+    {
+        $group = Group::with('amoebas.user')->where('group_status_id', 2)->get();
+        return view('group', ['groups' => $group]);
+    }
+
     public function store(Request $request){
         
         $file = $request->file('image');

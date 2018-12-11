@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+    Route::get('/group', 'GroupController@index');
     Route::post('/group/store', 'GroupController@store');
 });
 

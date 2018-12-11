@@ -32,12 +32,14 @@
                         <small>Dashboard</small>
                     </h1>
 
+                    {{--View For Super Admin--}}
+                    @if(Auth::user()->roles->id == 1)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portlet light bordered">
                                 <div class="portlet-title">
                                     <div class="caption">
-                                        <i class="icon-user font-green"></i>
+                                        <i class="icon-calendar font-green"></i>
                                         <span class="caption-subject font-green bold uppercase">All Event</span>
                                     </div>
                                 </div>
@@ -59,9 +61,9 @@
                                                     <tr>
                                                         <td> 1 </td>
                                                         <td> {{$event->name}} </td>
-                                                        <td> Created </td>
-                                                        <td> {{$event->employees}} </td>
-                                                        <td> {{$event->start_date}}</td>
+                                                        <td> Roza </td>
+                                                        <td> {{$event->groups->count('id')}} </td>
+                                                        <td> Pending </td>
                                                         <td> <a href="/admin/event/{{$event->id}}/update">View</a> </td>
                                                     </tr>
                                                 </tbody>
@@ -69,6 +71,7 @@
                                         </table>
                                     </div>
                                 </div>
+                                <a href="/admin/event">See More ...</a>
                             </div>
                         </div>
 
@@ -87,7 +90,7 @@
                                             <tr>
                                                 <th> # </th>
                                                 <th> Group Name </th>
-                                                <th> Date </th>
+                                                <th> Request Date </th>
                                             </tr>
                                             </thead>
                                             @foreach ($groups as $group )
@@ -114,9 +117,119 @@
                                         </table>
                                     </div>
                                 </div>
+                                <a href="/group">See More ...</a>
                             </div>
                         </div>
                     </div>
+                    @endif
+
+                    {{--View for Admin Management--}}
+                    @if(Auth::user()->roles->id == 2)
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="icon-calendar font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">All Event</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th> # </th>
+                                                    <th> Event Name </th>
+                                                    <th> Total Team </th>
+                                                    <th> Action </th>
+                                                </tr>
+                                                </thead>
+                                                @foreach ($events as $event)
+                                                    <tbody>
+                                                    <tr>
+                                                        <td> 1 </td>
+                                                        <td> {{$event->name}} </td>
+                                                        <td> {{$event->groups->count('id')}} Team </td>
+                                                        <td> <a href="">Start Event</a> </td>
+                                                    </tr>
+                                                    </tbody>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <a href="/admin/event">See More ...</a>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <h3>Total Event</h3>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <h1 style="text-align:center">{{ $events->count('id') }}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    {{--View for Admin Management--}}
+                    @if(Auth::user()->roles->id == 3)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="icon-calendar font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">Event</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th> # </th>
+                                                    <th> Event Name </th>
+                                                    <th> Total Team </th>
+                                                    <th> Status </th>
+                                                    <th> Action </th>
+                                                </tr>
+                                                </thead>
+                                                @foreach ($events as $event)
+                                                    <tbody>
+                                                    <tr>
+                                                        <td> 1 </td>
+                                                        <td> {{$event->name}} </td>
+                                                        <td> {{$event->groups->count('id')}} Team </td>
+                                                        <td> Invited </td>
+                                                        <td> <a href="">View</a> </td>
+                                                    </tr>
+                                                    </tbody>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="icon-calendar font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">Event History</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        No Event History
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>

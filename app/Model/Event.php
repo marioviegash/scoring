@@ -20,5 +20,7 @@ class Event extends Model
         return $this->hasMany('App\Model\Innovator');
     }
 
-
+    public function groups(){
+        return $this->hasMany('App\Model\Group');
+    }
 }
