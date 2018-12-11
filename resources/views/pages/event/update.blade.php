@@ -28,7 +28,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="page-title"> Create Event
+                    <h1 class="page-title"> Update Event
                     </h1>
 
                     <div class="row">
@@ -37,7 +37,7 @@
                                 <div class="portlet-title">
                                     <div class="caption font-red-sunglo">
                                         <i class="icon-calendar font-red-sunglo"></i>
-                                        <span class="caption-subject bold uppercase"> Field The Event</span>
+                                        <span class="caption-subject bold uppercase"> Update The Field</span>
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
