@@ -72,11 +72,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/group', 'GroupController@index');
     Route::post('/group/store', 'GroupController@store');
+
+    Route::get('/document', 'DocumentController@index');
 });
 
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index');
 
 
 

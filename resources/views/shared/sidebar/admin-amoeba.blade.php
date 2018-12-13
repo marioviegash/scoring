@@ -13,6 +13,13 @@
     </a>
 </li>
 <li class="nav-item start">
+    <a href="/document" class="nav-link">
+        <i class="fa fa-file-archive-o"></i>
+        <span class="title">Manage Document</span>
+        <span class="selected"></span>
+    </a>
+</li>
+<li class="nav-item start">
     <a href="/admin/user" class="nav-link">
         <i class="icon-user"></i>
         <span class="title">User Management</span>

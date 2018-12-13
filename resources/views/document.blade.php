@@ -1,0 +1,171 @@
+@extends('layout.master')
+
+@section('title', 'Home - Scoring')
+
+@section('style')
+
+@endsection
+
+@section('content')
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+    <div class="page-wrapper">
+    @include('shared.header')
+    <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            @include('shared.sidebar')
+
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <a href="index.html">Home</a>
+                                <i class="fa fa-circle"></i>
+                            </li>
+                            <li>
+                                <span>Manage Document</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h1 class="page-title"> {{ Auth::user()->roles->name }}
+                        <small>Manage Document</small>
+                    </h1>
+
+                    {{--View For Super Admin--}}
+                    @if(Auth::user()->roles->id == 1)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-file-archive-o font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">All Document</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th> # </th>
+                                                        <th> Group Name </th>
+                                                        <th> Document </th>
+                                                        <th> Action </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($groups as $group)
+                                                        <tr>
+                                                            <td> {{$group->id}} </td>
+                                                            <td> {{$group->name}} </td>
+                                                            <td> {{$group->document == null ? "No File" : $group->document}} </td>
+                                                            <td> @if($group->document == null) No Action @else <a
+                                                                        href="{{$group->document}}">Download</a> @endif </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    {{--View For Super Admin--}}
+                    @if(Auth::user()->roles->id == 2)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-file-archive-o font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">All Document</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th> # </th>
+                                                    <th> Group Name </th>
+                                                    <th> Document </th>
+                                                    <th> Action </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($groups as $group)
+                                                    <tr>
+                                                        <td> {{$group->id}} </td>
+                                                        <td> {{$group->name}} </td>
+                                                        <td> {{$group->document == null ? "No File" : $group->document}} </td>
+                                                        <td> @if($group->document == null) No Action @else <a
+                                                                    href="{{$group->document}}">Download</a> @endif </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    {{--View For Super Admin--}}
+                    @if(Auth::user()->roles->id == 4)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-file-archive-o font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">My Document</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th> # </th>
+                                                    <th> Group Name </th>
+                                                    <th> Document </th>
+                                                    <th> Action </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($groups as $group)
+                                                    @if($group->id == Auth::user()->amoeba->group_id)
+                                                        <tr>
+                                                            <td> {{$group->id}} </td>
+                                                            <td> {{$group->name}} </td>
+                                                            <td> {{$group->document == null ? "No File" : $group->document}} </td>
+                                                            <td>
+                                                                <a href="">Upload</a>
+                                                                <a href="{{$group->document}}">Download</a>
+                                                            </td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+        @include('shared.footer')
+    </div>
+    </body>
+@endsection
+
+@section('script')
+
+@endsection

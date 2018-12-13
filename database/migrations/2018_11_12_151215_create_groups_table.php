@@ -23,6 +23,7 @@ class CreateGroupsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('logo');
+            $table->string('document')->nullable();
             
             $table->timestamp('approve_at')->nullable();
             $table->timestamps();

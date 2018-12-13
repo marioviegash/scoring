@@ -17,6 +17,7 @@ class GroupsTableSeeder extends Seeder
             'name'          => 'Testing',
             'description'   => 'testing',
             'logo'          => 'img/upload/group/5bfa5772c10c3kibu.png',
+            'document'      => null,
             'creator_id'    => 1,
             'event_id'      => null,
             'approve_at'    => '2018-11-25 15:46:46',
