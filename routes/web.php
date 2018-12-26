@@ -79,6 +79,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('file/upload', 'FileController@upload');
     Route::get('file/download', 'FileController@download');
 
+    Route::get('/judgement', function(){
+        return view('pages.judgement.index');
+    });
+
+    Route::get('/judgement/team', function(){
+        return view('pages.judgement.detail');
+    });
 });
 
 Auth::routes();
