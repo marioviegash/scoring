@@ -3,7 +3,59 @@
 @section('title', 'Home - Scoring')
 
 @section('style')
-
+    <style>
+        /*progressbar*/
+        #progressbar {
+            margin-bottom: 30px;
+            overflow: hidden;
+            /*CSS counters to number the steps*/
+            counter-reset: step;
+        }
+        #progressbar li {
+            text-align: center;
+            list-style-type: none;
+            color: black;
+            text-transform: uppercase;
+            font-size: 9px;
+            width: 25%;
+            float: left;
+            position: relative;
+        }
+        #progressbar li:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 20px;
+            line-height: 20px;
+            display: block;
+            font-size: 10px;
+            color: #333;
+            background: white;
+            border-radius: 100px;
+            margin: 0 auto 5px auto;
+            border: 1px solid black;
+        }
+        /*progressbar connectors*/
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: white;
+            position: absolute;
+            left: -50%;
+            top: 9px;
+            z-index: -1; /*put it behind the numbers*/
+        }
+        #progressbar li:first-child:after {
+            /*connector not needed before the first step*/
+            content: none;
+        }
+        /*marking active/completed steps green*/
+        /*The number of the step and the connector before it = green*/
+        #progressbar li.active:before,  #progressbar li.active:after{
+            background: #27AE60;
+            color: white;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -33,7 +85,7 @@
                     </h1>
 
                     {{--View For Super Admin--}}
-                    @if(Auth::user()->roles->id == 1)
+                    @if(Auth::user()->roles->id == 2)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portlet light bordered">
@@ -174,7 +226,7 @@
                         </div>
                     @endif
 
-                    {{--View for Admin Management--}}
+                    {{--View for Jury--}}
                     @if(Auth::user()->roles->id == 3)
                         <div class="row">
                             <div class="col-md-12">
@@ -230,6 +282,89 @@
                         </div>
                     @endif
 
+                    {{--View for Amoeba--}}
+                    @if(Auth::user()->roles->id == 1)
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="portlet light bordered">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <h3>Your Team : </h3>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <img src="" alt="No Image"> Team Name
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <h3>Member : </h3>
+                                        </div>
+                                        <div class="col-md-10 portlet light bordered">
+                                            All Member
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>Event : </h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-scrollable">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th> # </th>
+                                                            <th> Event Name </th>
+                                                            <th> Total Team </th>
+                                                            <th> Status </th>
+                                                            <th> Action </th>
+                                                        </tr>
+                                                    </thead>
+                                                    @foreach ($events as $event)
+                                                        <tbody>
+                                                        <tr>
+                                                            <td> 1 </td>
+                                                            <td> {{$event->name}} </td>
+                                                            <td> {{$event->groups->count('id')}} Team </td>
+                                                            <td> Invited </td>
+                                                            <td> <a href="">View</a> </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    @endforeach
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>Status : Upload Document</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <ul id="progressbar" style="list-style-type: none;">
+                                            <li class="active">Register</li>
+                                            <li class="active">Upload Document</li>
+                                            <li class="">On review by AMA</li>
+                                            <li class="">Approved by AMA</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <h3>Result</h3>
+                                    </div>
+                                    <div class="portlet-body text-center">
+                                        <h2 style="text-align:center">Innovator A</h2>
+                                        <h3>( 100% )</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

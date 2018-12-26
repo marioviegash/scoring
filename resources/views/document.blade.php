@@ -73,7 +73,7 @@
                         </div>
                     @endif
 
-                    {{--View For Super Admin--}}
+                    {{--View For Admin Management--}}
                     @if(Auth::user()->roles->id == 2)
                         <div class="row">
                             <div class="col-md-12">
@@ -114,7 +114,7 @@
                         </div>
                     @endif
 
-                    {{--View For Super Admin--}}
+                    {{--View For Amoeba--}}
                     @if(Auth::user()->roles->id == 4)
                         <div class="row">
                             <div class="col-md-12">
