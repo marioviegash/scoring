@@ -158,6 +158,47 @@
                             </div>
                         </div>
                     @endif
+
+                    @if(Auth::user()->roles->id == 2 || Auth::user()->roles->id == 4)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-comments font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">Forum</span>
+                                        </div>
+                                    </div>
+                                    {{--Loop Comment--}}
+                                    <div class="row portlet light bordered" style="margin: 0;">
+                                        <div class="col-md-12">
+                                            <div class="col-md-6" style="padding: 0;">
+                                                Username
+                                            </div>
+                                            <div class="col-md-6 text-right" style="padding: 0;">
+                                                Date
+                                            </div>
+                                            <hr>
+                                            Comment
+                                        </div>
+                                    </div>
+                                    <div class="row portlet light bordered" style="margin: 0;">
+                                        <form role="form" action="" method="post" enctype="multipart/form-data">
+                                            {{csrf_field()}}
+                                            <div class="form-body row">
+                                                <div class="form-group col-md-11" style="padding: 0 0 0 2%; margin: 0;">
+                                                    <input class="form-control spinner" type="text" placeholder="Input Your Comment" name="comment" />
+                                                </div>
+                                                <div class="form-group col-md-1" style="padding: 0; margin: 0;">
+                                                    <button type="submit" class="btn red">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -80,12 +80,12 @@
                         </ul>
                     </div>
 
-                    <h1 class="page-title"> {{ Auth::user()->roles->name }}
+                    <h1 class="page-title"> {{ Auth::user()->name }}
                         <small>Dashboard</small>
                     </h1>
 
                     {{--View For Super Admin--}}
-                    @if(Auth::user()->roles->id == 2)
+                    @if(Auth::user()->roles->id == 1)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portlet light bordered">
@@ -283,7 +283,7 @@
                     @endif
 
                     {{--View for Amoeba--}}
-                    @if(Auth::user()->roles->id == 1)
+                    @if(Auth::user()->roles->id == 4)
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="portlet light bordered">
