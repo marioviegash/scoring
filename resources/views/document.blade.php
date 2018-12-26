@@ -137,15 +137,34 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                    
+                                                @if(!empty($errors->first())) 
+                                                    <div class="row col-lg-12">
+                                                        <div class="alert alert-danger">
+                                                            <span>{{ $errors->first() }}</span>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                                 @foreach($groups as $group)
                                                     @if($group->id == Auth::user()->amoeba->group_id)
                                                         <tr>
                                                             <td> {{$group->id}} </td>
                                                             <td> {{$group->name}} </td>
-                                                            <td> {{$group->document == null ? "No File" : $group->document}} </td>
+                                                            <td> {{$group->files()->orderBy('created_at', 'desc')->first() == null ?
+                                                                 "No File" : $group->files()->orderBy('created_at', 'desc')->first()->name}} </td>
                                                             <td>
-                                                                <a href="">Upload</a>
-                                                                <a href="{{$group->document}}">Download</a>
+                                                                <form action="file/upload" method="post" enctype="multipart/form-data">
+                                                                    {{csrf_field()}}
+                                                                    <input type="file" name="file_upload" value="Upload"/>
+                                                                    <input type="hidden" value="{{$group->id}}" />
+                                                                    <input type="submit" value="Submit" />
+                                                                </form>
+
+                                                                <form action="file/download" method="get">
+                                                                    {{csrf_field()}}
+                                                                    <input type="submit" value="Download" />
+                                                                </form>
+                                                                
                                                             </td>
                                                         </tr>
                                                     @endif

@@ -11,4 +11,7 @@ class Group extends Model
     public function amoebas(){
         return $this->hasMany('App\Model\Amoeba');
     }
+    public function files(){
+        return $this->hasMany('App\Model\File');
+    }
 }

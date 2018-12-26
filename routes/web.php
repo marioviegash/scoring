@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function(){
         
         Route::get('/profile', 'AmoebaController@showProfile');
         Route::post('/profile', 'AmoebaController@saveProfile');        
+
     });
 
     
@@ -74,6 +75,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/group/store', 'GroupController@store');
 
     Route::get('/document', 'DocumentController@index');
+
+    Route::post('file/upload', 'FileController@upload');
+    Route::get('file/download', 'FileController@download');
+
 });
 
 Auth::routes();
