@@ -23,13 +23,12 @@
                                     <i class="fa fa-circle"></i>
                                 </li>
                                 <li>
-                                    <span>Dashboard</span>
+                                    <span>User management</span>
                                 </li>
                             </ul>
                         </div>
 
-                        <h1 class="page-title"> User Management 
-                            <small>Reports</small>
+                        <h1 class="page-title"> User Management
                         </h1>
 
                         <div class="row">

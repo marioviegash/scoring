@@ -74,6 +74,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/group/store', 'GroupController@store');
 
     Route::get('/document', 'DocumentController@index');
+
+    Route::get('/judgement', function(){
+        return view('pages.judgement.index');
+    });
+
+    Route::get('/judgement/team', function(){
+        return view('pages.judgement.detail');
+    });
 });
 
 Auth::routes();
