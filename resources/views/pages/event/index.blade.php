@@ -46,6 +46,21 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body">
+                                    <div class="col-md-12">
+                                        <form action="" class="row">
+                                            <div class="col-md-2" style="padding: 0;">
+                                                <input class="form-control spinner" type="date" name="start_date" />
+                                            </div>
+                                            <div style="float: left; padding: 0.5% 1% 0% 1%;">-</div>
+                                            <div class="col-md-2" style="padding: 0;">
+                                                <input class="form-control spinner" type="date" name="end_date" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="submit" class="form-control btn green-meadow" value="Search">
+                                            </div>
+                                        </form>
+                                        <br>
+                                    </div>
                                     <div class="table-scrollable">
                                         <table class="table table-hover">
                                             <thead>
@@ -53,29 +68,35 @@
                                                     <th> # </th>
                                                     <th> Event Name </th>
                                                     <th> Criteria Score </th>
-                                                    <th> Start Date </th>
-                                                    <th> End Date </th>
-                                                    <th> Action</th>
+                                                    <th> Create By </th>
+                                                    <th> Status </th>
+                                                    <th> Action </th>
                                                 </tr>
                                             </thead>
-                                            
                                             @foreach ($events as $event)    
                                             <tbody>
                                                     <tr class="event">
                                                         <td> 1 </td>
                                                         <td> {{$event->name}} </td>
-                                                        {{-- <td> {{$event->description}} </td> --}}
-                                                        {{-- <td> Tamvan, Keren </td> --}}
-                                                        {{-- <td> Mantul, Kreatif </td> --}}
                                                         <td> 1 - {{$event->maximum_score}} Score </td>
-                                                        <td> {{\Carbon\Carbon::parse($event->start_date)->format('d M y')}} </td>
-                                                        <td> {{\Carbon\Carbon::parse($event->end_date)->format('d M y')}} </td>
+                                                        <td> Belum Ada Field nya </td>
+                                                        <td> Validasi Sesuai Tanggal </td>
                                                         <td>
-                                                            <a href="/admin/event/{{$event->id}}/update"><button type="button" class="btn btn-default">Edit</button></a>
-                                                        <form action="/admin/event/{{$event->id}}/delete" method="post">
-                                                                {{csrf_field()}}
-                                                                <button type="submit" class="btn btn-default">Delete</button>
-                                                            </form>
+                                                            <a href="">
+                                                                <button type="button" class="btn green-meadow">Start</button>
+                                                            </a>
+                                                            <a href="">
+                                                                <button type="button" class="btn btn-danger">Stop</button>
+                                                            </a>
+                                                            <a href="/admin/event/{{$event->id}}/detail">
+                                                                <button type="button" class="btn green">View</button>
+                                                            </a>
+                                                            <a href="/admin/event/{{$event->id}}/update">
+                                                                <button type="button" class="btn btn-primary">Edit</button>
+                                                            </a>
+                                                            <a href="/admin/event/{{$event->id}}/delete">
+                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     
@@ -113,21 +134,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="basic" tabindex="-1" role="viewGroup" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h4 class="modal-title">Modal Title</h4>
-                    </div>
-                    <div class="modal-body"> Modal body goes here </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

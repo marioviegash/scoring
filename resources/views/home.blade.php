@@ -92,38 +92,38 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-calendar font-green"></i>
-                                        <span class="caption-subject font-green bold uppercase">All Event</span>
+                                        <span class="caption-subject font-green bold uppercase">Last Event</span>
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <div class="table-scrollable">
-                                        <table class="table table-hover">
-                                            <thead>
-                                            <tr>
-                                                <th> # </th>
-                                                <th> Event Name </th>
-                                                <th> Created By </th>
-                                                <th> Total Team </th>
-                                                <th> Status </th>
-                                                <th> Action </th>
-                                            </tr>
-                                            </thead>
-                                            @foreach ($events as $event)
-                                                <tbody>
-                                                    <tr>
-                                                        <td> 1 </td>
-                                                        <td> {{$event->name}} </td>
-                                                        <td> Roza </td>
-                                                        <td> {{$event->groups->count('id')}} </td>
-                                                        <td> Pending </td>
-                                                        <td> <a href="/admin/event/{{$event->id}}/update">View</a> </td>
-                                                    </tr>
-                                                </tbody>
-                                            @endforeach
-                                        </table>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <h4><b>Event Name &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                            <br>
+                                            <h4><b>Total Team &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                            <br>
+                                            <h4><b>Total Judge &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                            <br>
+                                            <h4><b>Event Create By </b> &nbsp;: </h4>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Sidang Komite 2</h4>
+                                            <br>
+                                            <h4>20 Teams</h4>
+                                            <br>
+                                            <h4>5 Judges</h4>
+                                            <br>
+                                            <h4>Admin</h4>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <h2>Event Status</h2>
+                                            <br>
+                                            Not Started
+                                            <br> <br>
+                                            <button type="button" class="btn blue">Start</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <a href="/admin/event">See More ...</a>
                             </div>
                         </div>
 
@@ -169,7 +169,9 @@
                                         </table>
                                     </div>
                                 </div>
-                                <a href="/group">See More ...</a>
+                                <div class="row text-right">
+                                    <a href="/group">See More ...</a>
+                                </div>
                             </div>
                         </div>
                     </div>

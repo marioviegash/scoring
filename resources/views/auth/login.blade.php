@@ -32,7 +32,7 @@
     <!-- BEGIN LOGO -->
     <div class="logo">
         <a href="index.html">
-            <img src="{{ asset('template_admin/assets/pages/img/logo-big.png') }}" alt="" />
+            <img src="{{ asset('assets/logo/logo_scoring.png') }}" alt="" width="200" height="70"/>
         </a>
     </div>
     <!-- END LOGO -->

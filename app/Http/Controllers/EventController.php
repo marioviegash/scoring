@@ -26,11 +26,16 @@ class EventController extends Controller
         return view('pages.event.insert', ['juries' => $juries]);
     }
 
+    public function showDetail($id)
+    {
+        $event = Event::with('employees')->with('innovators')->where('id', $id)->first();
+        $juries = Jury::with('user')->get();
+        return view('pages.event.detail', ['event' => $event, 'juries'=> $juries]);
+    }
     
     public function showUpdate($id){
         $event = Event::with('employees')->with('innovators')->where('id', $id)->first();
         $juries = Jury::with('user')->get();
-        // dd($juries);
         return view('pages.event.update', ['event' => $event, 'juries'=> $juries]);
     }
 

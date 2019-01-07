@@ -34,9 +34,10 @@ Route::group(['middleware' => 'auth'], function(){
                 Route::get('/add', 'EventController@showInsert');
                 Route::post('/add', 'EventController@insert');
 
+                Route::get('/{id}/detail', 'EventController@showDetail');
                 Route::get('/{id}/update', 'EventController@showUpdate');
                 Route::post('/{id}/update', 'EventController@update');
-                Route::post('/{id}/delete', 'EventController@delete');
+                Route::get('/{id}/delete', 'EventController@delete');
             });
         });
 
@@ -56,8 +57,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/verification-friend', 'VerificationController@viewFriend');
         
         Route::get('/verification-success', 'VerificationController@viewSuccess');
-        
-        
+
         Route::get('/profile', 'AmoebaController@showProfile');
         Route::post('/profile', 'AmoebaController@saveProfile');        
 

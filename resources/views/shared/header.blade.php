@@ -5,7 +5,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="index.html">
-                <img src="{{ asset('template_admin/assets/layouts/layout/img/logo.png') }}" alt="logo" class="logo-default"/>
+                <img src="{{ asset('assets/logo/logo_scoring.png') }}" alt="logo" width="100" height="50"/>
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>

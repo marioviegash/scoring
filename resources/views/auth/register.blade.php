@@ -29,6 +29,11 @@
 @section('content')
     <body class="login">
     <!-- END LOGO -->
+    <div class="logo">
+        <a href="index.html">
+            <img src="{{ asset('assets/logo/logo_scoring.png') }}" alt="" width="200" height="70"/>
+        </a>
+    </div>
     <!-- BEGIN LOGIN -->
     <div class="content">
         <!-- BEGIN REGISTRATION FORM -->
