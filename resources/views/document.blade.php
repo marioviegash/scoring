@@ -93,17 +93,27 @@
                                                     <th> Group Name </th>
                                                     <th> Document </th>
                                                     <th> Action </th>
+                                                    <th> Detail </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($groups as $group)
+                                                
+                                               
                                                     <tr>
+                                                        
                                                         <td> {{$group->id}} </td>
                                                         <td> {{$group->name}} </td>
                                                         <td> {{$group->document == null ? "No File" : $group->document}} </td>
-                                                        <td> @if($group->document == null) No Action @else <a
-                                                                    href="{{$group->document}}">Download</a> @endif </td>
-                                                    </tr>
+                                                        <td> @if($group->files == null) No Action @else 
+                                                                <form action="file/download" method="get">
+                                                                    {{csrf_field()}}
+                                                                    <input type="submit" value="Download" />
+                                                                </form>
+                                                            @endif </td>
+                                                        <td> <a href="{{'/forum/'.$group->id}}"> Goto Forum </a> </td>
+                                                               
+                                                    </tr>  
                                                 @endforeach
                                                 </tbody>
                                             </table>
@@ -137,15 +147,34 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                    
+                                                @if(!empty($errors->first())) 
+                                                    <div class="row col-lg-12">
+                                                        <div class="alert alert-danger">
+                                                            <span>{{ $errors->first() }}</span>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                                 @foreach($groups as $group)
                                                     @if($group->id == Auth::user()->amoeba->group_id)
-                                                        <tr>
+                                                        <tr >
                                                             <td> {{$group->id}} </td>
                                                             <td> {{$group->name}} </td>
-                                                            <td> {{$group->document == null ? "No File" : $group->document}} </td>
+                                                            <td> {{$group->files()->orderBy('created_at', 'desc')->first() == null ?
+                                                                 "No File" : $group->files()->orderBy('created_at', 'desc')->first()->name}} </td>
                                                             <td>
-                                                                <a href="">Upload</a>
-                                                                <a href="{{$group->document}}">Download</a>
+                                                                <form action="file/upload" method="post" enctype="multipart/form-data">
+                                                                    {{csrf_field()}}
+                                                                    <input type="file" name="file_upload" value="Upload"/>
+                                                                    <input type="hidden" value="{{$group->id}}" />
+                                                                    <input type="submit" value="Submit" />
+                                                                </form>
+
+                                                                <form action="file/download" method="get">
+                                                                    {{csrf_field()}}
+                                                                    <input type="submit" value="Download" />
+                                                                </form>
+                                                                
                                                             </td>
                                                         </tr>
                                                     @endif
@@ -170,21 +199,25 @@
                                         </div>
                                     </div>
                                     {{--Loop Comment--}}
-                                    <div class="row portlet light bordered" style="margin: 0;">
-                                        <div class="col-md-12">
-                                            <div class="col-md-6" style="padding: 0;">
-                                                Username
+                                    @foreach($forums as $forum)
+                                        <div class="row portlet light bordered" style="margin: 0;">
+                                            <div class="col-md-12">
+                                                <div class="col-md-6" style="padding: 0;">
+                                                    {{$forum->user->name}}
+                                                </div>
+                                                <div class="col-md-6 text-right" style="padding: 0;">
+                                                    {{Carbon\Carbon::parse($forum->created_at)->diffForHumans(Carbon\Carbon::now())}}
+                                                </div>
+                                                <hr>
+                                                {{$forum->comment}}
                                             </div>
-                                            <div class="col-md-6 text-right" style="padding: 0;">
-                                                Date
-                                            </div>
-                                            <hr>
-                                            Comment
                                         </div>
-                                    </div>
+                                        
+                                    @endforeach
                                     <div class="row portlet light bordered" style="margin: 0;">
-                                        <form role="form" action="" method="post" enctype="multipart/form-data">
+                                        <form role="form" action="/forum/post" method="post" enctype="multipart/form-data">
                                             {{csrf_field()}}
+                                            <input type="hidden" value="{{Auth::user()->group->id}}" name="group_id">
                                             <div class="form-body row">
                                                 <div class="form-group col-md-11" style="padding: 0 0 0 2%; margin: 0;">
                                                     <input class="form-control spinner" type="text" placeholder="Input Your Comment" name="comment" />

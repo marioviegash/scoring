@@ -23,7 +23,27 @@
             <ul class="nav navbar-nav pull-right">
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                 <li class="dropdown dropdown-quick-sidebar-toggler">
+                        <?php 
+                        // $activeEvent = Session::get('event');
+                        // if($activeEvent === null){
+                        //     $event = App\Model\Event::orderBy('created_at', 'desc')->first();
+                        //     if($event){
+                        //         Session::put('event', $event, 720);
+                        //     }
+                        // }
+
+                        // vardump($activeEvent);
+                    ?>
+                    
+                    {{-- {{$activeEvent->name}} --}}
+                    {{-- {{Cookie::queue($name, $value, $minutes);}} --}}
+                    {{-- <a href="{{ url('profile') }}"> --}}
+                        {{-- <i class="icon-user"></i> My Profile --}}
+                    {{-- </a> --}}
+                </li>
                 <li class="dropdown dropdown-user">
+                       
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
                         <img alt="" class="img-circle" src="../assets/layouts/layout/img/avatar3_small.jpg"/>
@@ -31,6 +51,7 @@
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
+                        
                         <li>
                             <a href="{{ url('profile') }}">
                                 <i class="icon-user"></i> My Profile

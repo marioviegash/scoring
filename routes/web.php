@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function(){
         
         Route::get('/profile', 'AmoebaController@showProfile');
         Route::post('/profile', 'AmoebaController@saveProfile');        
+
     });
 
     
@@ -73,12 +74,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/group', 'GroupController@index');
     Route::post('/group/store', 'GroupController@store');
 
-    Route::get('/document', 'DocumentController@index');
+    Route::get('/document', 'DocumentController@index');    
+    Route::get('/forum/{id}', 'ForumController@index');
+    Route::post('forum/post', 'ForumController@post');
 
-    Route::get('/judgement', function(){
-        return view('pages.judgement.index');
-    });
+    Route::post('file/upload', 'FileController@upload');
+    Route::get('file/download', 'FileController@download');
 
+    Route::get('/judgement', 'JudgementController@index');
     Route::get('/judgement/team', function(){
         return view('pages.judgement.detail');
     });
