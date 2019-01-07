@@ -38,9 +38,11 @@ class GroupController extends Controller
 
     public function approveGroup($group_id){
 
+        $activeEvent = Event::orderBy('created_at', 'desc')->first();
         $group = Group::find($group_id);
         $group->approve_by = Auth::id();
         $group->approve_at = Carbon::now();
+        $group->event_id = $activeEvent->first();
         $group->save();
 
         $group->amoebas()->update([

@@ -43,11 +43,13 @@
                                 <div class="portlet-body">
                                     <div class="row">
                                         {{-- Loop Team --}}
+                                        @foreach($groups as $group)
                                         <div class="col-md-3 form-group">
                                             <div class="form-control text-center">
-                                                Team 1
+                                                {{$group->name}}
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
