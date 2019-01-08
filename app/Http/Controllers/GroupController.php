@@ -73,5 +73,16 @@ class GroupController extends Controller
         return redirect('/group');
     }
 
+    public function rejectGroup($group_id){
+
+        Group::find($group_id)->delete();
+        return back();
+    }
+
+    
+    public function deleteGroup($group_id){
+        Group::find($group_id)->delete();
+        return back();
+    }
 
 }

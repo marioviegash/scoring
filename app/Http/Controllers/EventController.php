@@ -162,4 +162,21 @@ class EventController extends Controller
     }
 
 
+    public function deleteJury(Request $request){
+        $event = Event::find($request->event_id);
+
+        $event->juries()->detach($request->jury_id);
+
+        return back();
+    }
+
+    public function addJuries(Request $request){
+        $event = Event::find($request->event_id);
+        foreach($request->juries as $jury_id){
+            $event->juries()->attach($jury_id);
+        }
+
+        return back();
+    }
+
 }

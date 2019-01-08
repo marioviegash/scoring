@@ -58,18 +58,21 @@
                                                         <td> {{$group->name}} </td>
                                                         <td> {{$group->created_at}} </td>
                                                         <td>
-                                                            <form action={{url('/group/'.$group->id.'/approve')}} method="post" style="display: inline-block;">
-                                                                {{csrf_field()}}
-                                                                <input type="submit" class="btn green-meadow" value="Approve" style="z-index:2"/>
-                                                            </form>
-                                                            <form action="" method="post" style="display: inline-block;">
-                                                                {{csrf_field()}}
-                                                                <input type="submit" class="btn btn-danger" value="Reject" style="z-index:2"/>
-                                                            </form>
-                                                            <form action="" method="post" style="display: inline-block;">
-                                                                {{csrf_field()}}
-                                                                <input type="submit" class="btn btn-danger" value="Delete" style="z-index:2"/>
-                                                            </form>
+                                                            @if($group->approve_at === null)
+                                                                <form action={{url('/group/'.$group->id.'/approve')}} method="post" style="display: inline-block;">
+                                                                    {{csrf_field()}}
+                                                                    <input type="submit" class="btn green-meadow" value="Approve" style="z-index:2"/>
+                                                                </form>
+                                                                <form action={{url('/group/'.$group->id.'/reject')}}method="post" style="display: inline-block;">
+                                                                    {{csrf_field()}}
+                                                                    <input type="submit" class="btn btn-danger" value="Reject" style="z-index:2"/>
+                                                                </form>
+                                                            @else
+                                                                <form  action={{url('/group/'.$group->id.'/delete')}} method="post" style="display: inline-block;">
+                                                                    {{csrf_field()}}
+                                                                    <input type="submit" class="btn btn-danger" value="Delete" style="z-index:2"/>
+                                                                </form>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                     <tr class="amoeba-detail hidden">
