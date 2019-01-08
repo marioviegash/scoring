@@ -33,6 +33,11 @@ class EventController extends Controller
         $juries = Jury::with('user')->get();
         return view('pages.event.detail', ['event' => $event, 'juries'=> $juries]);
     }
+
+    public function showUpload($id)
+    {
+        return view('pages.event.upload');
+    }
     
     public function showUpdate($id){
         $event = Event::with('employees')->with('innovators')->where('id', $id)->first();
