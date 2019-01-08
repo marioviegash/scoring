@@ -1,5 +1,4 @@
-<li class="nav-item start"
->
+<li class="nav-item start">
     <a href="/home" class="nav-link">
         <i class="icon-home"></i>
         <span class="title">Dashboard</span>
@@ -7,9 +6,9 @@
     </a>
 </li>
 <li class="nav-item start"
-@if(route('/event') == Request::url()) 
-    class="active open"
-  @endif
+    @if(route('/event') == Request::url())
+        class="active open"
+    @endif
 >
     <a href="/event" class="nav-link">
         <i class="icon-calendar"></i>

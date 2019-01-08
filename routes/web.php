@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/group', 'GroupController@index');
     Route::post('/group/store', 'GroupController@store');
 
-    Route::get('/document', 'DocumentCon troller@index');    
+    Route::get('/document', 'DocumentController@index');
     Route::get('/forum/{id}', 'ForumController@index');
     Route::post('forum/post', 'ForumController@post');
 
