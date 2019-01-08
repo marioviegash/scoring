@@ -103,6 +103,13 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Auth::routes();
+Route::get('/admin/result', function(){
+    return view('pages.result.index');
+});
+
+Route::get('/admin/result/{id}/detail', function(){
+    return view('pages.result.detail');
+});
 
 
 

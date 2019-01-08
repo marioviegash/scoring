@@ -33,3 +33,10 @@
         <span class="selected"></span>
     </a>
 </li>
+<li class="nav-item start">
+    <a href="/admin/result" class="nav-link">
+        <i class="fa fa-file"></i>
+        <span class="title">View Result</span>
+        <span class="selected"></span>
+    </a>
+</li>
