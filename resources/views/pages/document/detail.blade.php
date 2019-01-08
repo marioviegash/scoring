@@ -62,7 +62,9 @@
                                         <div class="col-md-12">
                                             <h5>
                                                 Do you want give comment for this document ?
-                                                <button type="button" class="btn btn-primary">Comment</button>
+                                                <a href="{{ url('/admin/document/1/forum') }}">
+                                                    <button type="button" class="btn btn-primary">Comment</button>
+                                                </a>
                                             </h5>
                                         </div>
                                         <div class="col-md-12">

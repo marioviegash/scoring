@@ -98,6 +98,10 @@ Route::get('/admin/document/{id}/detail', function(){
     return view('pages.document.detail');
 });
 
+Route::get('/admin/document/{id}/forum', function(){
+    return view('pages.document.forum');
+});
+
 
 
 
