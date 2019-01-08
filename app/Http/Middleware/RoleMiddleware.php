@@ -19,7 +19,7 @@ class RoleMiddleware
         array_push($roles, 'Super Admin');
         if(count($roles) > 0 ){
             if(!Auth::user()->authorizeRoles($roles)){
-                return response('Not valid token provider.', 401);
+                return redirect('/');
             }
         }
         return $next($request);

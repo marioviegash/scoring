@@ -107,18 +107,20 @@
                                             <h4><b>Event Create By </b> &nbsp;: </h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <h4>Sidang Komite 2</h4>
+                                            <h4>{{$lastEvent->name}}</h4>
                                             <br>
-                                            <h4>20 Teams</h4>
+                                            <h4>{{count($lastEvent->groups)}} Teams</h4>
                                             <br>
-                                            <h4>5 Judges</h4>
+                                            <h4>{{count($lastEvent->juries)}} Judges</h4>
                                             <br>
-                                            <h4>Admin</h4>
+                                            <h4>{{$lastEvent->creator->name}}</h4>
                                         </div>
                                         <div class="col-md-4 text-center">
                                             <h2>Event Status</h2>
                                             <br>
-                                            Not Started
+                                            {{$lastEvent->start_time != null ? 
+                                            Carbon\Carbon::parse($lastEvent->start_time)->format('d F Y h:m') 
+                                            : 'Not Started'}}
                                             <br> <br>
                                             <button type="button" class="btn blue">Start</button>
                                         </div>

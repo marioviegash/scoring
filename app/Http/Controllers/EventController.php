@@ -7,6 +7,7 @@ use App\Model\Event;
 use App\Model\Employee;
 use App\Model\Innovator;
 use App\Model\Jury;
+use Route;
 
 class EventController extends Controller
 {

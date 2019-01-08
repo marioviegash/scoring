@@ -54,6 +54,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Model\Role', 'role_id');
     }
 
+    public function getRoleNameAttribute(){
+        return $this->roles->name;
+    }
+
     public function amoeba(){
         return $this->hasOne('App\Model\Amoeba');
     }
