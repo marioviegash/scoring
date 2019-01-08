@@ -106,6 +106,14 @@ Route::get('/admin/document/{id}/forum', function(){
     return view('pages.document.forum');
 });
 
+Route::get('/admin/result', function(){
+    return view('pages.result.index');
+});
+
+Route::get('/admin/result/{id}/detail', function(){
+    return view('pages.result.detail');
+});
+
 
 
 
