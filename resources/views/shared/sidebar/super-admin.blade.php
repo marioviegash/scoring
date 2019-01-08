@@ -1,11 +1,11 @@
-<li class="nav-item start active open">
+<li class="nav-item start @if(Route::currentRouteName() === "home") active open @endif">
     <a href="/home" class="nav-link">
     <i class="icon-home"></i>
     <span class="title">Dashboard</span>
     <span class="selected"></span>
 </a>
 </li>
-<li class="nav-item start">
+<li class="nav-item start @if(Route::currentRouteName() === "event") active open @endif" >
     <a href="/admin/event" class="nav-link">
         <i class="icon-calendar"></i>
         <span class="title">Event</span>

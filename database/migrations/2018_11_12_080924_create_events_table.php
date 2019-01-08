@@ -22,7 +22,12 @@ class CreateEventsTable extends Migration
             $table->string('criteria_group');
             $table->string('criteria_individu');
             $table->integer('maximum_score');
+            $table->datetime('start_time');
+            $table->integer('created_by')->unsigned();
             $table->timestamps();
+
+            $table->foreign('creator_id')->references('id')->on('users')
+            ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

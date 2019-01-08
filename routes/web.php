@@ -30,12 +30,12 @@ Route::group(['middleware' => 'auth'], function(){
     
         Route::group(['prefix' => '/admin'], function(){
             Route::group(['prefix'=> '/event'], function(){
-                Route::get('/', 'EventController@showAll');
-                Route::get('/add', 'EventController@showInsert');
+                Route::get('/', 'EventController@showAll')->name('event');
+                Route::get('/add', 'EventController@showInsert')->name('event');
                 Route::post('/add', 'EventController@insert');
 
-                Route::get('/{id}/detail', 'EventController@showDetail');
-                Route::get('/{id}/update', 'EventController@showUpdate');
+                Route::get('/{id}/detail', 'EventController@showDetail')->name('event');
+                Route::get('/{id}/update', 'EventController@showUpdate')->name('event');
                 Route::post('/{id}/update', 'EventController@update');
                 Route::get('/{id}/delete', 'EventController@delete');
             });
@@ -74,7 +74,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/group', 'GroupController@index');
     Route::post('/group/store', 'GroupController@store');
 
-    Route::get('/document', 'DocumentController@index');    
+    Route::get('/document', 'DocumentCon troller@index');    
     Route::get('/forum/{id}', 'ForumController@index');
     Route::post('forum/post', 'ForumController@post');
 

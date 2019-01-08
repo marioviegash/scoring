@@ -8,6 +8,11 @@ class Event extends Model
 {
     //
 
+
+    public function creator(){
+        return $this->belongsTo('App\User', 'created_by', 'id');
+    }
+
     public function employees(){
         return $this->hasMany('App\Model\Employee');
     }
