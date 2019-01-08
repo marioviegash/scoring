@@ -87,11 +87,12 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach($event->groups as $key => $group)
                                                                 <tr>
-                                                                    <td> 1 </td>
-                                                                    <td> Team Lanciau </td>
+                                                                    <td> {{$key+1}} </td>
+                                                                    <td> {{$group->name}} </td>
                                                                     <td>
-                                                                        <a href="/admin/event/1/upload">
+                                                                    <a href="/admin/event/{{$group->id}}/group">
                                                                             <button type="button" class="btn green">View</button>
                                                                         </a>
                                                                         <a href="">
@@ -99,6 +100,7 @@
                                                                         </a>
                                                                     </td>
                                                                 </tr>
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -116,17 +118,19 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach($event->juries as $key => $jury)
                                                                 <tr>
-                                                                    <td> 1 </td>
-                                                                    <td> <span class="fa fa-user"></span> Lanciau </td>
-                                                                    <td> HCM </td>
-                                                                    <td> 99999 </td>
+                                                                    <td> {{$key + 1}} </td>
+                                                                    <td> <span class="fa fa-user"></span> {{$jury->name}} </td>
+                                                                    <td> {{$jury->loker}} </td>
+                                                                    <td> {{$jury->NIK}} </td>
                                                                     <td>
                                                                         <a href="">
                                                                             <button type="submit" class="btn btn-danger fa fa-minus"></button>
                                                                         </a>
                                                                     </td>
                                                                 </tr>
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>

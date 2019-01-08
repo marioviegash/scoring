@@ -7,6 +7,7 @@ use App\Model\Event;
 use App\Model\Employee;
 use App\Model\Innovator;
 use App\Model\Jury;
+use App\Model\Group;
 use Route;
 
 class EventController extends Controller
@@ -29,14 +30,21 @@ class EventController extends Controller
 
     public function showDetail($id)
     {
-        $event = Event::with('employees')->with('innovators')->where('id', $id)->first();
-        $juries = Jury::with('user')->get();
-        return view('pages.event.detail', ['event' => $event, 'juries'=> $juries]);
+        $event = Event::with('groups')->with('employees')->with('juries')
+        ->with('innovators')->where('id', $id)->first();
+        $jurie_ids = [];
+        foreach($event->juries as $jury){
+            array_push($jurie_ids, $jury->id);
+        }
+        $juries = Jury::with('user')->whereNotIn('id', $jurie_ids) ->get();
+        return view('pages.event.detail', ['event' => $event, 'juries' => $juries]);
     }
 
-    public function showUpload($id)
+    public function showGroup($id)
     {
-        return view('pages.event.upload');
+        $group = Group::with('amoebas.user')->where('id', $id)->first();
+
+        return view('pages.event.group', ['group' => $group]);
     }
     
     public function showUpdate($id){
