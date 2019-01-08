@@ -48,21 +48,39 @@
                                         <div class="col-md-12">
                                             <h5>
                                                 <b>Document : </b>
-                                                <span class="text-danger">No Document</span>
-                                                <button type="button" class="btn btn-default">Review</button>
+                                                @if($group->file === null)
+                                                <span class="text-danger">
+                                                    No Document
+                                                </span>
+                                                @else 
+                                                    {{$group->file->name}}
+                                                @endif
+                                                <form action="{{url("/admin/document/review/".$group->file->id)}}" method="POST" 
+                                                    style="display:inline-block">
+                                                    {{csrf_field()}}
+                                                    <input type="submit" class="btn btn-default"  value="review"/>
+                                                </form>
                                             </h5>
                                         </div>
                                         <div class="col-md-12">
                                             <h5>
                                                 <b>Document result : </b>
-                                                <button type="button" class="btn green-meadow">Approved</button>
+                                                @if(!isset($group->file->approve_at))
+                                                <form action="{{url("/admin/document/approve/".$group->file->id)}}" method="POST" 
+                                                    style="display:inline-block">
+                                                    {{csrf_field()}}
+                                                    <input type="submit" class="btn green-meadow"  value="Approved"/>
+                                                </form>
                                                 <button type="button" class="btn btn-danger">Revision</button>
+                                                @else 
+                                                    Approved
+                                                @endif
                                             </h5>
                                         </div>
                                         <div class="col-md-12">
                                             <h5>
                                                 Do you want give comment for this document ?
-                                                <a href="{{ url('/admin/document/1/forum') }}">
+                                                <a href="{{ url("/admin/document/$group->id/forum") }}">
                                                     <button type="button" class="btn btn-primary">Comment</button>
                                                 </a>
                                             </h5>
@@ -73,15 +91,19 @@
                                             </h5>
                                         </div>
                                         {{-- Loop Member --}}
-                                        <div class="col-md-2 text-center">
-                                            <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="50">
-                                        </div>
-                                        <div class="col-md-10">
-                                            <h5>
-                                                <b>Nama Peserta</b>
-                                            </h5>
-                                            Posisi Peserta
-                                        </div>
+                                        @foreach($group->amoebas as $amoeba)
+                                            <div class="row">
+                                                <div class="col-md-2 text-center">
+                                                    <img src="{{ asset('/'.$amoeba->picture) }}" alt="" width="50">
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <h5>
+                                                    <b>{{$amoeba->user->name}}</b>
+                                                    </h5>
+                                                    {{$amoeba->c_level}}
+                                                </div>
+                                            </div>
+                                        @endforeach
                                         {{-- End Loop --}}
                                         <div class="col-md-12 text-center">
                                             <a href="" class="btn btn-default">Back</a>

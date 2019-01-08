@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Group;
 use App\Model\Forum;
+use App\Model\File;
+use App\Model\Event;
+use Storage;
 use Mail;
 use Auth;
 use Carbon\Carbon;
@@ -22,6 +25,49 @@ class DocumentController extends Controller
             $forums = Forum::with('user')->where('group_id', Auth::user()->group->id)->get();
         }
         return view('document', ['groups' => $group, 'forums' => $forums]);
+    }
+
+    public function showAll(Request $request){
+
+        $event_builder = Event::with('groups')->orderBy('created_at', 'desc');
+        if(isset($request->event)){
+            $event_builder = $event_builder->where('id', $request->event);
+        }
+        $event = $event_builder->first();
+        $events = Event::orderBy('created_at', 'desc')->get();
+        return view('pages.document.index', ['active_event' => $event, 'events' => $events]);
+    }
+
+    public function showDetail($group_id){
+        $group = Group::with('file')->with('amoebas.user')->find($group_id);
+
+        return view('pages.document.detail', ['group' => $group]);
+    }
+
+    public function reveiwDocument($file_id){
+        $file = File::with('group')->where('id', $file_id)->first();
+        if(isset($file->review_at) === null){
+            $file->review_at = Carbon::now();
+            $file->save();
+        }
+
+        return Storage::download($file->path, $file->name);
+    }
+
+    public function approveDocument($file_id){
+        $file = File::with('group')->where('id', $file_id)->first();
+        $file->approve_at = Carbon::now();
+        $file->save();
+
+        return back();
+    }
+
+    public function rejectDocument($file_id){
+        $file = File::with('group')->where('id', $file_id)->first();
+        $file->approve_at = Carbon::now();
+        $file->save();
+
+        return back();
     }
 
     // public function getDetail($group_id){

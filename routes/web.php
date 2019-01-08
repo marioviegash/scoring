@@ -68,6 +68,16 @@ Route::group(['middleware' => 'auth'], function(){
 
     });
 
+    Route::get('/admin/document', 'DocumentController@showAll')->name('admin_document');
+
+    Route::get('/admin/document/{id}/detail', 'DocumentController@showDetail')->name('admin_document');
+    Route::post('/admin/document/review/{id}', 'DocumentController@reveiwDocument');
+    Route::post('/admin/document/approve/{id}', 'DocumentController@approveDocument');
+
+    Route::get('/admin/document/{id}/forum', 'ForumController@index')->name('admin_document');
+
+
+
     
     Route::group(['middleware' => 'amoebaverified'], function(){
         Route::get('/', 'HomeController@index');
@@ -93,20 +103,6 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Auth::routes();
-
-Route::get('/admin/document', function(){
-    return view('pages.document.index');
-});
-
-Route::get('/admin/document/{id}/detail', function(){
-    return view('pages.document.detail');
-});
-
-Route::get('/admin/document/{id}/forum', function(){
-    return view('pages.document.forum');
-});
-
-
 
 
 

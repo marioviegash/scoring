@@ -38,31 +38,33 @@
                                 <div class="row">
                                     <div class="col-md-2 text-center">
                                         {{-- Logo Group --}}
-                                        <img src="{{ asset('assets/logo/logo_event.png') }}" alt="No Image" width="100">
+                                        <img src="{{ asset('/'.$group->logo) }}" alt="No Image" width="100">
                                     </div>
                                     <div class="col-md-10">
-                                        <h3>Group Name</h3>
-                                        <h5>Description</h5>
+                                        <h3>{{$group->name}}</h3>
+                                        <h5>{{$group->description}}</h5>
                                     </div>
                                 </div>
                                 {{-- Loop Comment --}}
-                                <div class="row portlet light bordered" style="margin: 0;">
-                                    <div class="col-md-12">
-                                        <div class="col-md-6" style="padding: 0;">
-                                            User Name
+                                @foreach($forums as $forum)
+                                    <div class="row portlet light bordered" style="margin: 0;">
+                                        <div class="col-md-12">
+                                            <div class="col-md-6" style="padding: 0;">
+                                                {{$forum->user->name}}
+                                            </div>
+                                            <div class="col-md-6 text-right" style="padding: 0;">
+                                                {{Carbon\Carbon::parse($forum->created_at)->format('d M Y h:m:s')}}
+                                            </div>
+                                            <hr>
+                                            {{$forum->comment}}
                                         </div>
-                                        <div class="col-md-6 text-right" style="padding: 0;">
-                                            Comment Date
-                                        </div>
-                                        <hr>
-                                        Comment
                                     </div>
-                                </div>
+                                @endforeach
                                 {{-- End Loop Comment --}}
                                 <div class="row portlet light bordered" style="margin: 0;">
                                     <form role="form" action="/forum/post" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
-                                        <input type="hidden" value="" name="group_id">
+                                    <input type="hidden" value="{{$group->id}}" name="group_id">
                                         <div class="form-body row">
                                             <div class="form-group col-md-11" style="padding: 0 0 0 2%; margin: 0;">
                                                 <input class="form-control spinner" type="text" placeholder="Input Your Comment" name="comment" />

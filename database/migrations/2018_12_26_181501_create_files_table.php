@@ -19,6 +19,8 @@ class CreateFilesTable extends Migration
             $table->string('path');
             $table->integer('group_id')->unsigned();
             $table->integer('saved_by')->unsigned();
+            $table->datetime('approve_at');
+            $table->datetime('review_at');
             $table->timestamps();
             
             $table->foreign('saved_by')->references('id')->on('users')

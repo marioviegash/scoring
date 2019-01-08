@@ -14,4 +14,7 @@ class Group extends Model
     public function files(){
         return $this->hasMany('App\Model\File');
     }
+    public function file(){
+        return $this->hasOne('App\Model\File')->orderBy('created_at', 'desc');
+    }
 }

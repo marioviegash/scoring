@@ -26,9 +26,10 @@ class ForumController extends Controller
     }
 
     public function index($group_id){
+        // dd($group_id);
         $group = Group::find($group_id);
         $forums = Forum::with('user')->where('group_id', $group_id)->get();
-        return view('forum', ['forums' => $forums, 'group' => $group]);
+        return view('pages.document.forum',  ['forums' => $forums, 'group' => $group]);
     }
 
     public function post(Request $request){

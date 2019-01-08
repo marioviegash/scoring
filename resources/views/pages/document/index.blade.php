@@ -46,9 +46,14 @@
                                             <form action="" method="" class="row">
                                                 <div class="col-md-2">
                                                     <select name="event" class="form-control spinner">
-                                                        <option value="80jt">Event 80 Juta</option>
-                                                        <option value="lonte">Event Lonte</option>
-                                                        <option value="lanciau">Event Lanciau</option>
+                                                        @foreach($events as $event)
+                                                            <option value="{{$event->id}}"
+                                                                 @if($active_event->id === $event->id)
+                                                                 selected
+                                                                  @endif>
+                                                                {{$event->name}}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
@@ -67,15 +72,17 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td> 1 </td>
-                                                        <td> Group Pantek </td>
-                                                        <td>
-                                                            <a href="{{ url("/admin/document/{id}/detail") }}">
-                                                                <button type="button" class="btn green">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                    @foreach($active_event->groups as $key => $group)
+                                                        <tr>
+                                                            <td> {{$key+1}} </td>
+                                                            <td> {{$group->name}} </td>
+                                                            <td>
+                                                                <a href="{{ url("/admin/document/$group->id/detail") }}">
+                                                                    <button type="button" class="btn green">View</button>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

@@ -12,7 +12,7 @@
         <span class="selected"></span>
     </a>
 </li>
-<li class="nav-item start">
+<li class="nav-item start @if(Route::currentRouteName() === "admin_document") active open @endif">
     <a href="/admin/document" class="nav-link">
         <i class="fa fa-file-archive-o"></i>
         <span class="title">Manage Document</span>
