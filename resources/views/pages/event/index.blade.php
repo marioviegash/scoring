@@ -73,13 +73,13 @@
                                                     <th> Action </th>
                                                 </tr>
                                             </thead>
-                                            @foreach ($events as $event)    
+                                            @foreach ($events as $key => $event)    
                                             <tbody>
                                                 <tr class="event">
-                                                    <td> 1 </td>
+                                                    <td> {{$key + 1}} </td>
                                                     <td> {{$event->name}} </td>
                                                     <td> 1 - {{$event->maximum_score}} Score </td>
-                                                    <td> Belum Ada Field nya </td>
+                                                    <td> {{$event->creator->name}} </td>
                                                     <td> Validasi Sesuai Tanggal </td>
                                                     <td>
                                                         <a href="">
