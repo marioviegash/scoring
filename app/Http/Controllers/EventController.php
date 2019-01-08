@@ -14,7 +14,7 @@ class EventController extends Controller
     //
 
     public function showAll(){
-        $event = Event::with('employees')->with('innovators')->get();
+        $event = Event::with('employees')->with('creator')->with('innovators')->get();
         // dd($event->employees);
         return view('pages.event.index', ['events' => $event]);
     }

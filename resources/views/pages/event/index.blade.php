@@ -73,21 +73,15 @@
                                                     <th> Action </th>
                                                 </tr>
                                             </thead>
-                                            @foreach ($events as $event)    
+                                            @foreach ($events as $key => $event)    
                                             <tbody>
                                                     <tr class="event">
-                                                        <td> 1 </td>
+                                                        <td> {{$key+1}} </td>
                                                         <td> {{$event->name}} </td>
                                                         <td> 1 - {{$event->maximum_score}} Score </td>
-                                                        <td> Belum Ada Field nya </td>
-                                                        <td> Validasi Sesuai Tanggal </td>
+                                                        <td> {{$event->creator->name}} </td>
+                                                        <td> </td>
                                                         <td>
-                                                            <a href="">
-                                                                <button type="button" class="btn green-meadow">Start</button>
-                                                            </a>
-                                                            <a href="">
-                                                                <button type="button" class="btn btn-danger">Stop</button>
-                                                            </a>
                                                             <a href="/admin/event/{{$event->id}}/detail">
                                                                 <button type="button" class="btn green">View</button>
                                                             </a>
