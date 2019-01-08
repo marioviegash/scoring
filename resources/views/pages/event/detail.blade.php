@@ -52,17 +52,94 @@
                                             Event Date :
                                             <h5>{{ $event->end_date }} <span class="fa fa-calendar"></span></h5>
                                         </div>
+                                        <div class="col-md-12">
+                                            <hr>
+                                            <ul class="nav nav-tabs">
+                                                <li class="active">
+                                                    <a href="#tab_1_1" data-toggle="tab"> Description </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab_1_2" data-toggle="tab"> Team </a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="#tab_1_3" data-toggle="tab"> Jury </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade active in" id="tab_1_1">
+                                                    <p>
+                                                        {{ $event->description }}
+                                                    </p>
+                                                    <div class="col-md-12 text-right">
+                                                        <a href="">
+                                                            <span class="fa fa-pencil-square-o" style="font-size: 20px;"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="tab_1_2">
+                                                    <div class="table-scrollable">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                            <tr>
+                                                                <th> No. </th>
+                                                                <th> Team </th>
+                                                                <th> Action </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td> 1 </td>
+                                                                    <td> Team Lanciau </td>
+                                                                    <td>
+                                                                        <a href="/admin/event/1/upload">
+                                                                            <button type="button" class="btn green">View</button>
+                                                                        </a>
+                                                                        <a href="">
+                                                                            <button type="submit" class="btn btn-danger fa fa-minus"></button>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="tab_1_3">
+                                                    <div class="table-scrollable">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th> No. </th>
+                                                                    <th> Jury </th>
+                                                                    <th> Loker </th>
+                                                                    <th> NIK </th>
+                                                                    <th> Action </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td> 1 </td>
+                                                                    <td> <span class="fa fa-user"></span> Lanciau </td>
+                                                                    <td> HCM </td>
+                                                                    <td> 99999 </td>
+                                                                    <td>
+                                                                        <a href="">
+                                                                            <button type="submit" class="btn btn-danger fa fa-minus"></button>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-12 text-right">
+                                                        <a href="">
+                                                            <button type="button" class="btn dark btn-outline">Add Jury</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-12">
-                            <div class="portlet light bordered">
-                                Description
-                                <br>
-                                {{ $event->description }}
                             </div>
                         </div>
                     </div>

@@ -75,57 +75,58 @@
                                             </thead>
                                             @foreach ($events as $event)    
                                             <tbody>
-                                                    <tr class="event">
-                                                        <td> 1 </td>
-                                                        <td> {{$event->name}} </td>
-                                                        <td> 1 - {{$event->maximum_score}} Score </td>
-                                                        <td> Belum Ada Field nya </td>
-                                                        <td> Validasi Sesuai Tanggal </td>
-                                                        <td>
-                                                            <a href="">
-                                                                <button type="button" class="btn green-meadow">Start</button>
-                                                            </a>
-                                                            <a href="">
-                                                                <button type="button" class="btn btn-danger">Stop</button>
-                                                            </a>
-                                                            <a href="/admin/event/{{$event->id}}/detail">
-                                                                <button type="button" class="btn green">View</button>
-                                                            </a>
-                                                            <a href="/admin/event/{{$event->id}}/update">
-                                                                <button type="button" class="btn btn-primary">Edit</button>
-                                                            </a>
-                                                            <a href="/admin/event/{{$event->id}}/delete">
-                                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                    <tr class="event-detail hidden">
-                                                        <th colspan="4"> Event Description </th>
-                                                        <th> Criteria Employee </th>
-                                                        <th> Criteria Innovator </th>
-                                                    </tr>
-                                                    <tr class="event-detail hidden">
-                                                        <td colspan="4"> {{$event->description}} </td>
-                                                        <td> 
-                                                            <ul>
-                                                                @foreach ($event->employees as $employee)
-                                                                    <li>
-                                                                        {{$employee->description}}
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
+                                                <tr class="event">
+                                                    <td> 1 </td>
+                                                    <td> {{$event->name}} </td>
+                                                    <td> 1 - {{$event->maximum_score}} Score </td>
+                                                    <td> Belum Ada Field nya </td>
+                                                    <td> Validasi Sesuai Tanggal </td>
+                                                    <td>
+                                                        <a href="">
+                                                            <button type="button" class="btn green-meadow">Start</button>
+                                                        </a>
+                                                        <a href="">
+                                                            <button type="button" class="btn btn-danger">Stop</button>
+                                                        </a>
+                                                        <a href="/admin/event/{{$event->id}}/detail">
+                                                            <button type="button" class="btn green">View</button>
+                                                        </a>
+                                                        <a href="/admin/event/{{$event->id}}/update">
+                                                            <button type="button" class="btn btn-primary">Edit</button>
+                                                        </a>
+                                                        <a href="/admin/event/{{$event->id}}/delete">
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
 
-                                                        </td>
-                                                        <td> 
-                                                            <ul>
-                                                                @foreach ($event->innovators as $innovator)
-                                                                    <li>
-                                                                        {{$innovator->description}}
-                                                                    </li>
-                                                                @endforeach</td>
-                                                            </ul>
-                                                        </tr>
+                                                <tr class="event-detail hidden">
+                                                    <th colspan="4"> Event Description </th>
+                                                    <th> Criteria Employee </th>
+                                                    <th> Criteria Innovator </th>
+                                                </tr>
+                                                <tr class="event-detail hidden">
+                                                    <td colspan="4"> {{$event->description}} </td>
+                                                    <td>
+                                                        <ul>
+                                                            @foreach ($event->employees as $employee)
+                                                                <li>
+                                                                    {{$employee->description}}
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+
+                                                    </td>
+                                                    <td>
+                                                        <ul>
+                                                            @foreach ($event->innovators as $innovator)
+                                                                <li>
+                                                                    {{$innovator->description}}
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                             
                                             @endforeach
