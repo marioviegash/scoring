@@ -26,7 +26,7 @@
         <span class="selected"></span>
     </a>
 </li>
-<li class="nav-item start">
+<li class="nav-item start @if(Route::currentRouteName() === "group") active open @endif">
     <a href="/group" class="nav-link">
         <i class="icon-users"></i>
         <span class="title">Group Management</span>

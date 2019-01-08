@@ -15,6 +15,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware'=> 'role:Admin Amoeba'], function(){
 
         Route::post('/group/{group_id}/approve', 'GroupController@approveGroup');
+        Route::post('/group/{group_id}/reject', 'GroupController@rejectGroup');
+        Route::post('/group/{group_id}/delete', 'GroupController@deleteGroup');
         Route::get('/home', 'HomeController@index')->name('home');
 
         Route::group(['prefix' => '/admin'], function(){
@@ -34,7 +36,9 @@ Route::group(['middleware' => 'auth'], function(){
                 Route::get('/add', 'EventController@showInsert')->name('event');
                 Route::post('/add', 'EventController@insert');
 
-                Route::get('/{id}/upload', 'EventController@showUpload');
+                Route::post('/jury/delete', 'EventController@deleteJury');
+                Route::post('/jury/add', 'EventController@addJuries');
+                Route::get('/{id}/group', 'EventController@showGroup')->name('event');
                 Route::get('/{id}/detail', 'EventController@showDetail')->name('event');
                 Route::get('/{id}/update', 'EventController@showUpdate')->name('event');
                 Route::post('/{id}/update', 'EventController@update');
@@ -72,7 +76,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-    Route::get('/group', 'GroupController@index');
+    Route::get('/group', 'GroupController@index')->name('group');
     Route::post('/group/store', 'GroupController@store');
 
     Route::get('/document', 'DocumentController@index');

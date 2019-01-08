@@ -88,18 +88,21 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach($event->groups as $key => $group)
                                                                 <tr>
-                                                                    <td> 1 </td>
-                                                                    <td> Team Lanciau </td>
+                                                                    <td> {{$key+1}} </td>
+                                                                    <td> {{$group->name}} </td>
                                                                     <td>
-                                                                        <a href="/admin/event/1/upload">
+                                                                        <a href="/admin/event/{{$group->id}}/group" style="display: inline-block;">
                                                                             <button type="button" class="btn green">View</button>
                                                                         </a>
-                                                                        <a href="">
+                                                                        <form  action={{url('/group/'.$group->id.'/delete')}} method="post" style="display: inline-block;">
+                                                                            {{csrf_field()}}
                                                                             <button type="submit" class="btn btn-danger fa fa-minus"></button>
-                                                                        </a>
+                                                                        </form>
                                                                     </td>
                                                                 </tr>
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -117,17 +120,22 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach($event->juries as $key => $jury)
                                                                 <tr>
-                                                                    <td> 1 </td>
-                                                                    <td> <span class="fa fa-user"></span> Lanciau </td>
-                                                                    <td> HCM </td>
-                                                                    <td> 99999 </td>
+                                                                    <td> {{$key + 1}} </td>
+                                                                    <td> <span class="fa fa-user"></span> {{$jury->name}} </td>
+                                                                    <td> {{$jury->loker}} </td>
+                                                                    <td> {{$jury->NIK}} </td>
                                                                     <td>
-                                                                        <a href="">
+                                                                        <form href="" method="post" action="/admin/event/jury/delete">
+                                                                            {{csrf_field()}}
+                                                                            <input type="hidden" value="{{$event->id}}" name="event_id" />
+                                                                            <input type="hidden" value="{{$jury->id}}" name="jury_id" />
                                                                             <button type="submit" class="btn btn-danger fa fa-minus"></button>
                                                                         </a>
                                                                     </td>
                                                                 </tr>
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -153,21 +161,23 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                         <h4 class="modal-title">Add Jury</h4>
                     </div>
-                    <form role="form" action="{{url('admin/user/add')}}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{url('admin/event/jury/add')}}" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                             {{csrf_field()}}
+                            <input type="hidden" value="{{$event->id}}" name="event_id" />
                             <div class="form-body">
                                 <div class="form-group">
-                                    <select id="multiple" class="form-control select2-multiple" multiple>
-                                        <option value="titit">Jury Titit</option>
-                                        <option value="lanciau">Jury Lanciau</option>
+                                    <select id="multiple" class="form-control select2-multiple" name="juries[]" multiple>
+                                        @foreach($juries as $jury)
+                                            <option value="{{$jury->id}}">{{$jury->user->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn green">Save changes</button>
+                            <input type="submit" class="btn green" value="Save changes" />
                         </div>
 
                     </form>

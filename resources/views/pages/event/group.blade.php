@@ -45,9 +45,9 @@
                                             <img src="{{ asset('assets/logo/logo_event.png') }}" alt="No Image" width="180">
                                         </div>
                                         <div class="col-md-8">
-                                            <h1><b> Nama Group </b></h1>
-                                            <h3> Batch : </h3>
-                                            <h5> Group Description </h5>
+                                            <h1><b> {{$group->name}} </b></h1>
+                                            <h3> Batch : {{$group->batch_id}}</h3>
+                                            <h5> {{$group->description}} </h5>
                                         </div>
                                         <div class="col-md-12">
                                             <h3>
@@ -68,18 +68,20 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach($group->amoebas as $key => $amoeba)
                                                         <tr>
-                                                            <td> 1 </td>
-                                                            <td> <span class="fa fa-user"></span> Lanciau </td>
-                                                            <td> 99999 </td>
-                                                            <td> CEO </td>
-                                                            <td> HCBP </td>
+                                                            <td> {{$key+1}} </td>
+                                                            <td> <span class="fa fa-user"></span> {{$amoeba->user->name}} </td>
+                                                            <td> {{$amoeba->NIK}} </td>
+                                                            <td> {{$amoeba->c_level}} </td>
+                                                            <td> {{$amoeba->loker}} </td>
                                                             <td>
                                                                 <a href="">
                                                                     <span class="fa fa-upload" style="font-size: 18px;"></span>
                                                                 </a>
                                                             </td>
                                                         </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

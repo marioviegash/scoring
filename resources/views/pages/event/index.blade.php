@@ -82,12 +82,6 @@
                                                     <td> {{$event->creator->name}} </td>
                                                     <td> Validasi Sesuai Tanggal </td>
                                                     <td>
-                                                        <a href="">
-                                                            <button type="button" class="btn green-meadow">Start</button>
-                                                        </a>
-                                                        <a href="">
-                                                            <button type="button" class="btn btn-danger">Stop</button>
-                                                        </a>
                                                         <a href="/admin/event/{{$event->id}}/detail">
                                                             <button type="button" class="btn green">View</button>
                                                         </a>
