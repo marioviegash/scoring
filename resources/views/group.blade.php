@@ -23,12 +23,12 @@
                                     <i class="fa fa-circle"></i>
                                 </li>
                                 <li>
-                                    <span>Group Management</span>
+                                    <span>Manage Amoeba</span>
                                 </li>
                             </ul>
                         </div>
 
-                        <h1 class="page-title"> Group Management
+                        <h1 class="page-title"> Manage Amoeba
                         </h1>
 
                         <div class="row">
@@ -45,9 +45,9 @@
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th> # </th>
-                                                        <th> Group Name </th>
-                                                        <th> Status </th>
+                                                        <th> No. </th>
+                                                        <th> Amoeba </th>
+                                                        <th> Date </th>
                                                         <th> Action</th>
                                                     </tr>
                                                 </thead>
@@ -56,15 +56,19 @@
                                                     <tr class="amoeba">
                                                         <td> {{$group->id}} </td>
                                                         <td> {{$group->name}} </td>
+                                                        <td> {{$group->created_at}} </td>
                                                         <td>
-                                                            <span class="label label-sm {{$group->approve_at !== null ? 'label-success' : 'label-info'}}">
-                                                                {{$group->approve_at !== null ? 'Approved' : 'Pending' }} </span>
-                                                        </td>
-                                                        <td>
-                                                            <form action={{url('/group/'.$group->id.'/approve')}} method="post">
+                                                            <form action={{url('/group/'.$group->id.'/approve')}} method="post" style="display: inline-block;">
                                                                 {{csrf_field()}}
-                                                                <input type="submit" class="btn btn-default" value="Approve" style="z-index:2"
-                                                                {{ $group->approve_at !== null ? 'disabled' : ''}}/>
+                                                                <input type="submit" class="btn green-meadow" value="Approve" style="z-index:2"/>
+                                                            </form>
+                                                            <form action="" method="post" style="display: inline-block;">
+                                                                {{csrf_field()}}
+                                                                <input type="submit" class="btn btn-danger" value="Reject" style="z-index:2"/>
+                                                            </form>
+                                                            <form action="" method="post" style="display: inline-block;">
+                                                                {{csrf_field()}}
+                                                                <input type="submit" class="btn btn-danger" value="Delete" style="z-index:2"/>
                                                             </form>
                                                         </td>
                                                     </tr>

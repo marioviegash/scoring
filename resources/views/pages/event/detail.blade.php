@@ -3,7 +3,8 @@
 @section('title', 'Home - Scoring')
 
 @section('style')
-
+    <link href="{{ asset('template_admin/assets/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('template_admin/assets/global/plugins/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -135,9 +136,7 @@
                                                         </table>
                                                     </div>
                                                     <div class="col-md-12 text-right">
-                                                        <a href="">
-                                                            <button type="button" class="btn dark btn-outline">Add Jury</button>
-                                                        </a>
+                                                        <a href="#jury" class="btn dark btn-outline" data-toggle="modal">Add Jury</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,11 +150,41 @@
             </div>
         </div>
 
+        <div class="modal fade" id="jury" tabindex="-1" role="jury" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Add Jury</h4>
+                    </div>
+                    <form role="form" action="{{url('admin/user/add')}}" method="post" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            {{csrf_field()}}
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <select id="multiple" class="form-control select2-multiple" multiple>
+                                        <option value="titit">Jury Titit</option>
+                                        <option value="lanciau">Jury Lanciau</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn green">Save changes</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
         @include('shared.footer')
     </div>
     </body>
 @endsection
 
 @section('script')
-
+    <script src="{{ asset('template_admin/assets/global/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('template_admin/assets/pages/scripts/components-select2.min.js') }}" type="text/javascript"></script>
 @endsection
