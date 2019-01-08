@@ -98,22 +98,18 @@
                                                 </thead>
                                                 <tbody>
                                                 @foreach($groups as $group)
-                                                
-                                               
                                                     <tr>
-                                                        
                                                         <td> {{$group->id}} </td>
                                                         <td> {{$group->name}} </td>
                                                         <td> {{$group->document == null ? "No File" : $group->document}} </td>
-                                                        <td> @if($group->files == null) No Action @else 
+                                                        <td> @if($group->files == null) No Action @else
                                                                 <form action="file/download" method="get">
                                                                     {{csrf_field()}}
                                                                     <input type="submit" value="Download" />
                                                                 </form>
                                                             @endif </td>
                                                         <td> <a href="{{'/forum/'.$group->id}}"> Goto Forum </a> </td>
-                                                               
-                                                    </tr>  
+                                                    </tr>
                                                 @endforeach
                                                 </tbody>
                                             </table>
@@ -147,8 +143,8 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                    
-                                                @if(!empty($errors->first())) 
+
+                                                @if(!empty($errors->first()))
                                                     <div class="row col-lg-12">
                                                         <div class="alert alert-danger">
                                                             <span>{{ $errors->first() }}</span>
@@ -174,7 +170,7 @@
                                                                     {{csrf_field()}}
                                                                     <input type="submit" value="Download" />
                                                                 </form>
-                                                                
+
                                                             </td>
                                                         </tr>
                                                     @endif
@@ -212,7 +208,7 @@
                                                 {{$forum->comment}}
                                             </div>
                                         </div>
-                                        
+
                                     @endforeach
                                     <div class="row portlet light bordered" style="margin: 0;">
                                         <form role="form" action="/forum/post" method="post" enctype="multipart/form-data">

@@ -13,7 +13,7 @@
     </a>
 </li>
 <li class="nav-item start">
-    <a href="/document" class="nav-link">
+    <a href="/admin/document" class="nav-link">
         <i class="fa fa-file-archive-o"></i>
         <span class="title">Manage Document</span>
         <span class="selected"></span>

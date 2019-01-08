@@ -90,6 +90,14 @@ Route::group(['middleware' => 'auth'], function(){
 
 Auth::routes();
 
+Route::get('/admin/document', function(){
+    return view('pages.document.index');
+});
+
+Route::get('/admin/document/{id}/detail', function(){
+    return view('pages.document.detail');
+});
+
 
 
 
