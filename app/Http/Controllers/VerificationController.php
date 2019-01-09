@@ -62,6 +62,7 @@ class VerificationController extends Controller
         $newGroup->description = $request->description;
         $newGroup->logo = $fullpath;
         $newGroup->creator_id = Auth::id();
+        $newGroup->batch_id = $request->batch;
 
         $newGroup->save();
 

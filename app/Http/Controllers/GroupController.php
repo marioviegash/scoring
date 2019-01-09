@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Group;
+use App\Model\Event;
 use Mail;
 use Auth;
 use Carbon\Carbon;
@@ -42,7 +43,7 @@ class GroupController extends Controller
         $group = Group::find($group_id);
         $group->approve_by = Auth::id();
         $group->approve_at = Carbon::now();
-        $group->event_id = $activeEvent->first();
+        $group->event_id = $activeEvent->id;
         $group->save();
 
         $group->amoebas()->update([
