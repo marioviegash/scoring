@@ -86,108 +86,55 @@
 
                     {{--View For Super Admin--}}
                     @if(Auth::user()->roles->id == 1)
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="portlet light bordered">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="icon-calendar font-green"></i>
-                                        <span class="caption-subject font-green bold uppercase">Last Event</span>
-                                    </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <h4><b>Event Name &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
-                                            <br>
-                                            <h4><b>Total Team &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
-                                            <br>
-                                            <h4><b>Total Judge &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
-                                            <br>
-                                            <h4><b>Event Create By </b> &nbsp;: </h4>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h4>{{$lastEvent->name}}</h4>
-                                            <br>
-                                            <h4>{{count($lastEvent->groups)}} Teams</h4>
-                                            <br>
-                                            <h4>{{count($lastEvent->juries)}} Judges</h4>
-                                            <br>
-                                            <h4>{{$lastEvent->creator->name}}</h4>
-                                        </div>
-                                        <div class="col-md-4 text-center">
-                                            <h2>Event Status</h2>
-                                            <br>
-                                            {{$lastEvent->start_time != null ? 
-                                            Carbon\Carbon::parse($lastEvent->start_time)->format('d F Y h:m') 
-                                            : 'Not Started'}}
-                                            <br> <br>
-                                            <button type="button" class="btn blue">Start</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="portlet light bordered">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="icon-user font-green"></i>
-                                        <span class="caption-subject font-green bold uppercase">Request Users</span>
-                                    </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <div class="table-scrollable">
-                                        <table class="table table-hover">
-                                            <thead>
-                                            <tr>
-                                                <th> # </th>
-                                                <th> Group Name </th>
-                                                <th> Request Date </th>
-                                            </tr>
-                                            </thead>
-                                            @foreach ($groups as $group )
-                                                <tbody>
-                                                <tr class="amoeba">
-                                                    <td> {{$group->id}} </td>
-                                                    <td> {{$group->name}} </td>
-                                                    <td> {{$group->created_at}} </td>
-                                                </tr>
-                                                <tr class="amoeba-detail hidden">
-                                                    <th> Name </th>
-                                                    <th colspan="2"> Email </th>
-                                                    <th> C Level </th>
-                                                </tr>
-                                                @foreach($group->amoebas as $amoeba)
-                                                    <tr class="amoeba-detail hidden">
-                                                        <td> {{ $amoeba->user->name }} </td>
-                                                        <td colspan="2"> {{ $amoeba->user->email }} </td>
-                                                        <td> {{ $amoeba->c_level == null ? "-" : $amoeba->c_level }} </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            @endforeach
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="row text-right">
-                                    <a href="/group">See More ...</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endif
-
-                    {{--View for Admin Management--}}
-                    @if(Auth::user()->roles->id == 2)
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <div class="portlet light bordered">
                                     <div class="portlet-title">
                                         <div class="caption">
                                             <i class="icon-calendar font-green"></i>
-                                            <span class="caption-subject font-green bold uppercase">All Event</span>
+                                            <span class="caption-subject font-green bold uppercase">Last Event</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <h4><b>Event Name &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <br>
+                                                <h4><b>Total Team &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <br>
+                                                <h4><b>Total Judge &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <br>
+                                                <h4><b>Event Create By </b> &nbsp;: </h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4>{{$lastEvent->name}}</h4>
+                                                <br>
+                                                <h4>{{count($lastEvent->groups)}} Teams</h4>
+                                                <br>
+                                                <h4>{{count($lastEvent->juries)}} Judges</h4>
+                                                <br>
+                                                <h4>{{$lastEvent->creator->name}}</h4>
+                                            </div>
+                                            <div class="col-md-4 text-center">
+                                                <h2>Event Status</h2>
+                                                <br>
+                                                {{$lastEvent->start_time != null ?
+                                                Carbon\Carbon::parse($lastEvent->start_time)->format('d F Y h:m')
+                                                : 'Not Started'}}
+                                                <br> <br>
+                                                <button type="button" class="btn blue">Start</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="icon-user font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">Request Users</span>
                                         </div>
                                     </div>
                                     <div class="portlet-body">
@@ -196,34 +143,84 @@
                                                 <thead>
                                                 <tr>
                                                     <th> # </th>
-                                                    <th> Event Name </th>
-                                                    <th> Total Team </th>
-                                                    <th> Action </th>
+                                                    <th> Group Name </th>
+                                                    <th> Request Date </th>
                                                 </tr>
                                                 </thead>
-                                                @foreach ($events as $event)
+                                                @foreach ($groups as $group )
                                                     <tbody>
-                                                    <tr>
-                                                        <td> 1 </td>
-                                                        <td> {{$event->name}} </td>
-                                                        <td> {{$event->groups->count('id')}} Team </td>
-                                                        <td> <a href="">Start Event</a> </td>
+                                                    <tr class="amoeba">
+                                                        <td> {{$group->id}} </td>
+                                                        <td> {{$group->name}} </td>
+                                                        <td> {{$group->created_at}} </td>
                                                     </tr>
+                                                    <tr class="amoeba-detail hidden">
+                                                        <th> Name </th>
+                                                        <th colspan="2"> Email </th>
+                                                        <th> C Level </th>
+                                                    </tr>
+                                                    @foreach($group->amoebas as $amoeba)
+                                                        <tr class="amoeba-detail hidden">
+                                                            <td> {{ $amoeba->user->name }} </td>
+                                                            <td colspan="2"> {{ $amoeba->user->email }} </td>
+                                                            <td> {{ $amoeba->c_level == null ? "-" : $amoeba->c_level }} </td>
+                                                        </tr>
+                                                    @endforeach
                                                     </tbody>
                                                 @endforeach
                                             </table>
                                         </div>
                                     </div>
-                                    <a href="/admin/event">See More ...</a>
+                                    <div class="row text-right">
+                                        <a href="/group">See More ...</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                        </div>
+                    @endif
+
+                    {{--View for Admin Management--}}
+                    @if(Auth::user()->roles->id == 2)
+                        <div class="row">
+                            <div class="col-md-12">
                                 <div class="portlet light bordered">
                                     <div class="portlet-title">
-                                        <h3>Total Event</h3>
+                                        <div class="caption">
+                                            <i class="icon-calendar font-green"></i>
+                                            <span class="caption-subject font-green bold uppercase">Last Event</span>
+                                        </div>
                                     </div>
                                     <div class="portlet-body">
-                                        <h1 style="text-align:center">{{ $events->count('id') }}</h1>
+                                        {{-- Loop --}}
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <h4><b>Event Name &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <br>
+                                                <h4><b>Total Team &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <br>
+                                                <h4><b>Total Judge &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <br>
+                                                <h4><b>Event Create By </b> &nbsp;: </h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4>Event Pantek</h4>
+                                                <br>
+                                                <h4>10 Teams</h4>
+                                                <br>
+                                                <h4>5 Judges</h4>
+                                                <br>
+                                                <h4>Pembuat lnaciau</h4>
+                                            </div>
+                                            <div class="col-md-4 text-center">
+                                                <h2>Event Status</h2>
+                                                <br>
+                                                Not Started
+                                                <br> <br>
+                                                <button type="button" class="btn blue">Start</button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        {{-- End Loop --}}
                                     </div>
                                 </div>
                             </div>

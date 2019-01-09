@@ -84,9 +84,34 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="row text-right">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-warning">Download excel</button>
+                                            <a href="#confirm" class="btn green-meadow" data-toggle="modal">Share all result</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirm" tabindex="-1" role="confirm" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog" style="width: 15%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title text-center">Alert</h4>
+                    </div>
+                    <div class="modal-body text-center">
+                        Do you really want share all <br>
+                        result to Jury and Amoeba ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-danger">Yes</button>
                     </div>
                 </div>
             </div>

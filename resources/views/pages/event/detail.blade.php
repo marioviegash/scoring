@@ -132,7 +132,7 @@
                                                                             <input type="hidden" value="{{$event->id}}" name="event_id" />
                                                                             <input type="hidden" value="{{$jury->id}}" name="jury_id" />
                                                                             <button type="submit" class="btn btn-danger fa fa-minus"></button>
-                                                                        </a>
+                                                                        </form>
                                                                     </td>
                                                                 </tr>
                                                                 @endforeach
@@ -179,7 +179,6 @@
                             <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                             <input type="submit" class="btn green" value="Save changes" />
                         </div>
-
                     </form>
                 </div>
             </div>
