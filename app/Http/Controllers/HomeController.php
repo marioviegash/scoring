@@ -41,6 +41,7 @@ class HomeController extends Controller
             $event = Event::all();
             return view('home', ['groups' => $group, 'events' => $event, 'lastEvent' => $lastEvent]);
         }
+        // dd(Route::currentRouteName());
         $group = Group::with('amoebas.user')->where('group_status_id', 2)->get();
         $event = Event::all();
         return view('home', ['groups' => $group, 'events' => $event]);

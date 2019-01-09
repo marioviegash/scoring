@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="portlet-body">
                                     <div class="col-md-12">
-                                        <form action="" class="row">
+                                        <form action="/admin/event" class="row">
                                             <div class="col-md-2" style="padding: 0;">
                                                 <input class="form-control spinner" type="date" name="start_date" />
                                             </div>
@@ -80,7 +80,9 @@
                                                     <td> {{$event->name}} </td>
                                                     <td> 1 - {{$event->maximum_score}} Score </td>
                                                     <td> {{$event->creator->name}} </td>
-                                                    <td> Validasi Sesuai Tanggal </td>
+                                                    <td> {{$event->start_date <= Carbon\Carbon::now() 
+                                                            && Carbon\Carbon::now() <= $event->end_date
+                                                    ? 'Active' : 'Not Active' }} </td>
                                                     <td>
                                                         <a href="/admin/event/{{$event->id}}/detail">
                                                             <button type="button" class="btn green">View</button>

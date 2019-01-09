@@ -14,8 +14,13 @@ class EventController extends Controller
 {
     //
 
-    public function showAll(){
-        $event = Event::with('employees')->with('creator')->with('innovators')->get();
+    public function showAll(Request $request){
+        $event_builder = Event::with('employees')->with('creator')->with('innovators');
+        if(isset($request->start_date) && isset($request->end_date)){
+            $event_builder = $event_builder->where('start_date', '>=', $request->start_date)
+                ->where('end_date', '<=', $request->end_date);
+        }
+        $event = $event_builder->get();
         // dd($event->employees);
         return view('pages.event.index', ['events' => $event]);
     }
