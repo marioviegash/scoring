@@ -115,5 +115,9 @@ Route::get('/setting', function(){
     return view('setting');
 });
 
+Route::get('/result', function(){
+    return view('result');
+});
+
 
 

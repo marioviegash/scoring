@@ -8,14 +8,21 @@
 <li class="nav-item start">
     <a href="/event" class="nav-link">
         <i class="icon-calendar"></i>
-        <span class="title">Event</span>
+        <span class="title">Event Management</span>
         <span class="selected"></span>
     </a>
 </li>
 <li class="nav-item start">
     <a href="/document" class="nav-link">
         <i class="fa fa-file-archive-o"></i>
-        <span class="title">Manage Document</span>
+        <span class="title">Document Management</span>
+        <span class="selected"></span>
+    </a>
+</li>
+<li class="nav-item start">
+    <a href="/result" class="nav-link">
+        <i class="fa fa-file-archive-o"></i>
+        <span class="title">Result Management</span>
         <span class="selected"></span>
     </a>
 </li>

@@ -23,211 +23,62 @@
                                 <i class="fa fa-circle"></i>
                             </li>
                             <li>
-                                <span>Manage Document</span>
+                                <span>Document Management</span>
                             </li>
                         </ul>
                     </div>
 
-                    <h1 class="page-title"> {{ Auth::user()->roles->name }}
-                        <small>Manage Document</small>
-                    </h1>
-
-                    {{--View For Super Admin--}}
-                    @if(Auth::user()->roles->id == 1)
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="portlet light bordered">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-file-archive-o font-green"></i>
-                                            <span class="caption-subject font-green bold uppercase">All Document</span>
-                                        </div>
-                                    </div>
-                                    <div class="portlet-body">
-                                        <div class="table-scrollable">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th> # </th>
-                                                        <th> Group Name </th>
-                                                        <th> Document </th>
-                                                        <th> Action </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach($groups as $group)
-                                                        <tr>
-                                                            <td> {{$group->id}} </td>
-                                                            <td> {{$group->name}} </td>
-                                                            <td> {{$group->document == null ? "No File" : $group->document}} </td>
-                                                            <td> @if($group->document == null) No Action @else <a
-                                                                        href="{{$group->document}}">Download</a> @endif </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-
-                    {{--View For Admin Management--}}
-                    @if(Auth::user()->roles->id == 2)
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="portlet light bordered">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-file-archive-o font-green"></i>
-                                            <span class="caption-subject font-green bold uppercase">All Document</span>
-                                        </div>
-                                    </div>
-                                    <div class="portlet-body">
-                                        <div class="table-scrollable">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                <tr>
-                                                    <th> # </th>
-                                                    <th> Group Name </th>
-                                                    <th> Document </th>
-                                                    <th> Action </th>
-                                                    <th> Detail </th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($groups as $group)
-                                                    <tr>
-                                                        <td> {{$group->id}} </td>
-                                                        <td> {{$group->name}} </td>
-                                                        <td> {{$group->document == null ? "No File" : $group->document}} </td>
-                                                        <td> @if($group->files == null) No Action @else
-                                                                <form action="file/download" method="get">
-                                                                    {{csrf_field()}}
-                                                                    <input type="submit" value="Download" />
-                                                                </form>
-                                                            @endif </td>
-                                                        <td> <a href="{{'/forum/'.$group->id}}"> Goto Forum </a> </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-
-                    {{--View For Amoeba--}}
-                    @if(Auth::user()->roles->id == 4)
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="portlet light bordered">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-file-archive-o font-green"></i>
-                                            <span class="caption-subject font-green bold uppercase">My Document</span>
-                                        </div>
-                                    </div>
-                                    <div class="portlet-body">
-                                        <div class="table-scrollable">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                <tr>
-                                                    <th> # </th>
-                                                    <th> Group Name </th>
-                                                    <th> Document </th>
-                                                    <th> Action </th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                @if(!empty($errors->first()))
-                                                    <div class="row col-lg-12">
-                                                        <div class="alert alert-danger">
-                                                            <span>{{ $errors->first() }}</span>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                                @foreach($groups as $group)
-                                                    @if($group->id == Auth::user()->amoeba->group_id)
-                                                        <tr >
-                                                            <td> {{$group->id}} </td>
-                                                            <td> {{$group->name}} </td>
-                                                            <td> {{$group->files()->orderBy('created_at', 'desc')->first() == null ?
-                                                                 "No File" : $group->files()->orderBy('created_at', 'desc')->first()->name}} </td>
-                                                            <td>
-                                                                <form action="file/upload" method="post" enctype="multipart/form-data">
-                                                                    {{csrf_field()}}
-                                                                    <input type="file" name="file_upload" value="Upload"/>
-                                                                    <input type="hidden" value="{{$group->id}}" />
-                                                                    <input type="submit" value="Submit" />
-                                                                </form>
-
-                                                                <form action="file/download" method="get">
-                                                                    {{csrf_field()}}
-                                                                    <input type="submit" value="Download" />
-                                                                </form>
-
-                                                            </td>
-                                                        </tr>
-                                                    @endif
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-
-                    @if(Auth::user()->roles->id == 2 || Auth::user()->roles->id == 4)
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="portlet light bordered">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-comments font-green"></i>
-                                            <span class="caption-subject font-green bold uppercase">Forum</span>
-                                        </div>
-                                    </div>
-                                    {{--Loop Comment--}}
-                                    @foreach($forums as $forum)
-                                        <div class="row portlet light bordered" style="margin: 0;">
-                                            <div class="col-md-12">
-                                                <div class="col-md-6" style="padding: 0;">
-                                                    {{$forum->user->name}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="portlet light bordered">
+                                <div class="portlet-body">
+                                    <div class="mt-element-step">
+                                        <div class="row step-line">
+                                            <div class="col-md-4 mt-step-col first done" style="padding: 0;">
+                                                <div class="mt-step-number bg-white">
+                                                    <span class="fa fa-check"></span>
                                                 </div>
-                                                <div class="col-md-6 text-right" style="padding: 0;">
-                                                    {{Carbon\Carbon::parse($forum->created_at)->diffForHumans(Carbon\Carbon::now())}}
+                                                <div class="mt-step-title uppercase font-grey-cascade"></div>
+                                                <div class="mt-step-content uppercase font-grey-cascade">Document Uploaded</div>
+                                            </div>
+                                            <div class="col-md-4 mt-step-col active" style="padding: 0;">
+                                                <div class="mt-step-number bg-white">
+                                                    <span class="fa fa-close"></span>
                                                 </div>
-                                                <hr>
-                                                {{$forum->comment}}
+                                                <div class="mt-step-title uppercase font-grey-cascade"></div>
+                                                <div class="mt-step-content uppercase font-grey-cascade">Document On Check</div>
+                                            </div>
+                                            <div class="col-md-4 mt-step-col" style="padding: 0;">
+                                                <div class="mt-step-number bg-white">
+                                                    <span class="fa fa-close"></span>
+                                                </div>
+                                                <div class="mt-step-title uppercase font-grey-cascade"></div>
+                                                <div class="mt-step-content uppercase font-grey-cascade">Document Accepted</div>
                                             </div>
                                         </div>
-
-                                    @endforeach
-                                    <div class="row portlet light bordered" style="margin: 0;">
-                                        <form role="form" action="/forum/post" method="post" enctype="multipart/form-data">
-                                            {{csrf_field()}}
-                                            <input type="hidden" value="{{Auth::user()->group->id}}" name="group_id">
-                                            <div class="form-body row">
-                                                <div class="form-group col-md-11" style="padding: 0 0 0 2%; margin: 0;">
-                                                    <input class="form-control spinner" type="text" placeholder="Input Your Comment" name="comment" />
-                                                </div>
-                                                <div class="form-group col-md-1" style="padding: 0; margin: 0;">
-                                                    <button type="submit" class="btn red">Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endif
+
+                        <div class="col-md-12">
+                            <div class="portlet light bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-file-archive-o font-green"></i>
+                                        <span class="caption-subject font-green bold uppercase">Upload Document</span>
+                                    </div>
+                                </div>
+                                <div class="portlet-body text-center">
+                                    <h3>Upload your document here</h3>
+                                    <span class="fa fa-file"></span> File Name
+                                    <br> <br>
+                                    <button type="button" class="btn dark btn-outline">Upload</button>
+                                    <button type="button" class="btn green-meadow">Download</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
