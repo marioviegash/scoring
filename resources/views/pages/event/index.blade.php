@@ -90,9 +90,6 @@
                                                         <a href="/admin/event/{{$event->id}}/update">
                                                             <button type="button" class="btn btn-primary">Edit</button>
                                                         </a>
-                                                        <a href="/admin/event/{{$event->id}}/delete">
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </a>
                                                     </td>
                                                 </tr>
 

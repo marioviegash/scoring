@@ -61,6 +61,7 @@
                                     </div>
                                 @endforeach
                                 {{-- End Loop Comment --}}
+                                @if(Auth::user()->role === Role::$AMA)
                                 <div class="row portlet light bordered" style="margin: 0;">
                                     <form role="form" action="/forum/post" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
@@ -75,6 +76,7 @@
                                         </div>
                                     </form>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>

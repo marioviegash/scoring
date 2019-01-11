@@ -55,25 +55,31 @@
                                                 @else 
                                                     {{$group->file->name}}
                                                 @endif
-                                                <form action="{{url("/admin/document/review/".$group->file->id)}}" method="POST" 
-                                                    style="display:inline-block">
-                                                    {{csrf_field()}}
-                                                    <input type="submit" class="btn btn-default"  value="review"/>
-                                                </form>
+                                                @if(isset($group->file))
+                                                    <form action="{{url("/admin/document/review/".$group->file->id)}}" method="POST" 
+                                                        style="display:inline-block">
+                                                        {{csrf_field()}}
+                                                        <input type="submit" class="btn btn-default"  value="review"/>
+                                                    </form>
+                                                @endif
                                             </h5>
                                         </div>
                                         <div class="col-md-12">
                                             <h5>
                                                 <b>Document result : </b>
-                                                @if(!isset($group->file->approve_at))
-                                                <form action="{{url("/admin/document/approve/".$group->file->id)}}" method="POST" 
-                                                    style="display:inline-block">
-                                                    {{csrf_field()}}
-                                                    <input type="submit" class="btn green-meadow"  value="Approved"/>
-                                                </form>
-                                                <button type="button" class="btn btn-danger">Revision</button>
+                                                @if(isset($group->file))
+                                                    @if(!isset($group->file->approve_at))
+                                                    <form action="{{url("/admin/document/approve/".$group->file->id)}}" method="POST" 
+                                                        style="display:inline-block">
+                                                        {{csrf_field()}}
+                                                        <input type="submit" class="btn green-meadow"  value="Approved"/>
+                                                    </form>
+                                                    <button type="button" class="btn btn-danger">Revision</button>
+                                                    @else 
+                                                        Approved
+                                                    @endif
                                                 @else 
-                                                    Approved
+                                                    Wait Amoebas upload file
                                                 @endif
                                             </h5>
                                         </div>

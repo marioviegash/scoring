@@ -1,4 +1,5 @@
-<li class="nav-item start @if(Route::currentRouteName() === "home") active open @endif">
+<li class="nav-item start @if(Route::currentRouteName() === "home" || 
+Route::currentRouteName() === null) active open @endif">
     <a href="/home" class="nav-link">
     <i class="icon-home"></i>
     <span class="title">Dashboard</span>
