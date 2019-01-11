@@ -111,5 +111,13 @@ Route::get('/admin/result/{id}/detail', function(){
     return view('pages.result.detail');
 });
 
+Route::get('/setting', function(){
+    return view('setting');
+});
+
+Route::get('/result', function(){
+    return view('result');
+});
+
 
 

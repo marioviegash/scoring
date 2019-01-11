@@ -286,83 +286,130 @@
                     {{--View for Amoeba--}}
                     @if(Auth::user()->roles->id == 4)
                         <div class="row">
-                            <div class="col-md-10">
-                                <div class="portlet light bordered">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <h3>Your Team : </h3>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <img src="" alt="No Image"> Team Name
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <h3>Member : </h3>
-                                        </div>
-                                        <div class="col-md-10 portlet light bordered">
-                                            All Member
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3>Event : </h3>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="table-scrollable">
-                                                <table class="table table-hover">
-                                                    <thead>
-                                                        <tr>
-                                                            <th> # </th>
-                                                            <th> Event Name </th>
-                                                            <th> Total Team </th>
-                                                            <th> Status </th>
-                                                            <th> Action </th>
-                                                        </tr>
-                                                    </thead>
-                                                    @foreach ($events as $event)
-                                                        <tbody>
-                                                        <tr>
-                                                            <td> 1 </td>
-                                                            <td> {{$event->name}} </td>
-                                                            <td> {{$event->groups->count('id')}} Team </td>
-                                                            <td> Invited </td>
-                                                            <td> <a href="">View</a> </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    @endforeach
-                                                </table>
+                            <div class="col-md-12">
+                                <div class="portlet light portlet-fit bordered">
+                                    <div class="portlet-body">
+                                        <div class="mt-element-step">
+                                            <div class="row step-line">
+                                                <div class="mt-step-desc">
+                                                    <div class="font-dark bold uppercase">Account Status : </div>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2 mt-step-col first done" style="padding: 0;">
+                                                    <div class="mt-step-number bg-white">
+                                                        <span class="fa fa-check"></span>
+                                                    </div>
+                                                    <div class="mt-step-title uppercase font-grey-cascade"></div>
+                                                    <div class="mt-step-content uppercase font-grey-cascade">Register</div>
+                                                </div>
+                                                <div class="col-md-2 mt-step-col active" style="padding: 0;">
+                                                    <div class="mt-step-number bg-white">
+                                                        <span class="fa fa-close"></span>
+                                                    </div>
+                                                    <div class="mt-step-title uppercase font-grey-cascade"></div>
+                                                    <div class="mt-step-content uppercase font-grey-cascade">Upload Document</div>
+                                                </div>
+                                                <div class="col-md-2 mt-step-col" style="padding: 0;">
+                                                    <div class="mt-step-number bg-white">
+                                                        <span class="fa fa-close"></span>
+                                                    </div>
+                                                    <div class="mt-step-title uppercase font-grey-cascade"></div>
+                                                    <div class="mt-step-content uppercase font-grey-cascade">Document Accepted</div>
+                                                </div>
+                                                <div class="col-md-2 mt-step-col" style="padding: 0;">
+                                                    <div class="mt-step-number bg-white">
+                                                        <span class="fa fa-close"></span>
+                                                    </div>
+                                                    <div class="mt-step-title uppercase font-grey-cascade"></div>
+                                                    <div class="mt-step-content uppercase font-grey-cascade">Scoring</div>
+                                                </div>
+                                                <div class="col-md-2 mt-step-col last" style="padding: 0;">
+                                                    <div class="mt-step-number bg-white">
+                                                        <span class="fa fa-close"></span>
+                                                    </div>
+                                                    <div class="mt-step-title uppercase font-grey-cascade"></div>
+                                                    <div class="mt-step-content uppercase font-grey-cascade">Result Out</div>
+                                                </div>
+                                                <div class="col-md-1"></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3>Status : Upload Document</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="portlet light portlet-fit bordered">
+                                            <div class="portlet-body">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-center">
+                                                        <h3>
+                                                            <b>Your Event</b>
+                                                        </h3>
+                                                    </div>
+                                                    <div class="col-md-2 text-center">
+                                                        <img src="{{ asset('assets/logo/logo_event.png') }}" alt="No Image" width="50">
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <b>Sidang Komite 2</b>
+                                                        <br>
+                                                        Start Date &nbsp; : Tanggal Mulai
+                                                        <br>
+                                                        End Date &nbsp; &nbsp; : Tanggal Berakhir
+                                                    </div>
+                                                    <div class="col-md-12 text-right">
+                                                        <a href="">View Details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <ul id="progressbar" style="list-style-type: none;">
-                                            <li class="active">Register</li>
-                                            <li class="active">Upload Document</li>
-                                            <li class="">On review by AMA</li>
-                                            <li class="">Approved by AMA</li>
-                                        </ul>
+                                    <div class="col-md-12">
+                                        <div class="portlet light portlet-fit bordered">
+                                            <div class="portlet-body">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-center">
+                                                        <h3>
+                                                            <b>Result</b>
+                                                        </h3>
+                                                        {{-- Kalau Belum Dinilai --}}
+                                                        Result is not out yet
+                                                        {{-- Kalau Sudah Dinilai --}}
+                                                        <br>
+                                                        Innovator A
+                                                        <br>
+                                                        86%
+                                                        <br>
+                                                        <a href="">View Details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <div class="portlet light bordered">
-                                    <div class="portlet-title">
-                                        <h3>Result</h3>
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="portlet light portlet-fit bordered">
                                     <div class="portlet-body text-center">
-                                        <h2 style="text-align:center">Innovator A</h2>
-                                        <h3>( 100% )</h3>
+                                        <h3>
+                                            <b>Your Team</b>
+                                        </h3>
+                                        {{-- Logo Team --}}
+                                        <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="30">
+                                        <br>
+                                        Nama Team
+                                        <br>
+                                        <h3>
+                                            <b>Team Member</b>
+                                        </h3>
+                                        {{-- Foreach User --}}
+                                        <span class="fa fa-user"></span> Darwin
+                                        <br>
+                                        {{-- End Foreach --}}
+                                        <br>
+                                        <a href="{{ url('/setting') }}" class="btn green-meadow">Edit Team</a>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     @endif
