@@ -53,38 +53,52 @@
                                         <div class="form-body">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                            <input class="form-control spinner" type="text" placeholder="Input Your Name" value='{{$amoeba->user->name}}' name="name" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Group</label>
-                                                <div class="form-control spinner" >
-                                                        {{$amoeba->group->name}}
-                                                </div>
+                                                <input class="form-control spinner" type="text" placeholder="Input Your Name" value='{{$user->user->name}}' name="name" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Email" value="{{$amoeba->user->email}}" />
+                                                <input class="form-control spinner" type="text" placeholder="Input Your Email" value="{{$user->user->email}}" />
                                             </div>
-                                            <div class="form-group">
-                                                <label>NIK</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your NIK" value="{{$amoeba->NIK}}" name="nik"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>C Level</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your C Level" value="{{$amoeba->c_level}}" name="c_level"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Picture</label>
-                                                <input class="form-control spinner" type="file" placeholder="Input Your Picture" name="picture"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Loker</label>
-                                            <input class="form-control spinner" rows="3" placeholder="Input Your Loker" value="{{$amoeba->loker}}" name="loker"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Work Place</label>
-                                                <textarea class="form-control" rows="3" placeholder="Input Your Work Place" value="{{$amoeba->work_place}}" name="work_place">{{$amoeba->work_place}}</textarea>
-                                            </div>
+                                            @if(Auth::user()->roles->id != 3)
+                                                <div class="form-group">
+                                                    <label>NIK</label>
+                                                    <input class="form-control spinner" type="text" placeholder="Input Your NIK" value="{{$user->NIK}}" name="nik"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Loker</label>
+                                                    <input class="form-control spinner" rows="3" placeholder="Input Your Loker" value="{{$user->loker}}" name="loker"/>
+                                                </div>
+                                            @endif
+                                            @if(Auth::user()->roles->id == 4)
+                                                <div class="form-group">
+                                                    <label>Group</label>
+                                                    <div class="form-control spinner" >
+                                                            {{$user->group->name}}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>C Level</label>
+                                                    <input class="form-control spinner" type="text" placeholder="Input Your C Level" value="{{$user->c_level}}" name="c_level"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Picture</label>
+                                                    <input class="form-control spinner" type="file" placeholder="Input Your Picture" name="picture"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Work Place</label>
+                                                    <textarea class="form-control spinner" rows="3" placeholder="Input Your Work Place" value="{{$user->work_place}}" name="work_place">{{$user->work_place}}</textarea>
+                                                </div>
+                                            @endif
+                                            @if(Auth::user()->roles->id == 2)
+                                                <div class="form-group">
+                                                    <label>Division</label>
+                                                    {{-- Loop Division --}}
+                                                    <select class="form-control spinner" name="division">
+                                                        <option value="">Divisi Khintil</option>
+                                                    </select>
+                                                    {{-- End Loop --}}
+                                                </div>
+                                            @endif
                                         </div>
                                         @if(!empty($errors->first())) 
                                             <div class="row col-lg-12">

@@ -33,12 +33,13 @@
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
-                        
-                        <li>
-                            <a href="{{ url('profile') }}">
-                                <i class="icon-user"></i> My Profile
-                            </a>
-                        </li>
+                        @if(Auth::user()->roles->id != 1)
+                            <li>
+                                <a href="{{ url('profile') }}">
+                                    <i class="icon-user"></i> My Profile
+                                </a>
+                            </li>
+                        @endif
                         <li>
                             <a href="{{ url('logout') }}">
                                 <i class="icon-key"></i> Log Out
