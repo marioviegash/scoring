@@ -53,11 +53,11 @@
                                         <div class="form-body">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Name" value='{{$user->user->name}}' name="name" />
+                                                <input class="form-control spinner" type="text" placeholder="Input Your Name" value='{{$user->user->name}}' name="name" disabled/>
                                             </div>
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Email" value="{{$user->user->email}}" />
+                                                <input class="form-control spinner" type="text" placeholder="Input Your Email" value="{{$user->user->email}}" disabled/>
                                             </div>
                                             @if(Auth::user()->roles->id != 3)
                                                 <div class="form-group">
