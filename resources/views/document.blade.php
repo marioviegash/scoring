@@ -88,21 +88,38 @@
                                     <h3>Upload your document here</h3>
                                     <span class="fa fa-file"></span> {{$amoeba->group->file->name}}
                                     <br> <br>
-                                    <form enctype="multipart/form-data" action="/file/upload" method="post">
+                                    <form enctype="multipart/form-data" action="/file/upload" method="post" class="row">
                                         {{csrf_field()}}
-                                        <input type="file" name="file_upload" />
-                                        <input type="submit" class="btn dark btn-outline" value="Submit"/> 
-                                        <a href="/file/download">
-                                            <button type="button" class="btn green-meadow" >Download</button> </a>
+                                        <br>
+                                        <div class="col-md-5"></div>
+                                        <div class="col-md-4">
+                                            <input type="file" name="file_upload" class="text-center"/>
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-12">
+                                            <br>
+                                            <input type="submit" class="btn dark btn-outline" value="Submit"/>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <br>
+                                            <a href="/file/download"><button type="button" class="btn green-meadow" >Download</button> </a>
+                                        </div>
                                     </form>
                                     @else 
                                     <h3>Upload your document here</h3>
                                     <span class="fa fa-file"></span> Not upload yet
-                                    <form enctype="multipart/form-data" action="/file/upload" method="post">
+                                    <form enctype="multipart/form-data" action="/file/upload" method="post" class="row">
                                         {{csrf_field()}}
-                                        <input type="file" name="file_upload" />
                                         <br>
-                                        <input type="submit" class="btn dark btn-outline" value="Submit"/> 
+                                        <div class="col-md-5"></div>
+                                        <div class="col-md-4">
+                                            <input type="file" name="file_upload" class="text-center"/>
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-12">
+                                            <br>
+                                            <input type="submit" class="btn dark btn-outline" value="Submit"/>
+                                        </div>
                                     </form>
                                     @endif
                                 </div>

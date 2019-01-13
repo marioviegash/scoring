@@ -3,59 +3,7 @@
 @section('title', 'Home - Scoring')
 
 @section('style')
-    <style>
-        /*progressbar*/
-        #progressbar {
-            margin-bottom: 30px;
-            overflow: hidden;
-            /*CSS counters to number the steps*/
-            counter-reset: step;
-        }
-        #progressbar li {
-            text-align: center;
-            list-style-type: none;
-            color: black;
-            text-transform: uppercase;
-            font-size: 9px;
-            width: 25%;
-            float: left;
-            position: relative;
-        }
-        #progressbar li:before {
-            content: counter(step);
-            counter-increment: step;
-            width: 20px;
-            line-height: 20px;
-            display: block;
-            font-size: 10px;
-            color: #333;
-            background: white;
-            border-radius: 100px;
-            margin: 0 auto 5px auto;
-            border: 1px solid black;
-        }
-        /*progressbar connectors*/
-        #progressbar li:after {
-            content: '';
-            width: 100%;
-            height: 2px;
-            background: white;
-            position: absolute;
-            left: -50%;
-            top: 9px;
-            z-index: -1; /*put it behind the numbers*/
-        }
-        #progressbar li:first-child:after {
-            /*connector not needed before the first step*/
-            content: none;
-        }
-        /*marking active/completed steps green*/
-        /*The number of the step and the connector before it = green*/
-        #progressbar li.active:before,  #progressbar li.active:after{
-            background: #27AE60;
-            color: white;
-        }
-    </style>
+
 @endsection
 
 @section('content')
@@ -98,15 +46,24 @@
                                     <div class="portlet-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <h4><b>Event Name &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <h4><b>Event Name</b></h4>
                                                 <br>
-                                                <h4><b>Total Team &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <h4><b>Total Team</b></h4>
                                                 <br>
-                                                <h4><b>Total Judge &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <h4><b>Total Judge</b></h4>
                                                 <br>
-                                                <h4><b>Event Create By </b> &nbsp;: </h4>
+                                                <h4><b>Event Create By</b></h4>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-1">
+                                                <h4>:</h4>
+                                                <br>
+                                                <h4>:</h4>
+                                                <br>
+                                                <h4>:</h4>
+                                                <br>
+                                                <h4>:</h4>
+                                            </div>
+                                            <div class="col-md-5">
                                                 <h4>{{$lastEvent->name}}</h4>
                                                 <br>
                                                 <h4>{{count($lastEvent->groups)}} Teams</h4>
