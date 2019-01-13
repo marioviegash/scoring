@@ -210,11 +210,13 @@
                                                 {{-- Loop Event --}}
                                                     <tbody>
                                                         <tr>
-                                                            <td> 1 </td>
-                                                            <td> Event Name </td>
-                                                            <td> Total Team </td>
-                                                            <td> Invited </td>
-                                                            <td> <a href="">View</a> </td>
+                                                            <td>
+                                                                <img src="{{ asset('assets/logo/logo_event.png') }}" alt="No Image" width="30">
+                                                            </td>
+                                                            <td style="vertical-align: middle"> Event Name </td>
+                                                            <td style="vertical-align: middle"> Total Team </td>
+                                                            <td style="vertical-align: middle"> 5 Judges </td>
+                                                            <td style="vertical-align: middle"> Status </td>
                                                         </tr>
                                                     </tbody>
                                                 {{-- End Loop --}}

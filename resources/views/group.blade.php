@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="portlet-body">
                                         <div class="table-scrollable">
-                                            <table class="table table-hover">
+                                            <table class="table table-hover order-column">
                                                 <thead>
                                                     <tr>
                                                         <th> No. </th>
