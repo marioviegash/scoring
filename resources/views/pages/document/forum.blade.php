@@ -61,7 +61,7 @@
                                     </div>
                                 @endforeach
                                 {{-- End Loop Comment --}}
-                                @if(Auth::user()->role === Role::$AMA)
+                                @if(Auth::user()->role_name === Role::$AMA || Auth::user()->role_name === Role::$AMOEBA )
                                 <div class="row portlet light bordered" style="margin: 0;">
                                     <form role="form" action="/forum/post" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}

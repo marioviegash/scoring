@@ -40,6 +40,11 @@ class HomeController extends Controller
             $group = Group::with('amoebas.user')->where('group_status_id', 2)->get();
             $event = Event::all();
             return view('home', ['groups' => $group, 'events' => $event, 'lastEvent' => $lastEvent]);
+        }else if(Auth::user()->role_name === Role::$AMOEBA){    
+            // $lastEvent = Event::with('groups')->with('juries')->with('creator')->
+            // orderBy('created_at', 'desc')->first();
+            // dd($lastEvent->creator);
+            return view('home', ['user' => Auth::user(), 'amoeba' => Auth::user()->amoeba]);
         }
         // dd(Route::currentRouteName());
         $group = Group::with('amoebas.user')->where('group_status_id', 2)->get();

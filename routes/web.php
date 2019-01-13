@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::group(['prefix' => '/admin'], function(){
             Route::group(['prefix'=> '/user'], function(){
-                Route::get('/', 'UserController@showAll');
+                Route::get('/', 'UserController@showAll')->name('admin_user');
                 Route::get('/add', 'UserController@showInsert');
                 Route::post('/add', 'UserController@insert');
                 
@@ -89,7 +89,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/group', 'GroupController@index')->name('group');
     Route::post('/group/store', 'GroupController@store');
 
-    Route::get('/document', 'DocumentController@index');
+    Route::get('/document', 'DocumentController@index')->name('document');
     Route::get('/forum/{id}', 'ForumController@index');
     Route::post('forum/post', 'ForumController@post');
 
@@ -111,9 +111,7 @@ Route::get('/admin/result/{id}/detail', function(){
     return view('pages.result.detail');
 });
 
-Route::get('/setting', function(){
-    return view('setting');
-});
+Route::get('/setting', 'SettingController@index')->name('setting');
 
 Route::get('/result', function(){
     return view('result');

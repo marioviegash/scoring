@@ -302,28 +302,40 @@
                                                     <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                     <div class="mt-step-content uppercase font-grey-cascade">Register</div>
                                                 </div>
-                                                <div class="col-md-2 mt-step-col active" style="padding: 0;">
+                                                <div class="col-md-2 mt-step-col 
+                                                @if($amoeba->progress_status > 1) done 
+                                                @elseif($amoeba->progress_status === 1) active 
+                                                @endif " style="padding: 0;">
                                                     <div class="mt-step-number bg-white">
                                                         <span class="fa fa-close"></span>
                                                     </div>
                                                     <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                     <div class="mt-step-content uppercase font-grey-cascade">Upload Document</div>
                                                 </div>
-                                                <div class="col-md-2 mt-step-col" style="padding: 0;">
+                                                <div class="col-md-2 mt-step-col
+                                                @if($amoeba->progress_status > 2) done 
+                                                @elseif($amoeba->progress_status === 2) active 
+                                                @endif" style="padding: 0;">
                                                     <div class="mt-step-number bg-white">
                                                         <span class="fa fa-close"></span>
                                                     </div>
                                                     <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                     <div class="mt-step-content uppercase font-grey-cascade">Document Accepted</div>
                                                 </div>
-                                                <div class="col-md-2 mt-step-col" style="padding: 0;">
+                                                <div class="col-md-2 mt-step-col
+                                                @if($amoeba->progress_status > 3) done 
+                                                @elseif($amoeba->progress_status === 3) active 
+                                                @endif" style="padding: 0;">
                                                     <div class="mt-step-number bg-white">
                                                         <span class="fa fa-close"></span>
                                                     </div>
                                                     <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                     <div class="mt-step-content uppercase font-grey-cascade">Scoring</div>
                                                 </div>
-                                                <div class="col-md-2 mt-step-col last" style="padding: 0;">
+                                                <div class="col-md-2 mt-step-col last
+                                                @if($amoeba->progress_status > 4) done 
+                                                @elseif($amoeba->progress_status === 4) active 
+                                                @endif" style="padding: 0;">
                                                     <div class="mt-step-number bg-white">
                                                         <span class="fa fa-close"></span>
                                                     </div>
@@ -351,11 +363,11 @@
                                                         <img src="{{ asset('assets/logo/logo_event.png') }}" alt="No Image" width="50">
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <b>Sidang Komite 2</b>
+                                                        <b>{{$amoeba->group->event->name}}</b>
                                                         <br>
-                                                        Start Date &nbsp; : Tanggal Mulai
+                                                        Start Date &nbsp; : {{$amoeba->group->event->start_date}}
                                                         <br>
-                                                        End Date &nbsp; &nbsp; : Tanggal Berakhir
+                                                        End Date &nbsp; &nbsp; : {{$amoeba->group->event->end_date}}
                                                     </div>
                                                     <div class="col-md-12 text-right">
                                                         <a href="">View Details</a>
@@ -397,14 +409,16 @@
                                         {{-- Logo Team --}}
                                         <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="30">
                                         <br>
-                                        Nama Team
+                                        {{$amoeba->group->name}}
                                         <br>
                                         <h3>
                                             <b>Team Member</b>
                                         </h3>
                                         {{-- Foreach User --}}
-                                        <span class="fa fa-user"></span> Darwin
+                                        @foreach($amoeba->group->amoebas as $member)
+                                        <span class="fa fa-user"></span> {{$member->user->name}}
                                         <br>
+                                        @endforeach
                                         {{-- End Foreach --}}
                                         <br>
                                         <a href="{{ url('/setting') }}" class="btn green-meadow">Edit Team</a>

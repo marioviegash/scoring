@@ -83,4 +83,5 @@ class AmoebaController extends Controller
         return redirect('/profile');
     }
 
+
 }

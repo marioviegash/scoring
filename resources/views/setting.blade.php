@@ -144,24 +144,24 @@
                                                         </div>
                                                     </div>
                                                     <br>
+                                                    @foreach($members as $member)
                                                     <div class="row portlet light bordered">
-                                                        {{-- Loop Member --}}
-                                                        <div class="col-md-2 text-center">
-                                                            {{-- Photo Member --}}
-                                                            <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="50">
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <h5>
-                                                                <b>Username</b>
-                                                            </h5>
-                                                            Position
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <br>
-                                                            <button type="button" class="btn green-meadow">Details</button>
-                                                        </div>
-                                                        {{-- End Loop --}}
+                                                            <div class="col-md-2 text-center">
+                                                                {{-- Photo Member --}}
+                                                                <img src="{{ asset($member->picture) }}" alt="" width="50">
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <h5>
+                                                                <b>{{$member->user->name}}</b>
+                                                                </h5>
+                                                                {{$member->user->c_level}}
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <br>
+                                                                <button type="button" class="btn green-meadow">Details</button>
+                                                            </div>
                                                     </div>
+                                                    @endforeach
                                                     <div class="row">
                                                         <div class="col-md-12 text-right">
                                                             <a href="#member" data-toggle="modal">

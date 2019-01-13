@@ -25,12 +25,20 @@ class FileController extends Controller
         $fullpath = $destinationPath.'/'.$filename;
         // $file = $request->file('');
         
-        $newFile = new File();
-        $newFile->name =  $file->getClientOriginalName();
-        $newFile->path = $fullpath;
-        $newFile->group_id = Auth::user()->group->id;
-        $newFile->saved_by = Auth::id();
-        $newFile->save();
+        $group_id = Auth::user()->group->id;
+        $file1 = File::where('group_id', $group_id)->orderBy('created_at', 'desc')->first();
+        if($file === null){
+            $newFile = new File();
+            $newFile->name =  $file->getClientOriginalName();
+            $newFile->path = $fullpath;
+            $newFile->group_id = Auth::user()->group->id;
+            $newFile->saved_by = Auth::id();
+            $newFile->save();
+        }else{
+            $file1->name =  $file->getClientOriginalName();
+            $file1->path = $fullpath;
+            $file1->save();
+        }
         Storage::putFileAs($destinationPath, $file, $filename);
         // $file->save($destinationPath.'/'.$filename);
 
@@ -44,5 +52,8 @@ class FileController extends Controller
 // dd($file);
         return Storage::download($file->path, $file->name);
     }
+
+
+    
 
 }

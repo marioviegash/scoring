@@ -16,4 +16,20 @@ class Amoeba extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function getProgressStatusAttribute(){
+        
+        $status = 1;
+        if($this->group->file === null){
+            return $status;
+        }
+        $status = 2;
+        if($this->group->file->approve_at === null){
+            return $status;
+        }
+        $status = 3;
+        return $status;
+
+
+    }
+
 }

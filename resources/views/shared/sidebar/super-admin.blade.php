@@ -20,7 +20,7 @@ Route::currentRouteName() === null) active open @endif">
         <span class="selected"></span>
     </a>
 </li>
-<li class="nav-item start">
+<li class="nav-item start @if(Route::currentRouteName() === "admin_user") active open @endif">
     <a href="/admin/user" class="nav-link">
         <i class="icon-user"></i>
         <span class="title">Role Management</span>

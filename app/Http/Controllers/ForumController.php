@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Forum;
+use App\Model\Role;
 use Auth;
 use App\Model\Group;
 
@@ -27,6 +28,7 @@ class ForumController extends Controller
 
     public function index($group_id){
         // dd($group_id);
+        // dd(Auth::user()->role);
         $group = Group::find($group_id);
         $forums = Forum::with('user')->where('group_id', $group_id)->get();
         return view('pages.document.forum',  ['forums' => $forums, 'group' => $group]);

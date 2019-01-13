@@ -34,14 +34,20 @@
                                 <div class="portlet-body">
                                     <div class="mt-element-step">
                                         <div class="row step-line">
-                                            <div class="col-md-4 mt-step-col first done" style="padding: 0;">
+                                            <div class="col-md-4 mt-step-col first 
+                                                @if($amoeba->group->file_status > 0) done 
+                                                @elseif($amoeba->group->file_status === 0) active 
+                                                @endif" style="padding: 0;">
                                                 <div class="mt-step-number bg-white">
                                                     <span class="fa fa-check"></span>
                                                 </div>
                                                 <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                 <div class="mt-step-content uppercase font-grey-cascade">Document Uploaded</div>
                                             </div>
-                                            <div class="col-md-4 mt-step-col active" style="padding: 0;">
+                                            <div class="col-md-4 mt-step-col 
+                                                @if($amoeba->group->file_status > 1) done 
+                                                @elseif($amoeba->group->file_status === 1) active 
+                                                @endif" style="padding: 0;">
                                                 <div class="mt-step-number bg-white">
                                                     <span class="fa fa-close"></span>
                                                 </div>
@@ -49,7 +55,10 @@
                                                 <div class="mt-step-content uppercase font-grey-cascade">Document On Check</div>
                                             </div>
                                             <div class="col-md-4 mt-step-col" style="padding: 0;">
-                                                <div class="mt-step-number bg-white">
+                                                <div class="mt-step-number bg-white
+                                                @if($amoeba->group->file_status > 2) done 
+                                                @elseif($amoeba->group->file_status === 2) active 
+                                                @endif">
                                                     <span class="fa fa-close"></span>
                                                 </div>
                                                 <div class="mt-step-title uppercase font-grey-cascade"></div>
@@ -70,11 +79,26 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body text-center">
+                                    @if($amoeba->group->file !== null)
                                     <h3>Upload your document here</h3>
-                                    <span class="fa fa-file"></span> File Name
+                                    <span class="fa fa-file"></span> {{$amoeba->group->file->name}}
                                     <br> <br>
-                                    <button type="button" class="btn dark btn-outline">Upload</button>
-                                    <button type="button" class="btn green-meadow">Download</button>
+                                    <form enctype="multipart/form-data" action="/file/upload" method="post">
+                                        {{csrf_field()}}
+                                        <input type="file" name="file_upload" />
+                                        <input type="submit" class="btn dark btn-outline" value="Submit"/> 
+                                        <a href="/file/download">
+                                            <button type="button" class="btn green-meadow" >Download</button> </a>
+                                    </form>
+                                    @else 
+                                    <h3>Upload your document here</h3>
+                                    <span class="fa fa-file"></span> Not upload yet
+                                    <form enctype="multipart/form-data" action="/file/upload" method="post">
+                                        {{csrf_field()}}
+                                        <input type="file" name="file_upload" />
+                                        <input type="submit" class="btn dark btn-outline" value="Submit"/> 
+                                    </form>
+                                    @endif
                                 </div>
                             </div>
                         </div>

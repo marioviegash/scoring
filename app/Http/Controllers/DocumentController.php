@@ -24,7 +24,8 @@ class DocumentController extends Controller
         {
             $forums = Forum::with('user')->where('group_id', Auth::user()->group->id)->get();
         }
-        return view('document', ['groups' => $group, 'forums' => $forums]);
+        // dd(Auth::user()->amoeba->group->file);
+        return view('document', ['groups' => $group, 'forums' => $forums, 'amoeba'=>Auth::user()->amoeba]);
     }
 
     public function showAll(Request $request){
