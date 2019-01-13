@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Model\Amoeba;
+use Role;
 class AmoebaController extends Controller
 {
     //
@@ -45,9 +46,13 @@ class AmoebaController extends Controller
     }
 
     public function showProfile(){
-        if(Auth::user()->amoeba === null || Auth::user()->group()->first()->approve_at === null){
-            return redirect('verification-group');
+        if(Auth::user()->role_name === Role::$SUPER_ADMIN){
+            return redirect('/');
         }
+        if(Auth::user()->role_name === Role::$AMOEBA)
+            if(Auth::user()->amoeba === null || Auth::user()->group()->first()->approve_at === null){
+                return redirect('verification-group');
+            }
         $amoeba = Amoeba::where('user_id', Auth::id())->with('group')->with('user')->first();
         // dd($amoeba);
         return view('profile', ['amoeba'=> $amoeba]);
@@ -81,6 +86,12 @@ class AmoebaController extends Controller
         $amoeba->save();
 
         return redirect('/profile');
+    }
+
+    public function myEvent(){
+        
+
+        return view('event', ['Amoeba'=> Auth::user()->amoeba, 'event'=>Auth::user()->amoeba->group->event]);
     }
 
 

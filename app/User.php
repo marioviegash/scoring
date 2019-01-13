@@ -44,6 +44,14 @@ class User extends Authenticatable
         return $this->hasOne('App\Model\Jury');
     }
 
+    public function notifications(){
+        return $this->hasMany('App\Model\Notification');
+    }
+
+    public function admin_amoeba(){
+        return $this->hasOne('App\Model\AdminAmoeba');
+    }
+
     public function headGroup(){
         // dd($this->hasOne('App\Model\Group', 'creator_id', 'id')->get());
         return $this->hasOne('App\Model\Group', 'creator_id', 'id');
