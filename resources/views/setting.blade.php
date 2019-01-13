@@ -50,13 +50,14 @@
                                             </ul>
                                             <div class="tab-content portlet light bordered">
                                                 <div class="tab-pane fade active in" id="tab_1_1">
-                                                    <form role="form" action="" method="post" enctype="multipart/form-data">
+                                                    <form role="form" action="/setting/profile/update" 
+                                                        method="post" enctype="multipart/form-data">
                                                         {{csrf_field()}}
                                                         <div class="form-body">
                                                             <div class="form-group">
                                                                 <label>Profile Picture</label>
                                                                 <br>
-                                                                <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="100">
+                                                                <img src="{{ asset($amoeba->picture) }}" alt="" width="100">
                                                                 <input class="form-control spinner" type="file" placeholder="Input Your Picture"
                                                                        name="picture"/>
                                                             </div>
@@ -65,41 +66,34 @@
                                                             <div class="form-group">
                                                                 <label>Name</label>
                                                                 <input class="form-control spinner" type="text" placeholder="Input Your Name"
-                                                                       name="name"/>
+                                                            name="name" value="{{$amoeba->user->name}}"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-body">
                                                             <div class="form-group">
                                                                 <label>NIK</label>
                                                                 <input class="form-control spinner" type="text" placeholder="Input Your NIK"
-                                                                       name="nik"/>
+                                                                       name="nik" value="{{$amoeba->NIK}}"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-body">
                                                             <div class="form-group">
                                                                 <label>C Level</label>
                                                                 <input class="form-control spinner" type="text" placeholder="Input Your C Level"
-                                                                       name="c_level"/>
+                                                                       name="c_level"  value="{{$amoeba->c_level}}"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-body">
                                                             <div class="form-group">
                                                                 <label>loker</label>
                                                                 <input class="form-control spinner" type="text" placeholder="Input Your Loker"
-                                                                       name="loker"/>
+                                                                       name="loker" value="{{$amoeba->loker}}"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-body">
                                                             <div class="form-group">
                                                                 <label>Work Place</label>
-                                                                <textarea class="form-control spinner" type="text" placeholder="Input Your Work Place" name="work_place"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-body">
-                                                            <div class="form-group">
-                                                                <label>Batch</label>
-                                                                <input class="form-control spinner" type="text" placeholder="Input Your Batch"
-                                                                       name="batch"/>
+                                                                <textarea class="form-control spinner" type="text" placeholder="Input Your Work Place" name="work_place">{{$amoeba->loker}}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-actions text-center">
@@ -109,28 +103,35 @@
                                                     </form>
                                                 </div>
                                                 <div class="tab-pane fade" id="tab_1_2">
-                                                    <form role="form" action="" method="post" enctype="multipart/form-data">
+                                                    <form role="form" action="/setting/group/update" method="post" enctype="multipart/form-data">
                                                         {{csrf_field()}}
                                                         <div class="form-body">
                                                             <div class="form-group">
                                                                 <label>Team Logo</label>
                                                                 <br>
-                                                                <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="100">
+                                                                <img src="{{ asset($group->logo) }}" alt="" width="100">
                                                                 <input class="form-control spinner" type="file" placeholder="Input Team Logo"
-                                                                       name="picture"/>
+                                                                       name="logo"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-body">
                                                             <div class="form-group">
                                                                 <label>Team Name</label>
                                                                 <input class="form-control spinner" type="text" placeholder="Input Team Name"
-                                                                       name="name"/>
+                                                                       name="name" value="{{$group->name}}"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-body">
                                                             <div class="form-group">
                                                                 <label>Team Description</label>
-                                                                <textarea class="form-control spinner" name="description" placeholder="Input Team Description"></textarea>
+                                                                <textarea class="form-control spinner" name="description" placeholder="Input Team Description">{{$group->description}}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-body">
+                                                            <div class="form-group">
+                                                                <label>Batch</label>
+                                                                <input class="form-control spinner" type="text" placeholder="Input Your Batch"
+                                                                       name="batch" value="{{$group->batch_id}}"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-actions text-center">
@@ -201,7 +202,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                         <h4 class="modal-title">Add New Member</h4>
                     </div>
-                    <form role="form" action="" method="post" enctype="multipart/form-data">
+                    <form role="form" action="/setting/member/add" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                             {{csrf_field()}}
                             <div class="form-body">

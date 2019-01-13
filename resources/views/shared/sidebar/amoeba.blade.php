@@ -7,7 +7,7 @@ Route::currentRouteName() === null) active open @endif">
     </a>
 </li>
 <li class="nav-item start @if(Route::currentRouteName() === "event") active open @endif">
-    <a href="/admin/event" class="nav-link">
+    <a href="/myevent" class="nav-link">
         <i class="icon-calendar"></i>
         <span class="title">Event Management</span>
         <span class="selected"></span>

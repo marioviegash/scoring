@@ -58,11 +58,13 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($users as $user)
-                                                        @if($user->roles->id == 2)
+                                                        @if($user->roles->id == 4)
                                                             <tr>
                                                                 <td> {{$user->id}} </td>
                                                                 <td> <span class="fa fa-user"></span> {{$user->name}} </td>
-                                                                <td> {{$user->amoeba->c_level}} </td>
+                                                                <td> {{isset($user->admin_amoeba) ? 
+                                                                        $user->admin_amoeba->division->name :
+                                                                        ""}} </td>
                                                                 <td>
                                                                     <a href="#confirm_{{$user->id}}" class="btn btn-danger" data-toggle="modal">Remove</a>
                                                                 </td>

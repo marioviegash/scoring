@@ -20,6 +20,11 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/home', 'HomeController@index')->name('home');
 
         Route::group(['prefix' => '/admin'], function(){
+
+            Route::post('/ama/add', 'AdminAmoebaController@add');
+            Route::post('/jury/add', 'JuryController@add');
+            
+
             Route::group(['prefix'=> '/user'], function(){
                 Route::get('/', 'UserController@showAll')->name('admin_user');
                 Route::get('/{role}/add', 'UserController@showInsert');
@@ -61,11 +66,12 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/verification-friend', 'VerificationController@viewFriend');
         
         Route::get('/verification-success', 'VerificationController@viewSuccess');
-
-        Route::get('/profile', 'AmoebaController@showProfile');
-        Route::post('/profile', 'AmoebaController@saveProfile');        
+      
 
     });
+    
+    Route::get('/profile', 'AmoebaController@showProfile');
+    Route::post('/profile', 'AmoebaController@saveProfile');  
 
     Route::get('/admin/document', 'DocumentController@showAll')->name('admin_document');
 
@@ -75,7 +81,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/admin/document/{id}/forum', 'ForumController@index')->name('admin_document');
     
-    Route::group(['middleware' => 'amoebaverified'], function(){
+    Route::group(['middleware' => ['amoebaverified', 'juryverified', 'amaverified']]   , function(){
         Route::get('/', 'HomeController@index');
         Route::get('/home', 'HomeController@index')->name('home');
     });
@@ -107,7 +113,12 @@ Route::get('/admin/result/{id}/detail', function(){
     return view('pages.result.detail');
 });
 
+Route::get('/myevent', 'AmoebaController@myEvent')->name('event');
+
 Route::get('/setting', 'SettingController@index')->name('setting');
+Route::post('/setting/profile/update', 'SettingController@updateProfile');
+Route::post('/setting/group/update', 'SettingController@updateGroup');
+Route::post('/setting/member/add', 'SettingController@addMember');
 
 Route::get('/result', function(){
     return view('result');
