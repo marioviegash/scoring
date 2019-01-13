@@ -151,22 +151,31 @@
                                         {{-- Loop --}}
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <h4><b>Event Name &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <h4><b>Event Name</b></h4>
                                                 <br>
-                                                <h4><b>Total Team &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <h4><b>Total Team</b></h4>
                                                 <br>
-                                                <h4><b>Total Judge &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b> : </h4>
+                                                <h4><b>Total Judge</b></h4>
                                                 <br>
-                                                <h4><b>Event Create By </b> &nbsp;: </h4>
+                                                <h4><b>Event Create By</b></h4>
                                             </div>
-                                            <div class="col-md-6">
-                                                <h4>Event Pantek</h4>
+                                            <div class="col-md-1">
+                                                <h4>:</h4>
                                                 <br>
-                                                <h4>10 Teams</h4>
+                                                <h4>:</h4>
                                                 <br>
-                                                <h4>5 Judges</h4>
+                                                <h4>:</h4>
                                                 <br>
-                                                <h4>Pembuat lnaciau</h4>
+                                                <h4>:</h4>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <h4>Event Name</h4>
+                                                <br>
+                                                <h4>Total Teams</h4>
+                                                <br>
+                                                <h4>Total Judges</h4>
+                                                <br>
+                                                <h4>Created Name</h4>
                                             </div>
                                             <div class="col-md-4 text-center">
                                                 <h2>Event Status</h2>
@@ -198,42 +207,19 @@
                                     <div class="portlet-body">
                                         <div class="table-scrollable">
                                             <table class="table table-hover">
-                                                <thead>
-                                                <tr>
-                                                    <th> # </th>
-                                                    <th> Event Name </th>
-                                                    <th> Total Team </th>
-                                                    <th> Status </th>
-                                                    <th> Action </th>
-                                                </tr>
-                                                </thead>
-                                                @foreach ($events as $event)
+                                                {{-- Loop Event --}}
                                                     <tbody>
-                                                    <tr>
-                                                        <td> 1 </td>
-                                                        <td> {{$event->name}} </td>
-                                                        <td> {{$event->groups->count('id')}} Team </td>
-                                                        <td> Invited </td>
-                                                        <td> <a href="">View</a> </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td> 1 </td>
+                                                            <td> Event Name </td>
+                                                            <td> Total Team </td>
+                                                            <td> Invited </td>
+                                                            <td> <a href="">View</a> </td>
+                                                        </tr>
                                                     </tbody>
-                                                @endforeach
+                                                {{-- End Loop --}}
                                             </table>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="portlet light bordered">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="icon-calendar font-green"></i>
-                                            <span class="caption-subject font-green bold uppercase">Event History</span>
-                                        </div>
-                                    </div>
-                                    <div class="portlet-body">
-                                        No Event History
                                     </div>
                                 </div>
                             </div>
