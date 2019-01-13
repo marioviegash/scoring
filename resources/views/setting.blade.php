@@ -70,16 +70,29 @@
                                                         </div>
                                                         <div class="form-body">
                                                             <div class="form-group">
-                                                                <label>Position</label>
-                                                                <input class="form-control spinner" type="text" placeholder="Input Your Position"
-                                                                       name="position"/>
+                                                                <label>NIK</label>
+                                                                <input class="form-control spinner" type="text" placeholder="Input Your NIK"
+                                                                       name="nik"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-body">
                                                             <div class="form-group">
-                                                                <label>Location</label>
-                                                                <input class="form-control spinner" type="text" placeholder="Input Your Location"
-                                                                       name="location"/>
+                                                                <label>C Level</label>
+                                                                <input class="form-control spinner" type="text" placeholder="Input Your C Level"
+                                                                       name="c_level"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-body">
+                                                            <div class="form-group">
+                                                                <label>loker</label>
+                                                                <input class="form-control spinner" type="text" placeholder="Input Your Loker"
+                                                                       name="loker"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-body">
+                                                            <div class="form-group">
+                                                                <label>Work Place</label>
+                                                                <textarea class="form-control spinner" type="text" placeholder="Input Your Work Place" name="work_place"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-body">
@@ -193,37 +206,14 @@
                             {{csrf_field()}}
                             <div class="form-body">
                                 <div class="form-group">
-                                    <label>Profile Picture</label>
-                                    <input class="form-control spinner" type="file" placeholder="Input Member Picture"
-                                           name="picture"/>
-                                </div>
-                            </div>
-                            <div class="form-body">
-                                <div class="form-group">
                                     <label>Name</label>
                                     <input class="form-control spinner" type="text" placeholder="Input Member Name"
                                            name="name"/>
                                 </div>
-                            </div>
-                            <div class="form-body">
                                 <div class="form-group">
-                                    <label>Position</label>
-                                    <input class="form-control spinner" type="text" placeholder="Input Member Position"
-                                           name="position"/>
-                                </div>
-                            </div>
-                            <div class="form-body">
-                                <div class="form-group">
-                                    <label>Location</label>
-                                    <input class="form-control spinner" type="text" placeholder="Input Member Location"
-                                           name="location"/>
-                                </div>
-                            </div>
-                            <div class="form-body">
-                                <div class="form-group">
-                                    <label>Batch</label>
-                                    <input class="form-control spinner" type="text" placeholder="Input Member Batch"
-                                           name="batch"/>
+                                    <label>Email</label>
+                                    <input class="form-control spinner" type="text" placeholder="Input Member Email"
+                                           name="email"/>
                                 </div>
                             </div>
                         </div>

@@ -77,6 +77,11 @@
                                         <i class="fa fa-file-archive-o font-green"></i>
                                         <span class="caption-subject font-green bold uppercase">Upload Document</span>
                                     </div>
+                                    <div class="actions">
+                                        <div class="btn-group">
+                                            <a class="btn dark btn-outline btn-circle btn-sm" href=""> View Forum </a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="portlet-body text-center">
                                     @if($amoeba->group->file !== null)
@@ -96,6 +101,7 @@
                                     <form enctype="multipart/form-data" action="/file/upload" method="post">
                                         {{csrf_field()}}
                                         <input type="file" name="file_upload" />
+                                        <br>
                                         <input type="submit" class="btn dark btn-outline" value="Submit"/> 
                                     </form>
                                     @endif

@@ -22,11 +22,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::group(['prefix' => '/admin'], function(){
             Route::group(['prefix'=> '/user'], function(){
                 Route::get('/', 'UserController@showAll')->name('admin_user');
-                Route::get('/add', 'UserController@showInsert');
+                Route::get('/{role}/add', 'UserController@showInsert');
                 Route::post('/add', 'UserController@insert');
-                
-                Route::get('/{id}/update', 'UserController@showUpdate');
-                Route::post('/{id}/update', 'UserController@update');
+
+                Route::post('/{id}/delete', 'UserController@update');
             });
         });
     
@@ -75,9 +74,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/admin/document/approve/{id}', 'DocumentController@approveDocument');
 
     Route::get('/admin/document/{id}/forum', 'ForumController@index')->name('admin_document');
-
-
-
     
     Route::group(['middleware' => 'amoebaverified'], function(){
         Route::get('/', 'HomeController@index');
