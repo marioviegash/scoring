@@ -3,7 +3,11 @@
 @section('title', 'Home - Scoring')
 
 @section('style')
-
+    <style>
+        a:hover{
+            text-decoration: none;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -82,6 +86,20 @@
                                                     <div class="tab-pane fade active in text-justify" id="tab_1_1">
                                                         Orbits adalah sistem back-office terintegrasi yang mampu menangani jutaan transaksi, khususnya transaksi di jalan tol. Orbits juga menyediakan layanan B2B dan B2C bagi penyedia layanan jalan tol dan pengguna jalan tol.
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-element-step">
+                                            <div class="row step-line">
+                                                <div class="col-md-6 mt-step-col error" style="padding: 0;">
+                                                    <a href="{{ url('/scoring') }}" class="mt-step-number">
+                                                        <
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-6 mt-step-col done" style="padding: 0;">
+                                                    <a href="{{ url('/scoring/business') }}" class="mt-step-number bg-white">
+                                                        >
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

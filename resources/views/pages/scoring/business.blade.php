@@ -3,7 +3,49 @@
 @section('title', 'Home - Scoring')
 
 @section('style')
+    <style>
+        a:hover{
+            text-decoration: none;
+        }
 
+        .slidecontainer {
+            width: 95%;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px !important;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: black;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: black;
+            cursor: pointer;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -68,20 +110,59 @@
                         <div class="col-md-12 text-center">
                             <form action="{{ url('/scoring/people') }}">
                                 <div class="portlet light bordered">
-                                    <div class="portlet-body">
+                                    <div class="portlet-body form">
                                         <h2 class="text-left"><b>Business Performance</b></h2>
-                                        <h4>
+                                        <h3>
                                             Total Score 360 Derajat OMS: 3.01
                                             <br>
                                             dengan rata-rata Batch 7 adalah 3.23
-                                        </h4>
-                                        <br>
-                                        <br>
-                                        <h4>
+                                        </h3>
+                                        <img src="{{ url('img/upload/group/graph-orbits.png') }}" alt="">
+                                        <h3>
                                             Saya yakin bisnis founder memiliki
                                             <br>
                                             prospek yang bagus di masa depan
-                                        </h4>
+                                        </h3>
+                                        <div class="row">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-8 portlet light bordered">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-3 text-left">
+                                                    Strongly <br>
+                                                    Disagree
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-4 text-left">
+                                                    Strongly <br>
+                                                    Agree
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <div class="slidecontainer">
+                                                        <input type="range" min="1" max="5" value="1" class="slider" id="myRange">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <p class="form-control"><span id="demo"></span></p>
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-element-step">
+                                    <div class="row step-line">
+                                        <div class="col-md-6 mt-step-col error" style="padding: 0;">
+                                            <a href="{{ url('/scoring/description') }}" class="mt-step-number">
+                                                <
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 mt-step-col done" style="padding: 0;">
+                                            <a href="{{ url('/scoring/people') }}" class="mt-step-number bg-white">
+                                                >
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -97,5 +178,13 @@
 @endsection
 
 @section('script')
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
 
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    </script>
 @endsection
