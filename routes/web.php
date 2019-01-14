@@ -124,5 +124,20 @@ Route::get('/result', function(){
     return view('result');
 });
 
+Route::get('/scoring', function(){
+    return view('pages.scoring.index');
+});
+
+Route::get('/scoring/description', function(){
+    return view('pages.scoring.description');
+});
+
+Route::get('/scoring/business', function(){
+    return view('pages.scoring.business');
+});
+
+Route::get('/scoring/people', function(){
+    return view('pages.scoring.people');
+});
 
 

@@ -46,7 +46,7 @@
                                         <form action="" method="" class="row">
                                             <div class="col-md-2">
                                                 <select name="event" class="form-control spinner">
-                                                    <option value="80jt">Event Khintil</option>
+                                                    <option value="80jt">Event 1</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-2" style="padding: 0;">
@@ -74,7 +74,7 @@
                                             <tbody>
                                             <tr>
                                                 <td> 1 </td>
-                                                <td> Group Pantek </td>
+                                                <td> Group 1 </td>
                                                 <td>
                                                     <a href="{{ url("/admin/result/{id}/detail") }}">
                                                         <button type="button" class="btn green">View</button>
