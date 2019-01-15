@@ -36,7 +36,7 @@ var CanvasRenderer = function(el, options) {
 
 	var ctx = canvas.getContext('2d');
 
-	canvas.width = canvas.height = options.size;
+	canvas.width = canvas.height = "100px";
 
 	// canvas on retina devices
 	var scaleBy = 1;

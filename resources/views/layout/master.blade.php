@@ -9,6 +9,7 @@
     <link href="{{ asset('template_admin/assets/global/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('template_admin/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
+    @yield('style-plugin')
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="{{ asset('template_admin/assets/global/css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
     <link href="{{ asset('template_admin/assets/global/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
@@ -37,6 +38,7 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script src="{{ asset('template_admin/assets/global/plugins/moment.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('template_admin/assets/global/plugins/morris/morris.min.js') }}" type="text/javascript"></script>
+@yield('script-plugin')
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="{{ asset('template_admin/assets/global/scripts/app.min.js') }}" type="text/javascript"></script>

@@ -198,13 +198,14 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="portlet light bordered">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="icon-calendar font-green"></i>
-                                            <span class="caption-subject font-green bold uppercase">Event</span>
-                                        </div>
-                                    </div>
                                     <div class="portlet-body">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <h3>
+                                                    <b>Events</b>
+                                                </h3>
+                                            </div>
+                                        </div>
                                         <div class="table-scrollable">
                                             <table class="table table-hover">
                                                 {{-- Loop Event --}}
