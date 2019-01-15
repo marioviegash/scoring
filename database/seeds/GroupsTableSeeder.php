@@ -14,6 +14,7 @@ class GroupsTableSeeder extends Seeder
     {
         DB::table('groups')->insert([
             'id'      => 1,
+            'batch_id' => 'asdf',
             'name'          => 'Testing',
             'description'   => 'testing',
             'logo'          => 'img/upload/group/5bfa5772c10c3kibu.png',

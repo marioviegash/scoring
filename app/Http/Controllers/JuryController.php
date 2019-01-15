@@ -7,6 +7,7 @@ use App\Model\Jury;
 use App\User;
 use App\Model\Group;
 use Mail;
+use Auth;
 class JuryController extends Controller
 {
     //
@@ -38,5 +39,18 @@ class JuryController extends Controller
         });
 
         return redirect('admin\user');
+    }
+    public function saveProfile(Request $request){
+        $request->validate([
+            'nik' => 'required|unique:amoebas|digits:6',
+            'loker' => 'required'
+        ]); 
+        
+        $jury = Auth::user()->jury;
+        $jury->NIK = $request->nik;
+        $jury->loker = $request->loker;
+        $jury->save();
+
+        return redirect('/profile');
     }
 }

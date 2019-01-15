@@ -46,6 +46,7 @@ class AmoebaController extends Controller
     }
 
     public function showProfile(){
+        // dd(Auth::user()->role_id);
         if(Auth::user()->role_name === Role::$SUPER_ADMIN){
             return redirect('/');
         }
@@ -55,7 +56,7 @@ class AmoebaController extends Controller
             }
         $amoeba = Amoeba::where('user_id', Auth::id())->with('group')->with('user')->first();
         // dd($amoeba);
-        return view('profile', ['amoeba'=> $amoeba]);
+        return view('profile', ['user'=> Auth::user()]);
     }
     public function saveProfile(Request $request){
         $request->validate([

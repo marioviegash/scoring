@@ -24,10 +24,11 @@ class CreateEventsTable extends Migration
             $table->integer('maximum_score');
             $table->datetime('start_time');
             $table->integer('created_by')->unsigned();
+            $table->boolean('shared_all');
             $table->timestamps();
 
-            $table->foreign('creator_id')->references('id')->on('users')
-            ->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('creator_id')->references('id')->on('users')
+            // ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             GroupStatusesTableSeeder::class,
             GroupsTableSeeder::class,
-            AmoebasTableSeeder::class
+            AmoebasTableSeeder::class,
+            DivisionTableSeeder::class,
         ]);
     }
 }

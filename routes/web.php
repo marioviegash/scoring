@@ -72,6 +72,8 @@ Route::group(['middleware' => 'auth'], function(){
     
     Route::get('/profile', 'AmoebaController@showProfile');
     Route::post('/profile', 'AmoebaController@saveProfile');  
+    Route::post('/profile/admin_amoeba', 'AdminAmoebaController@saveProfile');  
+    Route::post('/profile/jury', 'JuryController@saveProfile');  
 
     Route::get('/admin/document', 'DocumentController@showAll')->name('admin_document');
 

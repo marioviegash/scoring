@@ -7,6 +7,7 @@ use App\model\AdminAmoeba;
 use App\User;
 use App\Model\Group;
 use Mail;
+use Auth;
 
 
 class AdminAmoebaController extends Controller
@@ -41,5 +42,25 @@ class AdminAmoebaController extends Controller
         });
 
         return back();
+    }
+
+    public function saveProfile(Request $request){
+        $request->validate([
+            'division_id' => 'required',
+        ]); 
+        
+        // $user = Auth::user();
+        // $user->name 
+        // $amoeba->name = $request->name;
+        // $amoeba->nik = $request->nik;
+        // $amoeba->loker = $request->loker;
+        // $amoeba->c_level = $request->c_level;
+        // $amoeba->work_place = $request->work_place;
+        $ama = Auth::user()->admin_amoeba;
+        $ama->division_id = $request->division_id;
+
+        $ama->save();
+
+        return redirect('/profile');
     }
 }

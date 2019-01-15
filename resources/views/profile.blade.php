@@ -48,25 +48,26 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                <form role="form" action="{{url('profile')}}" method="post" enctype="multipart/form-data">
+                                <form role="form" action="{{$user->roles->id === 2 ? url('/profile/admin_amoeba') :
+                                                   ($user->roles->id === 3 ? url('/profile/jury') : url('profile'))}}" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-body">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Name" value='{{$user->user->name}}' name="name" />
+                                                <input class="form-control spinner" type="text" placeholder="Input Your Name" value='{{$user->name}}' name="name" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input class="form-control spinner" type="text" placeholder="Input Your Email" value="{{$user->user->email}}" />
+                                                <input class="form-control spinner" type="text" placeholder="Input Your Email" value="{{$user->email}}" />
                                             </div>
-                                            @if(Auth::user()->roles->id != 3)
+                                            @if(Auth::user()->roles->id == 3)
                                                 <div class="form-group">
                                                     <label>NIK</label>
-                                                    <input class="form-control spinner" type="text" placeholder="Input Your NIK" value="{{$user->NIK}}" name="nik"/>
+                                                    <input class="form-control spinner" type="text" placeholder="Input Your NIK" value="{{$user->jury->NIK}}" name="nik"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Loker</label>
-                                                    <input class="form-control spinner" rows="3" placeholder="Input Your Loker" value="{{$user->loker}}" name="loker"/>
+                                                    <input class="form-control spinner" rows="3" placeholder="Input Your Loker" value="{{$user->jury->loker}}" name="loker"/>
                                                 </div>
                                             @endif
                                             @if(Auth::user()->roles->id == 4)
@@ -78,7 +79,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>C Level</label>
-                                                    <input class="form-control spinner" type="text" placeholder="Input Your C Level" value="{{$user->c_level}}" name="c_level"/>
+                                                    <input class="form-control spinner" type="text" placeholder="Input Your C Level" value="{{$user->amoeba->c_level}}" name="c_level"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Picture</label>
@@ -86,15 +87,18 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Work Place</label>
-                                                    <textarea class="form-control spinner" rows="3" placeholder="Input Your Work Place" value="{{$user->work_place}}" name="work_place">{{$user->work_place}}</textarea>
+                                                    <textarea class="form-control spinner" rows="3" placeholder="Input Your Work Place" value="{{$user->amoeba->work_place}}" name="work_place">{{$user->work_place}}</textarea>
                                                 </div>
                                             @endif
                                             @if(Auth::user()->roles->id == 2)
                                                 <div class="form-group">
                                                     <label>Division</label>
                                                     {{-- Loop Division --}}
-                                                    <select class="form-control spinner" name="division">
-                                                        <option value="">Divisi Khintil</option>
+                                                    <select class="form-control spinner" name="division_id">
+                                                        @foreach(App\Model\Division::all() as $division)
+                                                    <option value="{{$division->id}}" 
+                                                        @if($division->id === $user->admin_amoeba->division_id) selected @endif>{{$division->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                     {{-- End Loop --}}
                                                 </div>
