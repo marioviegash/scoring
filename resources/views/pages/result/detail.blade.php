@@ -55,7 +55,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="60">
+                                                            <div class="number visits" data-percent="{{ (20*$amoeba->score) }}">
                                                                 <span>{{$amoeba->score}}</span>
                                                             </div>
                                                         </div>
@@ -90,6 +90,18 @@
     </body>
 @endsection
 
-@section('script')
+@section('script-plugin')
+    <script src="{{ asset('template_admin/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js') }}" type="text/javascript"></script>
+@endsection
 
+@section('script')
+    <script>
+        window.onload = function () {
+            $("canvas").css("width", "100px");
+            $("canvas").css("height", "100px");
+            $("canvas").css("top", "-10px");
+            $("canvas").css("left", "-10px");
+            console.log($("canvas"));
+        }
+    </script>
 @endsection

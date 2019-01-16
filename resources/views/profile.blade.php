@@ -78,8 +78,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label>NIK</label>
+                                                    <input class="form-control spinner" type="text" placeholder="Input Your NIK" value="{{$user->amoeba->NIK}}" name="nik"/>
+                                                </div>
+                                                <div class="form-group">
                                                     <label>C Level</label>
                                                     <input class="form-control spinner" type="text" placeholder="Input Your C Level" value="{{$user->amoeba->c_level}}" name="c_level"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Loker</label>
+                                                    <input class="form-control spinner" rows="3" placeholder="Input Your Loker" value="{{$user->amoeba->loker}}" name="loker"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Picture</label>

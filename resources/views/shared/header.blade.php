@@ -28,7 +28,7 @@
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
-                        <img alt="" class="img-circle" src="{{ Auth::user()->roles->id == 4 ? asset(Auth::user()->amoeba->picutre) : asset('img/upload/profile/profile.png') }}"/>
+                        <img alt="" class="img-circle" src="{{ Auth::user()->roles->id == 4 ? asset(Auth::user()->amoeba->picture) : asset('img/upload/profile/profile.png') }}"/>
                         <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} </span>
                         <i class="fa fa-angle-down"></i>
                     </a>

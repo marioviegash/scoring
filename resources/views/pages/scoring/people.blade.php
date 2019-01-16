@@ -114,7 +114,7 @@
                                         <h2 class="text-left"><b>People Performance</b></h2>
                                         <div class="row">
                                             {{-- Loop Data --}}
-                                            @foreach($amoebas as $amoeba)
+                                            @foreach($amoebas as $index => $amoeba)
                                             <div class="col-md-6 portlet light bordered">
                                                 <div class="col-md-12">
                                                     <img src="{{ asset('/'.$amoeba->graph->path) }}" alt="No Image" width="400" height="250">
@@ -132,12 +132,12 @@
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-6">
                                                     <div class="slidecontainer">
-                                                        <input type="range" min="1" max="5" value="1" class="slider data-slider" id="myRange_1"
+                                                        <input type="range" min="1" max="5" value="1" class="slider data-slider" id="myRange_{{ ($index+1) }}"
                                                     name="scores[{{$amoeba->id}}]">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <p class="form-control"><span id="demo_1"></span></p>
+                                                    <p class="form-control"><span id="demo_{{ ($index+1) }}"></span></p>
                                                 </div>
                                                 <div class="col-md-2"></div>
                                             </div>

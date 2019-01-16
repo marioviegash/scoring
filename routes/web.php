@@ -108,7 +108,6 @@ Route::group(['middleware' => 'auth'], function(){
 
 Auth::routes();
 Route::get('/admin/result', 'EventController@showEventRun')->name('result');
-
 Route::get('/admin/result/{id}/detail', 'EventController@showResultDetail')->name('result');
 
 Route::get('/myevent', 'AmoebaController@myEvent')->name('event');

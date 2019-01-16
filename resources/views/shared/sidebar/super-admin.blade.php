@@ -34,7 +34,7 @@ Route::currentRouteName() === null) active open @endif">
         <span class="selected"></span>
     </a>
 </li>
-<li class="nav-item start">
+<li class="nav-item start  @if(Route::currentRouteName() === "result") active open @endif">
     <a href="/admin/result" class="nav-link">
         <i class="fa fa-file"></i>
         <span class="title">View Result</span>

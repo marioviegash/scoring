@@ -114,7 +114,7 @@
                                                     <input class="form-control" placeholder="Input Criteria Employee" 
                                                     value="{{$event->innovators[0]->description}}" name="criteria_innovator[]" />
                                                     <br>
-                                                    <div class="dataCriteriaEmployee">
+                                                    <div class="dataCriteriaInnovator">
                                                         @foreach ($event->innovators as $key => $innovator)
                                                             @if($key !==0)
                                                                 <div>

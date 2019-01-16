@@ -42,7 +42,7 @@
                                     <div class="row">
                                         <div class="col-md-4 text-center">
                                             {{-- Ini Untuk Logo Group --}}
-                                            <img src="{{ asset('assets/logo/logo_event.png') }}" alt="No Image" width="180">
+                                            <img src="{{ asset($group->logo) }}" alt="No Image" width="180">
                                         </div>
                                         <div class="col-md-8">
                                             <h1><b> {{$group->name}} </b></h1>

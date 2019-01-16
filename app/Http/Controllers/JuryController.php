@@ -34,7 +34,7 @@ class JuryController extends Controller
             'password' => $password
         ], function($message)use($newUser){
             $message->subject('Success terdaftar di Admin Amoeba');
-            $message->from('tedyjohn.tj@gmail.com');
+            $message->from('hello@digitalamoeba.id');
             $message->to($newUser->email);
         });
 

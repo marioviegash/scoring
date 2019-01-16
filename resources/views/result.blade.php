@@ -44,11 +44,10 @@
                                             <br>
                                             Group Name
                                         </div>
-                                        {{-- Loop Result --}}
                                         @foreach($group->amoebas as $amoeba)
                                         <div class="col-md-4 text-center portlet light bordered">
                                             {{-- Profile Image--}}
-                                            <img src="{{ asset('/'.$amoeba->picture) }}" alt="" width="30">
+                                            <img src="{{ asset($amoeba->picture) }}" alt="" width="30">
                                             <br>
                                             {{$amoeba->user->name}}
                                             <br>
@@ -56,7 +55,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="easy-pie-chart">
-                                                        <div class="number visits" data-percent="60">
+                                                        <div class="number visits" data-percent="{{ (20*$amoeba->score) }}">
                                                             <span>{{$amoeba->score}}</span>
                                                         </div>
                                                     </div>
@@ -96,14 +95,14 @@
     <script src="{{ asset('template_admin/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js') }}" type="text/javascript"></script>
 @endsection
 
-<script>
-    window.onload = function () {
-        $("canvas").css("width", "100px");
-        $("canvas").css("height", "100px");
-        $("canvas").css("top", "-10px");
-        $("canvas").css("left", "-10px");
-        console.log($("canvas"));
-    }
-</script>
 @section('script')
+    <script>
+        window.onload = function () {
+            $("canvas").css("width", "100px");
+            $("canvas").css("height", "100px");
+            $("canvas").css("top", "-10px");
+            $("canvas").css("left", "-10px");
+            console.log($("canvas"));
+        }
+    </script>
 @endsection
