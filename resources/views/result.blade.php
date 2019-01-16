@@ -37,48 +37,60 @@
                             <div class="portlet light bordered">
                                 <div class="portlet-body">
                                     <div class="row">
+                                        @if(Auth::user()->roles->id === 3)
                                             @foreach($groups as $group)
-                                        <div class="col-md-12 text-center">
-                                            {{-- Logo Group --}}
-                                            <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="50">
-                                            <br>
-                                            Group Name
-                                        </div>
-                                        @foreach($group->amoebas as $amoeba)
-                                        <div class="col-md-4 text-center portlet light bordered">
-                                            {{-- Profile Image--}}
-                                            <img src="{{ asset($amoeba->picture) }}" alt="" width="30">
-                                            <br>
-                                            {{$amoeba->user->name}}
-                                            <br>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="easy-pie-chart">
-                                                        <div class="number visits" data-percent="{{ (20*$amoeba->score) }}">
-                                                            <span>{{$amoeba->score}}</span>
+                                                <div class="col-md-12 text-center">
+                                                    {{-- Logo Group --}}
+                                                    <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="50">
+                                                    <br>
+                                                    Group Name
+                                                </div>
+                                                @foreach($group->amoebas as $amoeba)
+                                                <div class="col-md-4 text-center portlet light bordered">
+                                                    {{-- Profile Image--}}
+                                                    <img src="{{ asset($amoeba->picture) }}" alt="" width="30">
+                                                    <br>
+                                                    {{$amoeba->user->name}}
+                                                    <br>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="easy-pie-chart">
+                                                                <div class="number visits" data-percent="{{ (20*$amoeba->score) }}">
+                                                                    <span>{{$amoeba->score}}</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <br>
+                                                    <br>
+                                                    Total Score : {{$amoeba->score}}
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-3"></div>
+                                                        <div class="col-md-6">
+                                                            <span class="form-control">
+                                                                {{$amoeba->criteria}}
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-3"></div>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                            @endforeach
+                                        @else
+                                            <div class="col-md-12 text-center">
+                                                <div class="easy-pie-chart">
+                                                    <h2>Your result is</h2>
+                                                    <div class="number visits" data-percent="{{ (20*Auth::user()->amoeba->score) }}">
+                                                        <span>{{Auth::user()->amoeba->score}}</span>
+                                                    </div>
+                                                    <h2>{{ Auth::user()->amoeba->criteria }}</h2>
+                                                    <h3>Total Score : {{ Auth::user()->amoeba->score }}</h3>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <br>
-                                            Total Score : {{$amoeba->score}}
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-6">
-                                                    <span class="form-control">
-                                                        {{$amoeba->criteria}}
-                                                    </span>
-                                                </div>
-                                                <div class="col-md-3"></div>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                        {{-- End Loop --}}
+                                        @endif
                                     </div>
-                                    @endforeach
                                 </div>
                             </div>
                         </div>

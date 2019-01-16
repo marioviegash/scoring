@@ -12,8 +12,6 @@ use Auth;
 
 class AdminAmoebaController extends Controller
 {
-    //
-
     public function add(Request $request){
         $request->validate([
             'name' => 'required',
@@ -47,18 +45,19 @@ class AdminAmoebaController extends Controller
     public function saveProfile(Request $request){
         $request->validate([
             'division_id' => 'required',
-        ]); 
-        
-        // $user = Auth::user();
-        // $user->name 
-        // $amoeba->name = $request->name;
-        // $amoeba->nik = $request->nik;
-        // $amoeba->loker = $request->loker;
-        // $amoeba->c_level = $request->c_level;
-        // $amoeba->work_place = $request->work_place;
+            'picture' => 'required|mimes:jpeg,bmp,png'
+        ]);
         $ama = Auth::user()->admin_amoeba;
+        $file = $request->file('picture');
+        if(isset($file)){
+            $destinationPath = "img/upload/profile";
+            $filename = uniqid().$file->getClientOriginalName();
+            $filename = str_replace(" ", "", $filename);
+            $fullpath = $destinationPath.'/'.$filename;
+            $file->move( $destinationPath,$filename);
+            $ama->picture = $fullpath;
+        }
         $ama->division_id = $request->division_id;
-
         $ama->save();
 
         return redirect('/profile');

@@ -13,8 +13,6 @@ use Auth;
 
 class EventController extends Controller
 {
-    //
-
     public function showAll(Request $request){
         $event_builder = Event::with('employees')->with('creator')->with('innovators');
         if(isset($request->start_date) && isset($request->end_date)){
@@ -49,7 +47,6 @@ class EventController extends Controller
     public function showGroup($id)
     {
         $group = Group::with('amoebas.user')->where('id', $id)->first();
-
         return view('pages.event.group', ['group' => $group]);
     }
     
@@ -200,8 +197,6 @@ class EventController extends Controller
     public function showResultDetail($id){
         
         $group = Group::find($id);
-        // $groups = Group::where('event_id', )
-        // dd($groups);
         return view('pages.result.detail', ['group' => $group]);
     }
 }

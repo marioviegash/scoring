@@ -17,6 +17,7 @@ class CreateAdminAmoebasTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('division_id')->nullable()->unsigned();
+            $table->string('picture')->nullable();
             $table->timestamps();
 
             

@@ -162,7 +162,7 @@
                                                     <div class="row portlet light bordered">
                                                             <div class="col-md-2 text-center">
                                                                 {{-- Photo Member --}}
-                                                                <img src="{{ asset($member->picture) }}" alt="" width="50">
+                                                                <img src="{{ $member->picture == null ? asset("img/upload/profile/profile.png") : asset($member->picture) }}" alt="" width="50">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <h5>

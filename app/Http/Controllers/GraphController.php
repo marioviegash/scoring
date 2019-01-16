@@ -9,23 +9,18 @@ use Storage;
 
 class GraphController extends Controller
 {
-    //
-
-    public function uploadGroup(Request $request){
+    public function upload(Request $request){
         $request->validate([
-            'file_upload' => 'required'
+            'upload' => 'required',
         ]);
 
-        $file = $request->file('file_upload');
-        // dd($)
+        $file = $request->file('upload');
         $destinationPath = "img/upload/graph";
         $filename = uniqid() . $file->getClientOriginalName();
         $filename = str_replace(" ", "", $filename);
         $fullpath = $destinationPath.'/'.$filename;
         $file->move( $destinationPath,$filename);
-        
-        // $file = $request->file('');
-        
+
         $group_id = $request->group_id;
         $file1 = DocumentGraphGroup::where('group_id', $group_id)->orderBy('created_at', 'desc')->first();
         if($file1 === null){
@@ -39,46 +34,28 @@ class GraphController extends Controller
             $file1->path = $fullpath;
             $file1->save();
         }
-        
-        // $file->save($destinationPath.'/'.$filename);
 
-        return back();
-    }
+        foreach($request->file('uploads') as $index => $graph) {
+            $destinationPath = "img/upload/graph";
+            $filename = uniqid() . $graph->getClientOriginalName();
+            $filename = str_replace(" ", "", $filename);
+            $fullpath = $destinationPath . '/' . $filename;
+            $graph->move($destinationPath, $filename);
 
-    public function upload(Request $request){
-        $request->validate([
-            'file_upload' => 'required'
-        ]);
-
-        $file = $request->file('file_upload');
-        // dd($)
-        
-        $file = $request->file('file_upload');
-        
-        $destinationPath = "img/upload/graph";
-        $filename = uniqid().$file->getClientOriginalName();
-        $filename = str_replace(" ", "", $filename);
-        $fullpath = $destinationPath.'/'.$filename;
-        $file->move( $destinationPath,$filename);
-        
-        // $file = $request->file('');
-        
-        $group_id = $request->group_id;
-        $file1 = DocumentGraph::where('amoeba_id', $request->amoeba_id)->orderBy('created_at', 'desc')->first();
-        if($file1 === null){
-            $newFile = new DocumentGraph();
-            $newFile->name =  $file->getClientOriginalName();
-            $newFile->path = $fullpath;
-            $newFile->amoeba_id = $request->amoeba_id;
-            $newFile->save();
-        }else{
-            $file1->name =  $file->getClientOriginalName();
-            $file1->path = $fullpath;
-            $file1->save();
+            $file1 = DocumentGraph::where('amoeba_id', $request->amoebas[$index])->orderBy('created_at', 'desc')->first();
+            if ($file1 === null) {
+                $newFile = new DocumentGraph();
+                $newFile->name = $graph->getClientOriginalName();
+                $newFile->path = $fullpath;
+                $newFile->amoeba_id = $request->amoebas[$index];
+                $newFile->save();
+            } else {
+                $file1->name = $graph->getClientOriginalName();
+                $file1->path = $fullpath;
+                $file1->save();
+            }
         }
-        // Storage::putFileAs($destinationPath, $file, $filename);
-        // $file->save($destinationPath.'/'.$filename);
 
-        return back();
+        return back()->with('message', 'success');;
     }
 }

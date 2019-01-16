@@ -57,15 +57,16 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                <?php $index = 0; ?>
                                                     @foreach ($users as $user)
                                                         @if($user->roles->id == 2)
                                                             <tr>
-                                                                <td> {{$user->id}} </td>
-                                                                <td> <span class="fa fa-user"></span> {{$user->name}} </td>
-                                                                <td> {{isset($user->admin_amoeba->division) ? 
+                                                                <td style="vertical-align: middle"> {{$index+=1}} </td>
+                                                                <td style="vertical-align: middle"><img src="{{ $user->admin_amoeba["picture"] === null ? asset("img/upload/profile/profile.png") : asset($user->admin_amoeba["picture"]) }} " alt="No Image" width="50" height="50"> {{$user->name}} </td>
+                                                                <td style="vertical-align: middle"> {{isset($user->admin_amoeba->division) ?
                                                                         $user->admin_amoeba->division->name :
                                                                         ""}} </td>
-                                                                <td>
+                                                                <td style="vertical-align: middle">
                                                                     <a href="#confirm_{{$user->id}}" class="btn btn-danger" data-toggle="modal">Remove</a>
                                                                 </td>
                                                             </tr>
@@ -121,14 +122,15 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                <?php $index = 0;?>
                                                 @foreach ($users as $user )
                                                     @if($user->roles->id == 3)
                                                         <tr>
-                                                            <td> {{$user->id}} </td>
-                                                            <td> <span class="fa fa-user"></span> {{ $user->name }} </td>
-                                                            <td> {{ $user->jury->NIK }} </td>
-                                                            <td> {{$user->jury->loker }} </td>
-                                                            <td>
+                                                            <td style="vertical-align: middle"> {{$index+=1}} </td>
+                                                            <td style="vertical-align: middle"> <img src="{{ $user->jury["picture"] === null ? asset("img/upload/profile/profile.png") : asset($user->jury["picture"]) }} " alt="No Image" width="50" height="50"> {{ $user->name }} </td>
+                                                            <td style="vertical-align: middle"> {{ $user->jury->NIK }} </td>
+                                                            <td style="vertical-align: middle"> {{$user->jury->loker }} </td>
+                                                            <td style="vertical-align: middle">
                                                                 <a href="#confirm_{{$user->id}}" class="btn btn-danger" data-toggle="modal">Remove</a>
                                                             </td>
                                                         </tr>

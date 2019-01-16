@@ -90,10 +90,6 @@
                                                     <input class="form-control spinner" rows="3" placeholder="Input Your Loker" value="{{$user->amoeba->loker}}" name="loker"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Picture</label>
-                                                    <input class="form-control spinner" type="file" placeholder="Input Your Picture" name="picture"/>
-                                                </div>
-                                                <div class="form-group">
                                                     <label>Work Place</label>
                                                     <textarea class="form-control spinner" rows="3" placeholder="Input Your Work Place" value="{{$user->amoeba->work_place}}" name="work_place">{{$user->work_place}}</textarea>
                                                 </div>
@@ -101,16 +97,19 @@
                                             @if(Auth::user()->roles->id == 2)
                                                 <div class="form-group">
                                                     <label>Division</label>
-                                                    {{-- Loop Division --}}
                                                     <select class="form-control spinner" name="division_id">
                                                         @foreach(App\Model\Division::all() as $division)
                                                     <option value="{{$division->id}}" 
                                                         @if($division->id === $user->admin_amoeba->division_id) selected @endif>{{$division->name}}</option>
                                                         @endforeach
                                                     </select>
-                                                    {{-- End Loop --}}
                                                 </div>
                                             @endif
+
+                                            <div class="form-group">
+                                                <label>Picture</label>
+                                                <input class="form-control spinner" type="file" placeholder="Input Your Picture" name="picture"/>
+                                            </div>
                                         </div>
                                         @if(!empty($errors->first())) 
                                             <div class="row col-lg-12">

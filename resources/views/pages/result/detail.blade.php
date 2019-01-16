@@ -39,15 +39,16 @@
                                     <div class="row">
                                         <div class="col-md-12 text-center">
                                             {{-- Logo Group --}}
-                                            <img src="{{ asset('/'.$group->logo) }}" alt="" width="50">
+                                            <img src="{{ asset('/'.$group->logo) }}" alt="" width="200">
                                             <br>
-                                            Group Name
+                                            <h2><b>{{ $group->name }}</b></h2>
+                                            <h3>Total Score : {{ $group->scores->sum("score") / $group->scores->count()  }}</h3>
                                         </div>
                                         {{-- Loop Result --}}
                                         @foreach($group->amoebas as $amoeba)
                                         <div class="col-md-4 text-center portlet light bordered">
                                                 {{-- Profile Image--}}
-                                                <img src="{{ asset('/'.$amoeba->picture) }}" alt="" width="30">
+                                                <img src="{{ $amoeba->picture === null ? asset("img/upload/profile/profile.png") : asset('/'.$amoeba->picture) }}" alt="" width="50" height="50">
                                                 <br>
                                                 {{$amoeba->user->name}}
                                                 <br>

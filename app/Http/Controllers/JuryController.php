@@ -43,10 +43,20 @@ class JuryController extends Controller
     public function saveProfile(Request $request){
         $request->validate([
             'nik' => 'required|unique:amoebas|digits:6',
-            'loker' => 'required'
+            'loker' => 'required',
+            'picture' => 'required|mimes:jpeg,bmp,png'
         ]); 
         
         $jury = Auth::user()->jury;
+        $file = $request->file('picture');
+        if(isset($file)){
+            $destinationPath = "img/upload/profile";
+            $filename = uniqid().$file->getClientOriginalName();
+            $filename = str_replace(" ", "", $filename);
+            $fullpath = $destinationPath.'/'.$filename;
+            $file->move( $destinationPath,$filename);
+            $jury->picture = $fullpath;
+        }
         $jury->NIK = $request->nik;
         $jury->loker = $request->loker;
         $jury->save();

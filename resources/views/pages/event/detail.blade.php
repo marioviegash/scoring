@@ -122,11 +122,11 @@
                                                             <tbody>
                                                                 @foreach($event->juries as $key => $jury)
                                                                 <tr>
-                                                                    <td> {{$key + 1}} </td>
-                                                                    <td> <span class="fa fa-user"></span> {{$jury->user->name}} </td>
-                                                                    <td> {{$jury->loker}} </td>
-                                                                    <td> {{$jury->NIK}} </td>
-                                                                    <td>
+                                                                    <td style="vertical-align: middle"> {{$key + 1}} </td>
+                                                                    <td style="vertical-align: middle"> <img src="{{ $jury->picture === null ? asset("img/upload/profile/profile.png") : asset($jury->picture) }} " alt="No Image" width="50" height="50"> {{ $jury->user->name }} </td>
+                                                                    <td style="vertical-align: middle"> {{$jury->loker}} </td>
+                                                                    <td style="vertical-align: middle"> {{$jury->NIK}} </td>
+                                                                    <td style="vertical-align: middle">
                                                                         <form href="" method="post" action="/admin/event/jury/delete">
                                                                             {{csrf_field()}}
                                                                             <input type="hidden" value="{{$event->id}}" name="event_id" />

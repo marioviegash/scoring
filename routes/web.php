@@ -66,8 +66,6 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/verification-friend', 'VerificationController@viewFriend');
         
         Route::get('/verification-success', 'VerificationController@viewSuccess');
-      
-
     });
     
     Route::get('/profile', 'AmoebaController@showProfile');
@@ -129,7 +127,6 @@ Route::post('/scoring', 'ScoreController@scoreToAmoebas');
 
 Route::get('/scoring/people/{id}', 'ScoreController@people');
 
-Route::post('/graph/upload/group', 'GraphController@uploadGroup');
 Route::post('/graph/upload', 'GraphController@upload');
 
 

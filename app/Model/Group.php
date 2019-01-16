@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    //
-
     public function amoebas(){
         return $this->hasMany('App\Model\Amoeba');
     }
@@ -23,6 +21,10 @@ class Group extends Model
 
     public function graph(){
         return $this->hasOne('App\Model\DocumentGraphGroup');
+    }
+
+    public function scores(){
+        return $this->hasMany('App\Model\ScoreGroup');
     }
 
     public function getFileStatusAttribute(){
