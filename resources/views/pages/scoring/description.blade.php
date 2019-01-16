@@ -73,8 +73,8 @@
                             <div class="portlet light bordered">
                                 <div class="portlet-body">
                                     <form action="{{ url('/scoring/description') }}">
-                                        <img src="{{ url('img/upload/group/orbits.png') }}" alt="No Image" width="500">
-                                        <h1><b>Orbits</b></h1>
+                                        <img src="{{ url($group->logo) }}" alt="No Image" width="500">
+                                        <h1><b>{{$group->name}}</b></h1>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <ul class="nav nav-tabs">
@@ -84,7 +84,7 @@
                                                 </ul>
                                                 <div class="tab-content portlet light bordered">
                                                     <div class="tab-pane fade active in text-justify" id="tab_1_1">
-                                                        Orbits adalah sistem back-office terintegrasi yang mampu menangani jutaan transaksi, khususnya transaksi di jalan tol. Orbits juga menyediakan layanan B2B dan B2C bagi penyedia layanan jalan tol dan pengguna jalan tol.
+                                                            {{$group->description}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,7 +97,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="col-md-6 mt-step-col done" style="padding: 0;">
-                                                    <a href="{{ url('/scoring/business') }}" class="mt-step-number bg-white">
+                                                    <a href="{{ url('/scoring/business/'.$group->id) }}" class="mt-step-number bg-white">
                                                         >
                                                     </a>
                                                 </div>

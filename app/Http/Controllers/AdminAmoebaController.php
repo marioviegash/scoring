@@ -35,13 +35,13 @@ class AdminAmoebaController extends Controller
         Mail::send('emails.register', [
             'user' => $newUser,
             'password' => $password
-        ], function($message)use($user){
+        ], function($message)use($newUser){
             $message->subject('Success terdaftar di Admin Amoeba');
             $message->from('tedyjohn.tj@gmail.com');
             $message->to($newUser->email);
         });
 
-        return back();
+        return redirect('admin/user');
     }
 
     public function saveProfile(Request $request){

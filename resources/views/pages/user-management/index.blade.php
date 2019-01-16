@@ -58,11 +58,11 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($users as $user)
-                                                        @if($user->roles->id == 4)
+                                                        @if($user->roles->id == 2)
                                                             <tr>
                                                                 <td> {{$user->id}} </td>
                                                                 <td> <span class="fa fa-user"></span> {{$user->name}} </td>
-                                                                <td> {{isset($user->admin_amoeba) ? 
+                                                                <td> {{isset($user->admin_amoeba->division) ? 
                                                                         $user->admin_amoeba->division->name :
                                                                         ""}} </td>
                                                                 <td>

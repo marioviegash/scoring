@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="col-md-12 text-center">
-                            <form action="{{ url('/scoring/people') }}">
+                            <form action="{{ url('/scoring/group') }}" method="POST">
                                 <div class="portlet light bordered">
                                     <div class="portlet-body form">
                                         <h2 class="text-left"><b>Business Performance</b></h2>
@@ -117,7 +117,7 @@
                                             <br>
                                             dengan rata-rata Batch 7 adalah 3.23
                                         </h3>
-                                        <img src="{{ url('img/upload/group/graph-orbits.png') }}" alt="">
+                                        <img src="{{ url('/'.$group->graph->path) }}" alt="" />
                                         <h3>
                                             Saya yakin bisnis founder memiliki
                                             <br>
@@ -139,7 +139,7 @@
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-6">
                                                     <div class="slidecontainer">
-                                                        <input type="range" min="1" max="5" value="1" class="slider" id="myRange">
+                                                        <input type="range" min="1" max="5" value="1" class="slider" id="myRange" name="score">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1">
@@ -154,14 +154,17 @@
                                 <div class="mt-element-step">
                                     <div class="row step-line">
                                         <div class="col-md-6 mt-step-col error" style="padding: 0;">
-                                            <a href="{{ url('/scoring/description') }}" class="mt-step-number">
+                                            <a href="{{ url('/scoring/description?group='.$group->id) }}" class="mt-step-number">
                                                 <
                                             </a>
                                         </div>
                                         <div class="col-md-6 mt-step-col done" style="padding: 0;">
-                                            <a href="{{ url('/scoring/people') }}" class="mt-step-number bg-white">
-                                                >
-                                            </a>
+                                                {{csrf_field()}}
+                                                <input type="hidden" value="{{$group->id}}" name="group_id"/>
+                                                
+                                            <input type="submit" href="{{ url('/scoring/people/'.$group->id) }}" class="mt-step-number bg-white" 
+                                            value=">">
+                                                
                                         </div>
                                     </div>
                                 </div>

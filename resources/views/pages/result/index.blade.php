@@ -46,7 +46,9 @@
                                         <form action="" method="" class="row">
                                             <div class="col-md-2">
                                                 <select name="event" class="form-control spinner">
-                                                    <option value="80jt">Event 1</option>
+                                                    @foreach($events as $event)
+                                                    <option value="{{$event->id}}">{{$event->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-md-2" style="padding: 0;">
@@ -72,15 +74,17 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach($activeEvent->groups as $key=> $group)
                                             <tr>
-                                                <td> 1 </td>
-                                                <td> Group 1 </td>
+                                                <td> {{$key+1}} </td>
+                                                <td> {{$group->name}} </td>
                                                 <td>
-                                                    <a href="{{ url("/admin/result/{id}/detail") }}">
+                                                    <a href="{{ url("/admin/result/$group->id/detail") }}">
                                                         <button type="button" class="btn green">View</button>
                                                     </a>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -37,6 +37,7 @@
                             <div class="portlet light bordered">
                                 <div class="portlet-body">
                                     <div class="row">
+                                            @foreach($groups as $group)
                                         <div class="col-md-12 text-center">
                                             {{-- Logo Group --}}
                                             <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="50">
@@ -44,36 +45,41 @@
                                             Group Name
                                         </div>
                                         {{-- Loop Result --}}
+                                        @foreach($group->amoebas as $amoeba)
                                         <div class="col-md-4 text-center portlet light bordered">
                                             {{-- Profile Image--}}
-                                            <img src="{{ asset('assets/logo/logo_event.png') }}" alt="" width="30">
+                                            <img src="{{ asset('/'.$amoeba->picture) }}" alt="" width="30">
                                             <br>
-                                            Username
+                                            {{$amoeba->user->name}}
                                             <br>
                                             <br>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="easy-pie-chart">
                                                         <div class="number visits" data-percent="60">
-                                                            <span>3</span>
+                                                            <span>{{$amoeba->score}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <br>
                                             <br>
-                                            Total Score : 3.0
+                                            Total Score : {{$amoeba->score}}
                                             <br>
                                             <div class="row">
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-6">
-                                                    <span class="form-control">Innovator A</span>
+                                                    <span class="form-control">
+                                                        {{$amoeba->criteria}}
+                                                    </span>
                                                 </div>
                                                 <div class="col-md-3"></div>
                                             </div>
                                         </div>
+                                        @endforeach
                                         {{-- End Loop --}}
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

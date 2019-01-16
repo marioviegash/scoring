@@ -27,7 +27,7 @@ class FileController extends Controller
         
         $group_id = Auth::user()->group->id;
         $file1 = File::where('group_id', $group_id)->orderBy('created_at', 'desc')->first();
-        if($file === null){
+        if($file1 === null){
             $newFile = new File();
             $newFile->name =  $file->getClientOriginalName();
             $newFile->path = $fullpath;

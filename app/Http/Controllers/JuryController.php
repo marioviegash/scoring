@@ -32,13 +32,13 @@ class JuryController extends Controller
         Mail::send('emails.register', [
             'user' => $newUser,
             'password' => $password
-        ], function($message)use($user){
+        ], function($message)use($newUser){
             $message->subject('Success terdaftar di Admin Amoeba');
             $message->from('tedyjohn.tj@gmail.com');
             $message->to($newUser->email);
         });
 
-        return redirect('admin\user');
+        return redirect('\admin\user');
     }
     public function saveProfile(Request $request){
         $request->validate([

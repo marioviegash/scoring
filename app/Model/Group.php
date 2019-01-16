@@ -20,6 +20,11 @@ class Group extends Model
     public function event(){
         return $this->belongsTo('App\Model\Event');
     }
+
+    public function graph(){
+        return $this->hasOne('App\Model\DocumentGraphGroup');
+    }
+
     public function getFileStatusAttribute(){
         $status = 0;
         if($this->file === null){

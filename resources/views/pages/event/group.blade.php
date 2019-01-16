@@ -51,7 +51,13 @@
                                         </div>
                                         <div class="col-md-12">
                                             <h3>
-                                                Upload Team Graph : <a href=""><span class="fa fa-upload"></span></a>
+                                                Upload Team Graph : 
+                                                <form enctype="multipart/form-data" method="POST" action="/graph/upload/group"> 
+                                                <input type="hidden" value="{{$group->id}}" name="group_id"/>
+                                                {{csrf_field()}}
+                                                    <input type="file" name="file_upload" />
+                                                    <input type="submit" value="Upload" />
+                                                </form>
                                             </h3>
                                         </div>
                                         <div class="col-md-12">
@@ -76,9 +82,13 @@
                                                             <td> {{$amoeba->c_level}} </td>
                                                             <td> {{$amoeba->loker}} </td>
                                                             <td>
-                                                                <a href="">
-                                                                    <span class="fa fa-upload" style="font-size: 18px;"></span>
-                                                                </a>
+                                                                    <form enctype="multipart/form-data" method="POST" action="/graph/upload"> 
+                                                                        {{csrf_field()}}
+                                                                        <input type="hidden" value="{{$amoeba->id}}" name="amoeba_id"/>
+                                                                        
+                                                                            <input type="file" name="file_upload" />
+                                                                            <input type="submit" value="Upload" />
+                                                                    </form>
                                                             </td>
                                                         </tr>
                                                         @endforeach

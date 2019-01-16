@@ -107,16 +107,17 @@
                             </div>
                         </div>
 
-                        <form action="{{ url('/scoring') }}">
+                        <form action="{{ url('/scoring') }}" method="post">
                             <div class="col-md-12 text-center">
                                 <div class="portlet light bordered">
                                     <div class="portlet-body form">
                                         <h2 class="text-left"><b>People Performance</b></h2>
                                         <div class="row">
                                             {{-- Loop Data --}}
+                                            @foreach($amoebas as $amoeba)
                                             <div class="col-md-6 portlet light bordered">
                                                 <div class="col-md-12">
-                                                    <img src="{{ asset('img/upload/group/amoeba_1.png') }}" alt="No Image" width="400" height="250">
+                                                    <img src="{{ asset('/'.$amoeba->graph->path) }}" alt="No Image" width="400" height="250">
                                                 </div>
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-3 text-left">
@@ -131,7 +132,8 @@
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-6">
                                                     <div class="slidecontainer">
-                                                        <input type="range" min="1" max="5" value="1" class="slider data-slider" id="myRange_1">
+                                                        <input type="range" min="1" max="5" value="1" class="slider data-slider" id="myRange_1"
+                                                    name="scores[{{$amoeba->id}}]">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1">
@@ -139,56 +141,7 @@
                                                 </div>
                                                 <div class="col-md-2"></div>
                                             </div>
-                                            <div class="col-md-6 portlet light bordered">
-                                                <div class="col-md-12">
-                                                    <img src="{{ asset('img/upload/group/amoeba_2.png') }}" alt="No Image" width="400" height="250">
-                                                </div>
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-3 text-left">
-                                                    Strongly <br>
-                                                    Disagree
-                                                </div>
-                                                <div class="col-md-2"></div>
-                                                <div class="col-md-4 text-left">
-                                                    Strongly <br>
-                                                    Agree
-                                                </div>
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-6">
-                                                    <div class="slidecontainer">
-                                                        <input type="range" min="1" max="5" value="1" class="slider data-slider" id="myRange_2">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <p class="form-control"><span id="demo_2"></span></p>
-                                                </div>
-                                                <div class="col-md-2"></div>
-                                            </div>
-                                            <div class="col-md-6 portlet light bordered">
-                                                <div class="col-md-12">
-                                                    <img src="{{ asset('img/upload/group/amoeba_3.png') }}" alt="No Image" width="400" height="250">
-                                                </div>
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-3 text-left">
-                                                    Strongly <br>
-                                                    Disagree
-                                                </div>
-                                                <div class="col-md-2"></div>
-                                                <div class="col-md-4 text-left">
-                                                    Strongly <br>
-                                                    Agree
-                                                </div>
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-6">
-                                                    <div class="slidecontainer">
-                                                        <input type="range" min="1" max="5" value="1" class="slider data-slider" id="myRange_3">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <p class="form-control"><span id="demo_3"></span></p>
-                                                </div>
-                                                <div class="col-md-2"></div>
-                                            </div>
+                                            @endforeach
                                             {{-- End Loop --}}
                                         </div>
                                     </div>
@@ -205,10 +158,9 @@
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-6 text-justify">
                                                     <b>Employee (0 - 2)</b> <br>
-                                                    - Love comfort zone <br>
-                                                    - Not a decision maker <br>
-                                                    - Result - oriented <br>
-                                                    - Individual contributor <br>
+                                                    @foreach($event->employees as $criteria)
+                                                    - {{$criteria->description}} <br>
+                                                    @endforeach
                                                 </div>
                                                 <div class="col-md-2"></div>
                                             </div>
@@ -216,11 +168,9 @@
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-6 text-justify">
                                                     <b>Innovator (3 - 5)</b> <br>
-                                                    - Highly passionate <br>
-                                                    - Smart working <br>
-                                                    - Team player <br>
-                                                    - Open-minded <br>
-                                                    - Optimistic
+                                                    @foreach($event->innovators as $innovator)
+                                                    - {{$innovator->description}} <br>
+                                                    @endforeach
                                                 </div>
                                                 <div class="col-md-2"></div>
                                             </div>
@@ -229,7 +179,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            {{csrf_field()}}
                             <div class="col-md-12">
                                 <div class="mt-element-step">
                                     <div class="row step-line">

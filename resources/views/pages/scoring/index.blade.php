@@ -44,9 +44,10 @@
                                         <div class="row">
                                             <div class="col-md-3"></div>
                                             <div class="col-md-6">
-                                                <select name="group" class="form-control">
-                                                    <option value="">Group 1</option>
-                                                    <option value="">Group 2</option>
+                                                <select name="group" class="form-control">\
+                                                    @foreach ($groups as $group )
+                                                <option value={{$group->id}}>{{$group->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-md-3"></div>

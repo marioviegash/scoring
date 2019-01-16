@@ -1,4 +1,4 @@
-<h3>Akun Anda Telah Terdaftar di toko.besiawi.com!!</h3>
+<h3>Akun Anda Telah Terdaftar </h3>
 <br>
 <h4>Detail Akun</h4>
 <table>

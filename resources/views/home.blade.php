@@ -44,6 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="portlet-body">
+                                        @if($lastEvent !== null)
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <h4><b>Event Name</b></h4>
@@ -82,6 +83,9 @@
                                                 <button type="button" class="btn blue">Start</button>
                                             </div>
                                         </div>
+                                        @else 
+                                              
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -209,17 +213,26 @@
                                         <div class="table-scrollable">
                                             <table class="table table-hover">
                                                 {{-- Loop Event --}}
-                                                    <tbody>
+                                                
+                                                @foreach($events as $event)
+                                                <tbody>
                                                         <tr>
                                                             <td>
                                                                 <img src="{{ asset('assets/logo/logo_event.png') }}" alt="No Image" width="30">
                                                             </td>
-                                                            <td style="vertical-align: middle"> Event Name </td>
-                                                            <td style="vertical-align: middle"> Total Team </td>
-                                                            <td style="vertical-align: middle"> 5 Judges </td>
-                                                            <td style="vertical-align: middle"> Status </td>
+                                                            <td style="vertical-align: middle"> {{$event->name}} </td>
+                                                            <td style="vertical-align: middle"> {{$event->groups()->count()}} Teams </td>
+                                                            <td style="vertical-align: middle"> {{$event->juries()->count()}} Judges </td>
+                                                            <td style="vertical-align: middle"> 
+                                                                {{$event->end_date < Carbon\Carbon::now()
+                                                                ? 'Done' :
+                                                                ($event->start_date > Carbon\Carbon::now()
+                                                                ? 'Start' : 'Coming soon') 
+                                                                }}
+                                                            </td>
                                                         </tr>
                                                     </tbody>
+                                                    @endforeach
                                                 {{-- End Loop --}}
                                             </table>
                                         </div>

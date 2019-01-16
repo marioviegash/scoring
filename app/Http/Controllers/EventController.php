@@ -9,6 +9,7 @@ use App\Model\Innovator;
 use App\Model\Jury;
 use App\Model\Group;
 use Route;
+use Auth;
 
 class EventController extends Controller
 {
@@ -141,6 +142,7 @@ class EventController extends Controller
         $newEvent->criteria_group = $request->criteria_group;
         $newEvent->criteria_individu = $request->criteria_individu;
         $newEvent->description = $request->description;
+        $newEvent->created_by = Auth::user()->id;
         // $newEvent->jury_id = $request->jury;
         $newEvent->maximum_score = $request->criteria_score;
         $newEvent->save();
@@ -184,4 +186,22 @@ class EventController extends Controller
         return back();
     }
 
+    public function showEventRun(Request $request){
+        
+        $events = Event::orderBy('created_at', 'desc')->get();
+        $activeEvent = $events[0];
+        if(isset($request->event)){
+            $activeEvent = Event::where('id', $request->event)->first();
+        }
+        
+        return view('pages.result.index', ['events' => $events, 'activeEvent'=> $activeEvent]);
+    }
+
+    public function showResultDetail($id){
+        
+        $group = Group::find($id);
+        // $groups = Group::where('event_id', )
+        // dd($groups);
+        return view('pages.result.detail', ['group' => $group]);
+    }
 }

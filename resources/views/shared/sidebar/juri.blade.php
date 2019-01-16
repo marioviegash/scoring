@@ -6,13 +6,6 @@ Route::currentRouteName() === null) @endif">
         <span class="selected"></span>
     </a>
 </li>
-<li class="nav-item start @if(Route::currentRouteName() === "event") active open @endif">
-    <a href="/myevent" class="nav-link">
-        <i class="icon-calendar"></i>
-        <span class="title">Event Management</span>
-        <span class="selected"></span>
-    </a>
-</li>
 <li class="nav-item start
 @if(Route::currentRouteName() === "document") active open @endif">
     <a href="/document" class="nav-link">
@@ -21,7 +14,7 @@ Route::currentRouteName() === null) @endif">
         <span class="selected"></span>
     </a>
 </li>
-<li class="nav-item start active open">
+<li class="nav-item start ">
     <a href="/scoring" class="nav-link">
         <i class="fa fa-file-archive-o"></i>
         <span class="title">Scoring</span>

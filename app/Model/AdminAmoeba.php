@@ -8,6 +8,6 @@ class AdminAmoeba extends Model
 {
     //
     public function division(){
-        return $this->hasOne('App\Model\Division');
+        return $this->belongsTo('App\Model\Division');
     }
 }

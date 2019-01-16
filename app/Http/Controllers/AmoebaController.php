@@ -10,9 +10,6 @@ use Role;
 class AmoebaController extends Controller
 {
     //
-
-
-
     public function store(Request $request)
     {    
         

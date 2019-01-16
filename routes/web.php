@@ -107,13 +107,9 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Auth::routes();
-Route::get('/admin/result', function(){
-    return view('pages.result.index');
-});
+Route::get('/admin/result', 'EventController@showEventRun')->name('result');
 
-Route::get('/admin/result/{id}/detail', function(){
-    return view('pages.result.detail');
-});
+Route::get('/admin/result/{id}/detail', 'EventController@showResultDetail')->name('result');
 
 Route::get('/myevent', 'AmoebaController@myEvent')->name('event');
 
@@ -122,24 +118,19 @@ Route::post('/setting/profile/update', 'SettingController@updateProfile');
 Route::post('/setting/group/update', 'SettingController@updateGroup');
 Route::post('/setting/member/add', 'SettingController@addMember');
 
-Route::get('/result', function(){
-    return view('result');
-});
+Route::get('/result', 'ScoreController@showResult');
 
-Route::get('/scoring', function(){
-    return view('pages.scoring.index');
-});
+Route::get('/scoring', 'ScoreController@showGroup');
 
-Route::get('/scoring/description', function(){
-    return view('pages.scoring.description');
-});
+Route::get('/scoring/description', 'ScoreController@showGroupDetail');
 
-Route::get('/scoring/business', function(){
-    return view('pages.scoring.business');
-});
+Route::get('/scoring/business/{id}', 'ScoreController@bisnis');
+Route::post('/scoring/group', 'ScoreController@scoreToGroup');
+Route::post('/scoring', 'ScoreController@scoreToAmoebas');
 
-Route::get('/scoring/people', function(){
-    return view('pages.scoring.people');
-});
+Route::get('/scoring/people/{id}', 'ScoreController@people');
+
+Route::post('/graph/upload/group', 'GraphController@uploadGroup');
+Route::post('/graph/upload', 'GraphController@upload');
 
 
