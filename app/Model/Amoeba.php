@@ -24,6 +24,7 @@ class Amoeba extends Model
         return $this->hasOne('App\Model\ScoreAmoeba', 'group_id');
     }
     public function getScoreAttribute(){
+        if(!isset($this->scoreData)) return 0;
         return $this->scoreData->score;
     }
 
