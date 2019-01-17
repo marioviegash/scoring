@@ -73,17 +73,17 @@ class ScoreController extends Controller
             $scoreExist = ScoreAmoeba::where('group_id', $key)
             ->where('score_by',Auth::user()->jury->id) ->first();
             
-        if($scoreExist === null){
-            $newScoreGroup = new ScoreAmoeba();
-            $newScoreGroup->group_id = $key;
-            $newScoreGroup->score_by = Auth::user()->jury->id;
-            $newScoreGroup->Score = $score;
-            $newScoreGroup->save();
-        }else{
-            
-            $scoreExist->Score = $request->score;
-            $scoreExist->save();
-        }
+            if($scoreExist === null){
+                $newScoreGroup = new ScoreAmoeba();
+                $newScoreGroup->group_id = $key;
+                $newScoreGroup->score_by = Auth::user()->jury->id;
+                $newScoreGroup->score = $score;
+                $newScoreGroup->save();
+            }else{
+                
+                $scoreExist->score = $score;
+                $scoreExist->save();
+            }
         }
         return redirect('/scoring');
     }
