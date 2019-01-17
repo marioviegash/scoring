@@ -28,7 +28,7 @@
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
-                        <img alt="" class="img-circle" src="{{ Auth::user()->roles->id == 4 ? asset(Auth::user()->amoeba->picture) : ( Auth::user()->roles->id == 3 ? asset(Auth::user()->jury->picture) : (Auth::user()->roles->id == 2 ? asset(Auth::user()->admin_amoeba->picture) : asset('img/upload/profile/profile.png'))) }}"/>
+                        <img alt="" class="img-circle" src="{{ Auth::user()->roles->id == 4 ? (Auth::user()->amoeba->picture == null ? asset('img/upload/profile/profile.png') : asset(Auth::user()->amoeba->picture)) : ( Auth::user()->roles->id == 3 ? ( Auth::user()->jury->picture == null ? asset('img/upload/profile/profile.png') : asset(Auth::user()->jury->picture)) : (Auth::user()->roles->id == 2 ? (Auth::user()->admin_amoeba->picture == null ? asset('img/upload/profile/profile.png') : asset(Auth::user()->admin_amoeba->picture)) : asset('img/upload/profile/profile.png'))) }}"/>
                         <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
