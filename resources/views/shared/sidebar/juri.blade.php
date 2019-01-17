@@ -8,7 +8,7 @@ Route::currentRouteName() === null) @endif">
 </li>
 <li class="nav-item start
 @if(Route::currentRouteName() === "document") active open @endif">
-    <a href="/document" class="nav-link">
+    <a href="/admin/document" class="nav-link">
         <i class="fa fa-file-archive-o"></i>
         <span class="title">View Document</span>
         <span class="selected"></span>

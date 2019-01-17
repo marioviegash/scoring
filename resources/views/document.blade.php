@@ -35,6 +35,7 @@
                                     <div class="mt-element-step">
                                         <div class="row step-line">
                                             <div class="col-md-4 mt-step-col first 
+                                                {{-- @if(isset()) --}}
                                                 @if($amoeba->group->file_status > 0) done 
                                                 @elseif($amoeba->group->file_status === 0) active 
                                                 @endif" style="padding: 0;">
