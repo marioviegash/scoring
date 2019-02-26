@@ -55,11 +55,11 @@
                                                 <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                 <div class="mt-step-content uppercase font-grey-cascade">Document On Check</div>
                                             </div>
-                                            <div class="col-md-4 mt-step-col" style="padding: 0;">
-                                                <div class="mt-step-number bg-white
+                                            <div class="col-md-4 mt-step-col 
                                                 @if($amoeba->group->file_status > 2) done 
-                                                @elseif($amoeba->group->file_status === 2) active 
-                                                @endif">
+                                                    @elseif($amoeba->group->file_status === 2) active 
+                                                    @endif" style="padding: 0;">
+                                                <div class="mt-step-number bg-white">
                                                     <span class="fa fa-close"></span>
                                                 </div>
                                                 <div class="mt-step-title uppercase font-grey-cascade"></div>
@@ -79,9 +79,10 @@
                                         <span class="caption-subject font-green bold uppercase">Upload Document</span>
                                     </div>
                                     <div class="actions">
-                                        <div class="btn-group">
-                                            <a class="btn dark btn-outline btn-circle btn-sm" href=""> View Forum </a>
-                                        </div>
+
+                                    <div class="btn-group">
+                                    <a class="btn dark btn-outline btn-circle btn-sm" href="/forum/{{$amoeba->group->id }}"> View Forum </a>
+                                    </div>
                                     </div>
                                 </div>
                                 <div class="portlet-body text-center">

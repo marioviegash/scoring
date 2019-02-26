@@ -56,7 +56,7 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="easy-pie-chart">
-                                                                <div class="number visits" data-percent="{{ (20*$amoeba->score) }}">
+                                                                <div class="number visits" data-percent="{{ (100/$amoeba->group->event->maximum_score*$amoeba->score) }}">
                                                                     <span>{{$amoeba->score}}</span>
                                                                 </div>
                                                             </div>

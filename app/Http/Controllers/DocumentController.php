@@ -23,8 +23,10 @@ class DocumentController extends Controller
         if(Auth::user()->roles->id === 4)
         {
             $forums = Forum::with('user')->where('group_id', Auth::user()->group->id)->get();
+            $group = Auth::user()->amoeba->group;
+            // return view('document', ['groups' => $group, 'forums' => $forums, 'amoeba'=>Auth::user()->amoeba]);
         }
-        // dd(Auth::user()->amoeba->group->file);
+        // dd($group->file_status);
         return view('document', ['groups' => $group, 'forums' => $forums, 'amoeba'=>Auth::user()->amoeba]);
     }
 
@@ -47,7 +49,7 @@ class DocumentController extends Controller
 
     public function reveiwDocument($file_id){
         $file = File::with('group')->where('id', $file_id)->first();
-        if(isset($file->review_at) === null){
+        if(isset($file->review_at) === false){
             $file->review_at = Carbon::now();
             $file->save();
         }

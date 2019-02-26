@@ -329,7 +329,7 @@
                                                         End Date &nbsp; &nbsp; : {{$amoeba->group->event->end_date}}
                                                     </div>
                                                     <div class="col-md-12 text-right">
-                                                        <a href="">View Details</a>
+                                                        <a href="/myevent">View Details</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -344,14 +344,17 @@
                                                             <b>Result</b>
                                                         </h3>
                                                         {{-- Kalau Belum Dinilai --}}
-                                                        Result is not out yet
-                                                        {{-- Kalau Sudah Dinilai --}}
-                                                        <br>
-                                                        Innovator A
-                                                        <br>
-                                                        86%
-                                                        <br>
-                                                        <a href="">View Details</a>
+                                                        @if($amoeba->score === 0)
+                                                            Result is not out yet
+                                                            <br>
+                                                        @else
+                                                            {{$amoeba->criteria}}
+                                                            <br>
+                                                            {{ (100/$amoeba->group->event->maximum_score*$amoeba->score) }} %
+                                                            <br>
+                                                            <a href="">View Details</a>
+                                                        @endif
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

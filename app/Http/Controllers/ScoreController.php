@@ -60,7 +60,12 @@ class ScoreController extends Controller
 
     
     public function showResult(){
-        $groups = Event::where('start_time', '<=', Carbon::now())->where('end_date', '>=', Carbon::now())->first()->groups;
+        $groups = array();
+        $event = Event::where('start_time', '<=', Carbon::now())->where('end_date', '>=', Carbon::now())->first();
+        // dd($event);
+        if($event !== null){
+            $groups = $event->groups;
+        }
         // $groups = Group::where('event_id', )
         // dd($groups);
         return view('result', ['groups' => $groups]);

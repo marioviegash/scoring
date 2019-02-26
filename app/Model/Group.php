@@ -32,7 +32,7 @@ class Group extends Model
         if($this->file === null){
             return $status;
         }
-        $status = 1;
+        $status = 1; 
         if($this->file->review_at === null){
             return $status;
         }

@@ -115,7 +115,7 @@ Route::post('/setting/profile/update', 'SettingController@updateProfile');
 Route::post('/setting/group/update', 'SettingController@updateGroup');
 Route::post('/setting/member/add', 'SettingController@addMember');
 
-Route::get('/result', 'ScoreController@showResult');
+Route::get('/result', 'ScoreController@showResult')->name('result');
 
 Route::get('/scoring', 'ScoreController@showGroup');
 
