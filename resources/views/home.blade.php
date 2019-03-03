@@ -266,7 +266,9 @@
                                                 @elseif($amoeba->progress_status === 1) active 
                                                 @endif " style="padding: 0;">
                                                     <div class="mt-step-number bg-white">
-                                                        <span class="fa fa-close"></span>
+                                                        @if($amoeba->progress_status > 1)<span class="fa fa-check"></span>
+                                                        @else <span class="fa fa-close"></span>
+                                                        @endif
                                                     </div>
                                                     <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                     <div class="mt-step-content uppercase font-grey-cascade">Upload Document</div>
@@ -276,7 +278,9 @@
                                                 @elseif($amoeba->progress_status === 2) active 
                                                 @endif" style="padding: 0;">
                                                     <div class="mt-step-number bg-white">
-                                                        <span class="fa fa-close"></span>
+                                                        @if($amoeba->progress_status > 2)<span class="fa fa-check"></span>
+                                                        @else <span class="fa fa-close"></span>
+                                                        @endif
                                                     </div>
                                                     <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                     <div class="mt-step-content uppercase font-grey-cascade">Document Accepted</div>
@@ -286,7 +290,9 @@
                                                 @elseif($amoeba->progress_status === 3) active 
                                                 @endif" style="padding: 0;">
                                                     <div class="mt-step-number bg-white">
-                                                        <span class="fa fa-close"></span>
+                                                        @if($amoeba->progress_status > 3)<span class="fa fa-check"></span>
+                                                        @else <span class="fa fa-close"></span>
+                                                        @endif
                                                     </div>
                                                     <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                     <div class="mt-step-content uppercase font-grey-cascade">Scoring</div>
@@ -296,7 +302,9 @@
                                                 @elseif($amoeba->progress_status === 4) active 
                                                 @endif" style="padding: 0;">
                                                     <div class="mt-step-number bg-white">
-                                                        <span class="fa fa-close"></span>
+                                                        @if($amoeba->progress_status > 4)<span class="fa fa-check"></span>
+                                                        @else <span class="fa fa-close"></span>
+                                                        @endif
                                                     </div>
                                                     <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                     <div class="mt-step-content uppercase font-grey-cascade">Result Out</div>

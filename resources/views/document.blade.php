@@ -40,7 +40,9 @@
                                                 @elseif($amoeba->group->file_status === 0) active 
                                                 @endif" style="padding: 0;">
                                                 <div class="mt-step-number bg-white">
-                                                    <span class="fa fa-check"></span>
+                                                    @if($amoeba->group->file_status > 0)<span class="fa fa-check"></span>
+                                                    @else <span class="fa fa-close"></span>
+                                                    @endif
                                                 </div>
                                                 <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                 <div class="mt-step-content uppercase font-grey-cascade">Document Uploaded</div>
@@ -50,7 +52,9 @@
                                                 @elseif($amoeba->group->file_status === 1) active 
                                                 @endif" style="padding: 0;">
                                                 <div class="mt-step-number bg-white">
-                                                    <span class="fa fa-close"></span>
+                                                    @if($amoeba->group->file_status > 1)<span class="fa fa-check"></span>
+                                                    @else <span class="fa fa-close"></span>
+                                                    @endif
                                                 </div>
                                                 <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                 <div class="mt-step-content uppercase font-grey-cascade">Document On Check</div>
@@ -60,7 +64,9 @@
                                                     @elseif($amoeba->group->file_status === 2) active 
                                                     @endif" style="padding: 0;">
                                                 <div class="mt-step-number bg-white">
-                                                    <span class="fa fa-close"></span>
+                                                    @if($amoeba->group->file_status > 1)<span class="fa fa-check"></span>
+                                                    @else <span class="fa fa-close"></span>
+                                                    @endif
                                                 </div>
                                                 <div class="mt-step-title uppercase font-grey-cascade"></div>
                                                 <div class="mt-step-content uppercase font-grey-cascade">Document Accepted</div>
