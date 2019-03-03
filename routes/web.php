@@ -129,4 +129,7 @@ Route::get('/scoring/people/{id}', 'ScoreController@people');
 
 Route::post('/graph/upload', 'GraphController@upload');
 
+Route::get('/ViewExport', 'ExportExcelController@ViewExport');
 
+
+Route::get('/export', 'ExportExcelController@ExportExcelRecommendation');
