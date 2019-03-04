@@ -7,7 +7,7 @@ use App\Model\Group;
 use App\Model\Amoeba;
 use Auth;
 use App\User;
-
+use App\Notification\SendToAdminNotification;
 class VerificationController extends Controller
 {
     //
@@ -113,6 +113,9 @@ class VerificationController extends Controller
         $group = Auth::user()->groupLeader()->first();
         $group->group_status_id = 2;
         $group->save();
+        
+        SendToAdminNotification::send(Auth::id(), "Amoeba ". Auth::user()->name. ' wants to join, Wait you to respond',  "http://localhost:8000/admin/user" );
+
         return redirect('verification-success');
     }
     

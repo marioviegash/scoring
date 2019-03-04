@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Storage;
 use App\Model\File;
 use Auth;
+use App\Notification\SendToAmaNotification;
 
 class FileController extends Controller
 {
@@ -41,6 +42,9 @@ class FileController extends Controller
         }
         Storage::putFileAs($destinationPath, $file, $filename);
         // $file->save($destinationPath.'/'.$filename);
+
+        SendToAmaNotification::send(Auth::id(), Auth::user()->name. " already send the document", 
+            "http://localhost:8000/admin/document/".Auth::user()->group."/detail");
 
         return back();
     }

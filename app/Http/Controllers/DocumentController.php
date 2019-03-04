@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Model\Group;
 use App\Model\Forum;
 use App\Model\File;
 use App\Model\Event;
+use App\Notification\SendToAmoebaNotification;
 use Storage;
 use Mail;
 use Auth;
@@ -62,6 +64,10 @@ class DocumentController extends Controller
         $file->approve_at = Carbon::now();
         $file->save();
 
+        
+        SendToAmoebaNotification::send(Auth::id(), $file->group->id,  "Document approved.", 
+            "http://localhost:8000/admin/document/".$file->group->id."/detail");
+
         return back();
     }
 
@@ -70,6 +76,8 @@ class DocumentController extends Controller
         $file->approve_at = Carbon::now();
         $file->save();
 
+        SendToAmoebaNotification::send(Auth::id(), $file->group->id,  "Document rejected.", 
+            "http://localhost:8000/admin/document/".$file->group->id."/detail");
         return back();
     }
 

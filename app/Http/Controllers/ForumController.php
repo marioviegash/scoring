@@ -7,6 +7,9 @@ use App\Model\Forum;
 use App\Model\Role;
 use Auth;
 use App\Model\Group;
+use App\Notification\SendToAmaNotification;
+use App\Notification\SendToAmoebaNotification;
+
 
 class ForumController extends Controller
 {
@@ -42,6 +45,7 @@ class ForumController extends Controller
                 return back();
             }
         }
+
         $request->validate([
             'comment' => 'required'
         ]);
@@ -49,9 +53,15 @@ class ForumController extends Controller
         $forum->comment = $request->comment;
         $forum->group_id = $request->group_id;
         $forum->user_id = Auth::id();
-
         $forum->save();
-
+        
+        if(Auth::user()->roles->id === 4){
+            SendToAmaNotification::send(Auth::id(), Auth::user()->name. " comment the document.", 
+                "http://localhost:8000/admin/document/".$request->group_id."/detail");
+        }else{   
+            SendToAmoebaNotification::send(Auth::id(), $request->group_id,  Auth::user()->name. " comment the document.", 
+                "http://localhost:8000/admin/document/".$request->group_id."/detail");
+        }
         
         return redirect()->back();
     }
